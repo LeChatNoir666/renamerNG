@@ -1,0 +1,21 @@
+Microsoft Visual Studio Solution File, Format Version 8.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RenamerNG", "RenamerNG.csproj", "{E128D5EA-F87D-486B-B44A-DC4FCBC98721}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfiguration) = preSolution
+		Debug = Debug
+		Release = Release
+	EndGlobalSection
+	GlobalSection(ProjectConfiguration) = postSolution
+		{E128D5EA-F87D-486B-B44A-DC4FCBC98721}.Debug.ActiveCfg = Debug|.NET
+		{E128D5EA-F87D-486B-B44A-DC4FCBC98721}.Debug.Build.0 = Debug|.NET
+		{E128D5EA-F87D-486B-B44A-DC4FCBC98721}.Release.ActiveCfg = Release|.NET
+		{E128D5EA-F87D-486B-B44A-DC4FCBC98721}.Release.Build.0 = Release|.NET
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+	EndGlobalSection
+	GlobalSection(ExtensibilityAddIns) = postSolution
+	EndGlobalSection
+EndGlobal
