@@ -8,22 +8,6 @@ using RenamerNG.FileNameOperations;
 using RenamerNG.SpecialOperations;
 using RenamerNG.ListOperations;
 
-//TODO: Button to rename files (optional through setting?)
-//TODO: Sort by clicking columns
-//TODO: Sort by moving around items.
-//TODO: Fix preview of selection? Possible to implement easily?
-//TODO: Search for updates on the internet
-//TODO: Settings dialog with save/restore?
-//TODO: Reduce flicker when moving in list with arrow keys
-//TODO: Support all operations from Renamer 6.0
-//TODO: Add "Execute" operation to support external programs.
-//TODO: Progress display for operations and macros
-//TODO: Fix settings so that size is restored correctly (even with different DPI settings)
-//TODO: Support for command line operation?
-//TODO: Move scanning to separate dialog?
-//TODO: Work mode auto? Is this mode unclear or too dangerous?
-//TODO: Change macro list into a listview to make the selected item change when right-clicking.
-
 namespace RenamerNG
 {
 	public class FrmMain : System.Windows.Forms.Form

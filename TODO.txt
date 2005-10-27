@@ -1,0 +1,17 @@
+* Add new code from Matt
+* Button to rename files (optional through setting?)
+* Sort by clicking columns
+* Sort by moving around items.
+* Fix preview of selection? Possible to implement easily?
+* Search for updates on the internet
+* Settings dialog with save/restore?
+* Reduce flicker when moving in list with arrow keys
+* Support all operations from Renamer 6.0
+	- List all operations that should be implemented...
+* Add "Execute" operation to support external programs.
+* Progress display for operations and macros
+* Fix settings so that size is restored correctly (even with different DPI settings)
+* Support for command line operation?
+* Move scanning to separate dialog?
+* Work mode auto? Is this mode unclear or too dangerous?
+* Change macro list into a listview to make the selected item change when right-clicking.

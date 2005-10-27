@@ -198,6 +198,10 @@
                     BuildAction = "Compile"
                 />
                 <File
+                    RelPath = "TODO.txt"
+                    BuildAction = "Content"
+                />
+                <File
                     RelPath = "Dialogs\GetString.cs"
                     SubType = "Form"
                     BuildAction = "Compile"
