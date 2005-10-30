@@ -1,3 +1,4 @@
+-= TODO (ideas to possibly implement) =-
 * Add new code from Matt
 * Button to rename files (optional through setting?)
 * Sort by clicking columns
@@ -7,7 +8,32 @@
 * Settings dialog with save/restore?
 * Reduce flicker when moving in list with arrow keys
 * Support all operations from Renamer 6.0
-	- List all operations that should be implemented...
+	- Multi change (reg exp enough?)
+	- Auto replace?
+	- Trim extension
+	- Multiple spaces? (reg exp macro instead?)
+	- Leading spaces
+	- Tailing spaces
+	- Sentence case
+	- Make it a Title
+	- Upper Case after find
+	- iNVERT CASE
+	- rAnDOm CASe
+	- ABBREVIATIONS (example u.s.a. -> U.S.A)
+	- Insert random number
+	- Remove read only attribute
+	- Truncate (with or without extension?) (trunkating extension (ex 8.3) ?)
+	- Insert date
+	- Force N digit numbers
+	- Ingore dirs (useful when having dirs in the list and avoid operations on them)
+	- Sort list after file
+	- Remove item from list
+	- Delete item from disk
+	- Export file (for example to create a batch file for renaming or exporting a dir list)
+* Support some new operations
+	- Lower case after find
+	- Insert unique random number or hash of some kind
+	- Internet or FreeDbOffline search
 * Add "Execute" operation to support external programs.
 * Progress display for operations and macros
 * Fix settings so that size is restored correctly (even with different DPI settings)
@@ -15,3 +41,9 @@
 * Move scanning to separate dialog?
 * Work mode auto? Is this mode unclear or too dangerous?
 * Change macro list into a listview to make the selected item change when right-clicking.
+
+-= Working on (if working on an item move it here) =-
+
+
+
+-= Done (when completed move it here) =-
