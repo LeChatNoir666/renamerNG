@@ -193,6 +193,8 @@ namespace RenamerNG
 			fileOperations.Add(new FileNameOperations.RegExp());
 			fileOperations.Add(new FileNameOperations.Trim());
 			fileOperations.Add(new FileNameOperations.TrimMultipleSpaces());
+			fileOperations.Add(new FileNameOperations.TrimLeadingSpaces());
+			fileOperations.Add(new FileNameOperations.TrimTailingSpaces());
 			fileOperations.Add(new FileNameOperations.Undo());
 			fileOperations.Add(new FileNameOperations.LowerCase());
 			fileOperations.Add(new FileNameOperations.UpperCase());

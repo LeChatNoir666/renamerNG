@@ -19,8 +19,6 @@
 	- Multi change (reg exp enough?)
 	- Auto replace?
 	- Trim extension
-	- Leading spaces
-	- Tailing spaces
 	- Make it a Title
 	- Upper Case after find (make the character after a find operation upper case)
 	- ABBREVIATIONS (example u.s.a. -> U.S.A)
@@ -52,4 +50,6 @@
 	- iNVERT CASE
 	- rAnDOm CASe
 	- Multiple spaces? (reg exp macro instead?) ("\s{2,}" -> " ")
+	- Leading spaces (using reg exp)
+	- Tailing spaces (using reg exp)
 * Support some new operations

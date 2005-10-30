@@ -267,7 +267,17 @@
                     BuildAction = "Compile"
                 />
                 <File
+                    RelPath = "FileNameOperations\TrimLeadingSpaces.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
                     RelPath = "FileNameOperations\TrimMultipleSpaces.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "FileNameOperations\TrimTailingSpaces.cs"
                     SubType = "Code"
                     BuildAction = "Compile"
                 />
