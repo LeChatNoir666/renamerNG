@@ -98,7 +98,7 @@ namespace RenamerNG
 			CreateOperationsMenu(listOperations, miEdit, new EventHandler(miOperation_Click));
 #if DEBUG
 			CheckDuplicateShortcuts();
-
+			#region Create a set of test file names
 			//const string pathBase = @"Z:\";
 			const string pathBase = @"D:\temp\RenamerNGTest\";
 			File.Create(pathBase + @"1").Close();
@@ -141,6 +141,7 @@ namespace RenamerNG
 			File.Create(pathBase + @"DateTime\103185 long.doc").Close(); //1985-10-31 long.doc
 			File.Create(pathBase + @"DateTime\020502 long.doc").Close(); //2002-02-05 long.doc
 			//File.Create(pathBase + @"DateTime\").Close(); //
+			#endregion
 			tbPath.Text = pathBase;
 #endif
 
@@ -181,7 +182,7 @@ namespace RenamerNG
 		OperationList listOperations = new OperationList();
 		int editPosition = 0;
 		Settings.FrmSettings settings;
-		object previousAction = null;
+		object previousAction = null; //Used for repeating last operation/macro
 
 		private void AddFileNameOperations()
 		{
@@ -191,6 +192,7 @@ namespace RenamerNG
 			fileOperations.Add(new FileNameOperations.InsertNumber());
 			fileOperations.Add(new FileNameOperations.RegExp());
 			fileOperations.Add(new FileNameOperations.Trim());
+			fileOperations.Add(new FileNameOperations.TrimMultipleSpaces());
 			fileOperations.Add(new FileNameOperations.Undo());
 			fileOperations.Add(new FileNameOperations.LowerCase());
 			fileOperations.Add(new FileNameOperations.UpperCase());

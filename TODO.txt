@@ -19,7 +19,6 @@
 	- Multi change (reg exp enough?)
 	- Auto replace?
 	- Trim extension
-	- Multiple spaces? (reg exp macro instead?) ("\s{2,}" -> " ")
 	- Leading spaces
 	- Tailing spaces
 	- Make it a Title
@@ -52,4 +51,5 @@
 * Support all operations from Renamer 6.0
 	- iNVERT CASE
 	- rAnDOm CASe
+	- Multiple spaces? (reg exp macro instead?) ("\s{2,}" -> " ")
 * Support some new operations

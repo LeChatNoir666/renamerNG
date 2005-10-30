@@ -267,6 +267,11 @@
                     BuildAction = "Compile"
                 />
                 <File
+                    RelPath = "FileNameOperations\TrimMultipleSpaces.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
                     RelPath = "FileNameOperations\Undo.cs"
                     SubType = "Code"
                     BuildAction = "Compile"
