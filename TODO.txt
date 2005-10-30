@@ -1,4 +1,4 @@
--= TODO (ideas to possibly implement) =-
+-= TODO (ideas to possibly implement, in no particular order) =-
 * Add new code from Matt
 * Button to rename files (optional through setting?)
 * Sort by clicking columns
@@ -40,16 +40,4 @@
 	
 
 
--= Working on (if working on an item move it here) =-
-
-
-
--= Done (when completed move it here) =-
-* Repeat last operation once more.
-* Support all operations from Renamer 6.0
-	- iNVERT CASE
-	- rAnDOm CASe
-	- Multiple spaces? (reg exp macro instead?) ("\s{2,}" -> " ")
-	- Leading spaces (using reg exp)
-	- Tailing spaces (using reg exp)
-* Support some new operations
+-= Working on (if working on an item move it here (when done delete it)) =-
