@@ -222,6 +222,11 @@
                     BuildAction = "Compile"
                 />
                 <File
+                    RelPath = "FileNameOperations\InvertCase.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
                     RelPath = "FileNameOperations\LargeCase.cs"
                     SubType = "Code"
                     BuildAction = "Compile"

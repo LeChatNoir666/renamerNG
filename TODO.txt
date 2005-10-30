@@ -23,10 +23,8 @@
 	- Multiple spaces? (reg exp macro instead?) ("\s{2,}" -> " ")
 	- Leading spaces
 	- Tailing spaces
-	- Sentence case
 	- Make it a Title
 	- Upper Case after find (make the character after a find operation upper case)
-	- iNVERT CASE
 	- rAnDOm CASe
 	- ABBREVIATIONS (example u.s.a. -> U.S.A)
 	- Insert random number
@@ -48,6 +46,7 @@
 
 
 -= Working on (if working on an item move it here) =-
+	- iNVERT CASE (Albert)
 
 
 
