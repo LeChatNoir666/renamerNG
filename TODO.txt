@@ -7,16 +7,25 @@
 * Search for updates on the internet
 * Settings dialog with save/restore?
 * Reduce flicker when moving in list with arrow keys
+* Progress display for operations and macros
+* Fix settings so that size is restored correctly (even with different DPI settings)
+* Support for command line operation?
+* Move scanning to separate dialog?
+* Work mode auto? Is this mode unclear or too dangerous?
+* Change macro list into a listview to make the selected item change when right-clicking.
+* Hot keys for operations/macros specified by user.
+* Repeat last operation once more.
+* Get tagging info from dir name.
 * Support all operations from Renamer 6.0
 	- Multi change (reg exp enough?)
 	- Auto replace?
 	- Trim extension
-	- Multiple spaces? (reg exp macro instead?)
+	- Multiple spaces? (reg exp macro instead?) ("\s{2,}" -> " ")
 	- Leading spaces
 	- Tailing spaces
 	- Sentence case
 	- Make it a Title
-	- Upper Case after find
+	- Upper Case after find (make the character after a find operation upper case)
 	- iNVERT CASE
 	- rAnDOm CASe
 	- ABBREVIATIONS (example u.s.a. -> U.S.A)
@@ -34,13 +43,9 @@
 	- Lower case after find
 	- Insert unique random number or hash of some kind
 	- Internet or FreeDbOffline search
-* Add "Execute" operation to support external programs.
-* Progress display for operations and macros
-* Fix settings so that size is restored correctly (even with different DPI settings)
-* Support for command line operation?
-* Move scanning to separate dialog?
-* Work mode auto? Is this mode unclear or too dangerous?
-* Change macro list into a listview to make the selected item change when right-clicking.
+	- "Execute" operation to support external programs.
+	
+
 
 -= Working on (if working on an item move it here) =-
 
