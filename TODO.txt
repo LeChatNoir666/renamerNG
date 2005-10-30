@@ -14,7 +14,6 @@
 * Work mode auto? Is this mode unclear or too dangerous?
 * Change macro list into a listview to make the selected item change when right-clicking.
 * Hot keys for operations/macros specified by user.
-* Repeat last operation once more.
 * Get tagging info from dir name.
 * Support all operations from Renamer 6.0
 	- Multi change (reg exp enough?)
@@ -49,5 +48,8 @@
 
 
 -= Done (when completed move it here) =-
+* Repeat last operation once more.
+* Support all operations from Renamer 6.0
 	- iNVERT CASE
 	- rAnDOm CASe
+* Support some new operations

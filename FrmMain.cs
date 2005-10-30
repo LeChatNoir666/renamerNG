@@ -7,6 +7,7 @@ using System.Drawing.Drawing2D;
 using RenamerNG.FileNameOperations;
 using RenamerNG.SpecialOperations;
 using RenamerNG.ListOperations;
+using RenamerNG.Macros;
 
 namespace RenamerNG
 {
@@ -63,6 +64,8 @@ namespace RenamerNG
 		private System.Windows.Forms.MenuItem miOperationsSpecial;
 		private System.Windows.Forms.MenuItem menuItem4;
 		private System.Windows.Forms.MenuItem miOperationsFreeEdit;
+		private System.Windows.Forms.MenuItem miFileRepeat;
+		private System.Windows.Forms.MenuItem menuItem5;
 		private System.ComponentModel.IContainer components;
 
 		public FrmMain(string dir)
@@ -178,6 +181,7 @@ namespace RenamerNG
 		OperationList listOperations = new OperationList();
 		int editPosition = 0;
 		Settings.FrmSettings settings;
+		object previousAction = null;
 
 		private void AddFileNameOperations()
 		{
@@ -401,6 +405,8 @@ namespace RenamerNG
 			this.miHelpAbout = new System.Windows.Forms.MenuItem();
 			this.toolTip = new System.Windows.Forms.ToolTip(this.components);
 			this.folderBrowserDialog = new System.Windows.Forms.FolderBrowserDialog();
+			this.miFileRepeat = new System.Windows.Forms.MenuItem();
+			this.menuItem5 = new System.Windows.Forms.MenuItem();
 			this.panelNavigation.SuspendLayout();
 			this.panelPath.SuspendLayout();
 			this.panelPathButtons.SuspendLayout();
@@ -694,6 +700,8 @@ namespace RenamerNG
 			this.miFile.Index = 0;
 			this.miFile.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
 																				   this.miFileRename,
+																				   this.menuItem5,
+																				   this.miFileRepeat,
 																				   this.menuItem2,
 																				   this.miFileExit});
 			this.miFile.Text = "&File";
@@ -706,12 +714,12 @@ namespace RenamerNG
 			// 
 			// menuItem2
 			// 
-			this.menuItem2.Index = 1;
+			this.menuItem2.Index = 3;
 			this.menuItem2.Text = "-";
 			// 
 			// miFileExit
 			// 
-			this.miFileExit.Index = 2;
+			this.miFileExit.Index = 4;
 			this.miFileExit.Text = "E&xit";
 			this.miFileExit.Click += new System.EventHandler(this.miFileExit_Click);
 			// 
@@ -848,6 +856,18 @@ namespace RenamerNG
 			// 
 			this.folderBrowserDialog.ShowNewFolderButton = false;
 			// 
+			// miFileRepeat
+			// 
+			this.miFileRepeat.Index = 2;
+			this.miFileRepeat.Shortcut = System.Windows.Forms.Shortcut.CtrlShiftR;
+			this.miFileRepeat.Text = "Repeat previous operation/macro";
+			this.miFileRepeat.Click += new System.EventHandler(this.miFileRepeat_Click);
+			// 
+			// menuItem5
+			// 
+			this.menuItem5.Index = 1;
+			this.menuItem5.Text = "-";
+			// 
 			// FrmMain
 			// 
 			this.AutoScaleBaseSize = new System.Drawing.Size(5, 13);
@@ -941,17 +961,8 @@ namespace RenamerNG
 			if (op == null)
 				op = (Operation)listOperations[m.Text];
 
-			if (op.RequiresWorkModeSelected && miOperationsWorkOnAllItems.Checked)
-			{
-				ErrorMessage("This operation requires that \"" + miOperationsWorkOnSelectedItems.Text + "\" is selected.");
+			if (!OperationRequirementsValid(op))
 				return;
-			}
-
-			if (AffectedFileNames(op) <= 0)
-			{
-				ErrorMessage("No items to perform operation on.");
-				return;
-			}
 
 			if (op.Gui != null)
 			{
@@ -961,11 +972,34 @@ namespace RenamerNG
 				if (res != DialogResult.OK) return;
 			}
 
+			previousAction = op;
 			PerformOperation(op);
 		}
 
+
+		private bool OperationRequirementsValid(Operation op)
+		{
+			if (op.RequiresWorkModeSelected && miOperationsWorkOnAllItems.Checked)
+			{
+				ErrorMessage("This operation requires that \"" + miOperationsWorkOnSelectedItems.Text + "\" is selected.");
+				return false;
+			}
+
+			if (AffectedFileNames(op) <= 0)
+			{
+				ErrorMessage("No items to perform operation on.");
+				return false;
+			}
+
+			return true;
+		}
+
+
 		private void PerformOperation(Operation op)
 		{
+			if (!OperationRequirementsValid(op))
+				return;
+
 			if (macroList1.Recording)
 			{
 				if (op.Recordable)
@@ -1402,7 +1436,7 @@ namespace RenamerNG
 
 
 		#region Macro list event handlers
-		private void macroList_Execute(object sender, RenamerNG.Macros.Macro macro)
+		private void macroList_Execute(object sender, Macro macro)
 		{
 			if (listMain.Items.Count <= 0)
 			{
@@ -1410,6 +1444,7 @@ namespace RenamerNG
 				return;
 			}
 
+			previousAction = macro;
 			foreach (Operation op in macro)
 			{
 				PerformOperation(op);
@@ -1487,5 +1522,19 @@ namespace RenamerNG
 			PerformOperation(fe);
 		}
 		#endregion
+
+		private void miFileRepeat_Click(object sender, System.EventArgs e)
+		{
+			if (previousAction == null)
+			{
+				ErrorMessage("No previous operation or macro found.");
+				return;
+			}
+
+			if (previousAction is Operation)
+				PerformOperation((Operation)previousAction);
+			else
+				macroList_Execute(null, (Macro)previousAction);
+		}
 	}
 }
