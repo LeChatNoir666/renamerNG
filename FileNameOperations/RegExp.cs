@@ -48,7 +48,7 @@ namespace RenamerNG.FileNameOperations
 				return new GUIElement[]
 				{
 					new GUIElement(GUIElement.Types.TEXTBOX, "Pattern", "", "The format to match"),
-					new GUIElement(GUIElement.Types.TEXTBOX, "Replacement", null, "The new format"),
+					new GUIElement(GUIElement.Types.TEXTBOX, "Replacement", "ALLOWEMPTY", "The new format"),
 					new GUIElement(GUIElement.Types.CHECKBOX, "Match case", "", "Match case")
 				};
 			}
