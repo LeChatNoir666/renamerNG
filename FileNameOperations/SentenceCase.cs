@@ -5,7 +5,7 @@ using RenamerNG;
 namespace RenamerNG.FileNameOperations
 {
 	/// <summary>
-	/// Summary description for Large case.
+	/// Summary description for SentenceCase.
 	/// </summary>
 	[Serializable()]
 	public class SentenceCase : Operation
@@ -16,7 +16,7 @@ namespace RenamerNG.FileNameOperations
 
 		public override string Name
 		{
-			get{ return "Sentence Case";}
+			get{ return "Sentence case";}
 		}
 
 		public override string Group

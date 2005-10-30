@@ -5,7 +5,7 @@ using RenamerNG;
 namespace RenamerNG.FileNameOperations
 {
 	/// <summary>
-	/// Summary description for Replace.
+	/// Summary description for Undo.
 	/// </summary>
 	[Serializable()]
 	public class Undo : Operation

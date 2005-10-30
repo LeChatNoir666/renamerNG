@@ -5,7 +5,7 @@ using RenamerNG;
 namespace RenamerNG.FileNameOperations
 {
 	/// <summary>
-	/// Summary description for Replace.
+	/// Summary description for UpperCase.
 	/// </summary>
 	[Serializable()]
 	public class UpperCase : Operation
@@ -16,7 +16,7 @@ namespace RenamerNG.FileNameOperations
 
 		public override string Name
 		{
-			get{ return "Upper case";}
+			get{ return "UPPER CASE";}
 		}
 
 		public override string Group

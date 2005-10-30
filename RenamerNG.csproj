@@ -237,6 +237,11 @@
                     BuildAction = "Compile"
                 />
                 <File
+                    RelPath = "FileNameOperations\RandomCase.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
                     RelPath = "FileNameOperations\RegExp.cs"
                     SubType = "Code"
                     BuildAction = "Compile"

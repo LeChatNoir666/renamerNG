@@ -5,7 +5,7 @@ using RenamerNG;
 namespace RenamerNG.FileNameOperations
 {
 	/// <summary>
-	/// Summary description for Large case.
+	/// Summary description for LargeCase.
 	/// </summary>
 	[Serializable()]
 	public class LargeCase : Operation

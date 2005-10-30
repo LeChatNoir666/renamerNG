@@ -192,6 +192,8 @@ namespace RenamerNG
 			fileOperations.Add(new FileNameOperations.UpperCase());
 			fileOperations.Add(new FileNameOperations.LargeCase());
 			fileOperations.Add(new FileNameOperations.SentenceCase());
+			fileOperations.Add(new FileNameOperations.InvertCase());
+			fileOperations.Add(new FileNameOperations.RandomCase());
 		}
 
 		private void AddListOperations()

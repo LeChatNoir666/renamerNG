@@ -25,7 +25,6 @@
 	- Tailing spaces
 	- Make it a Title
 	- Upper Case after find (make the character after a find operation upper case)
-	- rAnDOm CASe
 	- ABBREVIATIONS (example u.s.a. -> U.S.A)
 	- Insert random number
 	- Remove read only attribute
@@ -46,8 +45,9 @@
 
 
 -= Working on (if working on an item move it here) =-
-	- iNVERT CASE (Albert)
 
 
 
 -= Done (when completed move it here) =-
+	- iNVERT CASE
+	- rAnDOm CASe

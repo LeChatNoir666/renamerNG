@@ -6,7 +6,7 @@ using System.Text.RegularExpressions;
 namespace RenamerNG.FileNameOperations
 {
 	/// <summary>
-	/// Summary description for Replace.
+	/// Summary description for RegExp.
 	/// </summary>
 	[Serializable()]
 	public class RegExp : Operation
