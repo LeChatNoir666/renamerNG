@@ -12,6 +12,7 @@ namespace RenamerNG
 
 	public class FileScanner
 	{
+		bool ignoreExt;
 		bool files;
 		bool dirs;
 		bool recurse;
@@ -24,7 +25,7 @@ namespace RenamerNG
 
 		FrmProgress progress = null;
 
-		public FileScanner(string path, bool files, bool dirs, bool recurse, string pattern, AddItemDelegate d)
+		public FileScanner(string path, bool files, bool dirs, bool recurse, string pattern, bool ignoreExt, AddItemDelegate d)
 		{
 			this.path = path;
 			this.files = files;
@@ -32,6 +33,7 @@ namespace RenamerNG
 			this.recurse = recurse;
 			this.pattern = pattern;
 			this.d = d;
+			this.ignoreExt = ignoreExt;
 		}
 
 		public bool Scan()
@@ -74,7 +76,7 @@ namespace RenamerNG
 				{
 					foreach (string s in Directory.GetDirectories(path))
 					{
-						FileName f = new FileName(s);
+						FileName f = new FileName(s, ignoreExt);
 						d(f);
 					}
 				}
@@ -85,7 +87,7 @@ namespace RenamerNG
 					{
 						foreach (string s in Directory.GetFiles(path, pattern))
 						{
-							FileName f = new FileName(s);
+							FileName f = new FileName(s, ignoreExt);
 							d(f);
 						}
 					}
@@ -93,7 +95,7 @@ namespace RenamerNG
 					{
 						foreach (string s in Directory.GetFiles(path))
 						{
-							FileName f = new FileName(s);
+							FileName f = new FileName(s, ignoreExt);
 							d(f);
 						}
 					}
