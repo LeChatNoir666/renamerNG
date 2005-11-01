@@ -46,7 +46,7 @@ namespace RenamerNG.FileNameOperations
 			{
 				return new GUIElement[]
 				{
-					new GUIElement(GUIElement.Types.SELECTION, "Trim", "", "Select the charachters to trim")
+					new GUIElement(GUIElement.Types.SELECTION, "Trim", "", "Select the characters to trim")
 				};
 			}
 		}
