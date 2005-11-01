@@ -3,48 +3,48 @@ using System.Collections;
 
 namespace RenamerNG.Macros
 {
-	/// <summary>
-	/// Container for macro information
-	/// </summary>
-	[Serializable()]
-	public class MacroFile :IEnumerable
-	{
-		const int version = 2;
-		int fileVersion = version;
-		ArrayList macros = new ArrayList();
+  /// <summary>
+  /// Container for macro information
+  /// </summary>
+  [Serializable()]
+  public class MacroFile :IEnumerable
+  {
+    const int version = 2;
+    int fileVersion = version;
+    ArrayList macros = new ArrayList();
 
-		public int FileVersion
-		{
-			get { return fileVersion; }
-		}
+    public int FileVersion
+    {
+      get { return fileVersion; }
+    }
 
-		public int Version
-		{
-			get { return version; }
-		}
+    public int Version
+    {
+      get { return version; }
+    }
 
-		public void Add(Macro m)
-		{
-			macros.Add(m);
-		}
+    public void Add(Macro m)
+    {
+      macros.Add(m);
+    }
 
-		public Macro this[int index]
-		{
-			get { return (Macro)macros[index]; }
-		}
+    public Macro this[int index]
+    {
+      get { return (Macro)macros[index]; }
+    }
 
-		public int Count
-		{
-			get { return macros.Count; }
-		}
+    public int Count
+    {
+      get { return macros.Count; }
+    }
 
-		#region IEnumerable Members
+    #region IEnumerable Members
 
-		public IEnumerator GetEnumerator()
-		{
-			return macros.GetEnumerator();
-		}
+    public IEnumerator GetEnumerator()
+    {
+      return macros.GetEnumerator();
+    }
 
-		#endregion
-	}
+    #endregion
+  }
 }

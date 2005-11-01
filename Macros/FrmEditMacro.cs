@@ -327,7 +327,7 @@ namespace RenamerNG.Macros
 			}
 
 			ListViewItem tmp = new ListViewItem();
-			tmp.Tag = new FileName(@"Z:\tmp.txt");
+			tmp.Tag = new FileName(@"Z:\tmp.txt", false);
 			FrmDynamic dyn = new FrmDynamic(op, tmp);
 
 			DialogResult res = dyn.ShowDialog();

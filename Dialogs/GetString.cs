@@ -29,7 +29,7 @@ namespace Dialogs
 			DialogResult res = g.ShowDialog();
 			if (res == DialogResult.OK)
 				return g.Value;
-			else			
+			else      
 				return null;
 		}
 
@@ -60,7 +60,7 @@ namespace Dialogs
 			//
 			InitializeComponent();
 
-            Text = title;
+						Text = title;
 			label.Text = message;
 			this.minLength = minLength;
 
