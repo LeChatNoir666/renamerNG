@@ -19,6 +19,7 @@ namespace RenamerNG
 	/// </summary>
 	public class FileName : ICloneable
 	{
+		string ext;
 		string name;
 		string newName;
 		string undo;
@@ -29,6 +30,8 @@ namespace RenamerNG
 
 		bool updated;
 		bool success;
+
+
 
 		DateTime created;
 		DateTime lastAccess;
@@ -66,6 +69,9 @@ namespace RenamerNG
 					case ListColumns.Success:
 						data = "";
 						if (Success) data = "S";
+						break;
+					case ListColumns.Ext:
+						data = ext;
 						break;
 					case ListColumns.NewName:
 						data = NewName;
@@ -156,7 +162,8 @@ namespace RenamerNG
 		public string NewName
 		{
 			get { return newName; }
-			set {
+			set 
+			{
 				undo = newName;
 				
 				if (newName != value)
@@ -169,6 +176,11 @@ namespace RenamerNG
 
 				success = true;
 			}
+		}
+
+		public string Ext
+		{
+			get { return ext; }
 		}
 
 		public void Undo()
@@ -202,17 +214,25 @@ namespace RenamerNG
 			success = true;
 		}
 
-		public FileName(string file)
+		public FileName(string file, bool ignoreExt)
 		{
 			FileInfo f = new FileInfo(file);
-
-			restorePoint = undo = newName = name = f.Name;
+			attributes = f.Attributes;
+			
+			if (ignoreExt || IsDirectory) //filenames that start with a . are not extensions
+			{
+				ext = "";
+				restorePoint = undo = newName = name = f.Name;
+			}
+			else
+			{
+				ext = f.Extension;
+				restorePoint = undo = newName = name = f.Name.Substring(0,f.Name.Length - f.Extension.Length);
+			}
 			path = f.DirectoryName;
 
 			if (path[path.Length - 1] != '\\')
 				path += '\\';
-
-			attributes = f.Attributes;
 
 			if (IsDirectory)
 				size = -1;
@@ -249,6 +269,7 @@ namespace RenamerNG
 
 		public void Rename()
 		{
+			newName = newName + ext;//put the ext back on, if it was never off, then ext is "" and this a no-op
 			if (Changed)
 			{
 				try
