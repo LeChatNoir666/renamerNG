@@ -9,7 +9,7 @@ namespace RenamerNG
 	/// <summary>
 	/// Summary description for FrmSettings.
 	/// </summary>
-	public enum ListColumns {NewName, Size, OldName, Path, Changed, Updated, Success, Created, Modified, Accessed};
+	public enum ListColumns {NewName, Size, OldName, Path, Changed, Updated, Success, Created, Modified, Accessed, Ext};
 
 	public class FrmListColumns : System.Windows.Forms.Form
 	{
