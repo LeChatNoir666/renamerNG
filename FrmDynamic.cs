@@ -234,7 +234,8 @@ namespace RenamerNG
 						Label sl = new Label();
 						s.Tag = sl;
 
-						sl.Text = operation[i].Split(',')[0] + "," + operation[i].Split(',')[1];
+						//sl.Text = operation[i].Split(',')[0] + "," + operation[i].Split(',')[1];
+						sl.Text = operation[i];
 						sl.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
 						sl.Height = 20;
 						sl.TextChanged +=new EventHandler(AnythingChanged);
@@ -250,6 +251,7 @@ namespace RenamerNG
 						CheckBox sch = new CheckBox();
 						sl.Tag = sch;
 
+						sch.Tag = new int[]{0,0};
 						sch.Checked = bool.Parse(operation[i].Split(',')[2]);
 						sch.Text = "Use end of string as reference point";
 						sch.CheckedChanged += new EventHandler(selection_CheckedChanged);
@@ -257,8 +259,11 @@ namespace RenamerNG
 						sch.Width = width;
 						sch.Top = height + 40;
 						sch.Left = 0;
+						
 
 						panelContent.Controls.Add(sch);
+
+						
 
 
 						int length = int.Parse(sl.Text.Split(',')[1]);
@@ -532,14 +537,28 @@ namespace RenamerNG
 			Label l = (Label)tb.Tag;
 			CheckBox ch = (CheckBox)l.Tag;
 
+			int[] selPrevs = (int[])ch.Tag;
+			int selPrevSta = 0;
+			int selPrevLen = 1;
+
 			int position, length;
 			length = tb.SelectionLength;
+			if (length > selPrevs[selPrevLen] && tb.SelectionStart == selPrevs[selPrevSta]) //we're going rightwards
+				ch.Checked = false;
+			else if (length > selPrevs[selPrevLen] && tb.SelectionStart < selPrevs[selPrevSta])
+				ch.Checked = true;
+
 			if (ch.Checked)
 				position = tb.Text.Length - tb.SelectionStart - length;
 			else
-				position = tb.SelectionStart;	
+				position = tb.SelectionStart;  
 
-			l.Text = position.ToString() + "," + length.ToString() + "," + ch.Checked.ToString();
+			selPrevs[selPrevSta] = tb.SelectionStart;
+			selPrevs[selPrevLen] = tb.SelectionLength;
+			ch.Tag = selPrevs;
+
+			//l.Text = position.ToString() + "," + length.ToString() + "," + ch.Checked.ToString();
+			l.Text = position.ToString() + "," + length.ToString() + "," + ch.Checked.ToString().ToLower();
 		}
 
 		Control FindParentTo(Control control)
