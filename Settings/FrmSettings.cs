@@ -32,6 +32,9 @@ namespace RenamerNG.Settings
 		private System.Windows.Forms.Label lbl3;
 		private System.Windows.Forms.Label lbl4;
 		private System.Windows.Forms.Button btFocused;
+		private System.Windows.Forms.TabPage tabMisc;
+		private System.Windows.Forms.CheckBox chkImmediateEdits;
+		private System.Windows.Forms.CheckBox chkLeaveExtAlone;
 		/// <summary>
 		/// Required designer variable.
 		/// </summary>
@@ -88,16 +91,21 @@ namespace RenamerNG.Settings
 			this.label1 = new System.Windows.Forms.Label();
 			this.btSERemove = new System.Windows.Forms.Button();
 			this.btSEAdd = new System.Windows.Forms.Button();
+			this.tabMisc = new System.Windows.Forms.TabPage();
+			this.chkLeaveExtAlone = new System.Windows.Forms.CheckBox();
+			this.chkImmediateEdits = new System.Windows.Forms.CheckBox();
 			this.colorDialog1 = new System.Windows.Forms.ColorDialog();
 			this.tabControl.SuspendLayout();
 			this.tabColours.SuspendLayout();
 			this.tabSE.SuspendLayout();
+			this.tabMisc.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// tabControl
 			// 
 			this.tabControl.Controls.Add(this.tabColours);
 			this.tabControl.Controls.Add(this.tabSE);
+			this.tabControl.Controls.Add(this.tabMisc);
 			this.tabControl.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.tabControl.Location = new System.Drawing.Point(8, 8);
 			this.tabControl.Multiline = true;
@@ -210,7 +218,7 @@ namespace RenamerNG.Settings
 			// 
 			// lblSelectedBG
 			// 
-			this.lblSelectedBG.BackColor = System.Drawing.Color.FromArgb(((System.Byte)(128)), ((System.Byte)(128)), ((System.Byte)(255)));
+			this.lblSelectedBG.BackColor = System.Drawing.Color.Yellow;
 			this.lblSelectedBG.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
 			this.lblSelectedBG.Location = new System.Drawing.Point(147, 97);
 			this.lblSelectedBG.Name = "lblSelectedBG";
@@ -228,7 +236,7 @@ namespace RenamerNG.Settings
 			// 
 			// lblFocused
 			// 
-			this.lblFocused.BackColor = System.Drawing.Color.FromArgb(((System.Byte)(192)), ((System.Byte)(0)), ((System.Byte)(0)));
+			this.lblFocused.BackColor = System.Drawing.Color.FromArgb(((System.Byte)(0)), ((System.Byte)(0)), ((System.Byte)(192)));
 			this.lblFocused.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
 			this.lblFocused.Location = new System.Drawing.Point(147, 69);
 			this.lblFocused.Name = "lblFocused";
@@ -281,6 +289,32 @@ namespace RenamerNG.Settings
 			this.btSEAdd.Text = "Add";
 			this.btSEAdd.Click += new System.EventHandler(this.btSEAdd_Click);
 			// 
+			// tabMisc
+			// 
+			this.tabMisc.Controls.Add(this.chkLeaveExtAlone);
+			this.tabMisc.Controls.Add(this.chkImmediateEdits);
+			this.tabMisc.Location = new System.Drawing.Point(4, 22);
+			this.tabMisc.Name = "tabMisc";
+			this.tabMisc.Size = new System.Drawing.Size(324, 221);
+			this.tabMisc.TabIndex = 2;
+			this.tabMisc.Text = "Miscellaneous";
+			// 
+			// chkLeaveExtAlone
+			// 
+			this.chkLeaveExtAlone.Location = new System.Drawing.Point(8, 32);
+			this.chkLeaveExtAlone.Name = "chkLeaveExtAlone";
+			this.chkLeaveExtAlone.Size = new System.Drawing.Size(296, 16);
+			this.chkLeaveExtAlone.TabIndex = 1;
+			this.chkLeaveExtAlone.Text = "Leave filename extensions alone";
+			// 
+			// chkImmediateEdits
+			// 
+			this.chkImmediateEdits.Location = new System.Drawing.Point(8, 8);
+			this.chkImmediateEdits.Name = "chkImmediateEdits";
+			this.chkImmediateEdits.Size = new System.Drawing.Size(296, 16);
+			this.chkImmediateEdits.TabIndex = 0;
+			this.chkImmediateEdits.Text = "Edits to filenames are reflected in list immediately";
+			// 
 			// FrmSettings
 			// 
 			this.AutoScaleBaseSize = new System.Drawing.Size(5, 13);
@@ -295,9 +329,11 @@ namespace RenamerNG.Settings
 			this.ShowInTaskbar = false;
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
 			this.Text = "Options";
+			this.Load += new System.EventHandler(this.FrmSettings_Load);
 			this.tabControl.ResumeLayout(false);
 			this.tabColours.ResumeLayout(false);
 			this.tabSE.ResumeLayout(false);
+			this.tabMisc.ResumeLayout(false);
 			this.ResumeLayout(false);
 
 		}
@@ -334,6 +370,15 @@ namespace RenamerNG.Settings
 			get { return successful; }
 		}
 
+		public bool ignoreExt
+		{
+			get { return chkLeaveExtAlone.Checked; }
+		}
+
+		public bool ImmediateEdits
+		{
+			get { return chkImmediateEdits.Checked; }
+		}
 
 		static string ReadLine(StreamReader r)
 		{
@@ -417,6 +462,9 @@ namespace RenamerNG.Settings
 					ListColourBackground = Color.FromArgb(ReadInt(r));
 					ListColourFocusedText = Color.FromArgb(ReadInt(r));
 					ListColourSelectedBackground = Color.FromArgb(ReadInt(r));
+
+					chkImmediateEdits.Checked = ReadBool(r);
+					chkLeaveExtAlone.Checked = ReadBool(r);
 				}
 
 				successful = true;
@@ -492,6 +540,9 @@ namespace RenamerNG.Settings
 					w.WriteLine(ListColourBackground.ToArgb().ToString());
 					w.WriteLine(ListColourFocusedText.ToArgb().ToString());
 					w.WriteLine(ListColourSelectedBackground.ToArgb().ToString());
+					
+					w.WriteLine(chkImmediateEdits.Checked.ToString());
+					w.WriteLine(chkLeaveExtAlone.Checked.ToString());
 				}
 			}
 			catch (Exception ex)
@@ -604,5 +655,14 @@ namespace RenamerNG.Settings
 		public bool ScanRecurse = false;
 		public string ScanPath = "";
 		#endregion
+
+		private void FrmSettings_Load(object sender, System.EventArgs e)
+		{
+		
+		}
+
+
+
+
 	}
 }
