@@ -308,6 +308,7 @@ namespace RenamerNG.Settings
 			this.chEditExtensions.Text = "Edit filename extensions";
 			this.toolTip.SetToolTip(this.chEditExtensions, "When enabled filename extensions are affected by changes, if not the extension is" +
 				" treated separatly.");
+			this.chEditExtensions.CheckedChanged += new System.EventHandler(this.chEditExtensions_CheckedChanged);
 			// 
 			// chImmediateEdits
 			// 
@@ -371,16 +372,6 @@ namespace RenamerNG.Settings
 		public bool Successful
 		{
 			get { return successful; }
-		}
-
-		public bool EditExtensions
-		{
-			get { return chEditExtensions.Checked; }
-		}
-
-		public bool ImmediateEdits
-		{
-			get { return chImmediateEdits.Checked; }
 		}
 
 		static string ReadLine(StreamReader r)
@@ -638,6 +629,25 @@ namespace RenamerNG.Settings
 		private void btSelectedBG_Click(object sender, System.EventArgs e)
 		{
 			PickColour(lblSelectedBG);
+		}
+		#endregion
+
+		#region Misc
+		public bool EditExtensions
+		{
+			get { return chEditExtensions.Checked; }
+		}
+
+		public bool ImmediateEdits
+		{
+			get { return chImmediateEdits.Checked; }
+		}
+
+		private void chEditExtensions_CheckedChanged(object sender, System.EventArgs e)
+		{
+			//Don't display message if the settings window is not visible
+			if (this.Visible)
+				FrmMain.InformationMessage("This change requires scanning the files again.\n\nTip:\nTo make the extensions visible when not editing\nextensions you need to display the \"Ext\" column.");
 		}
 		#endregion
 
