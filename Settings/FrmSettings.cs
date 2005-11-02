@@ -33,12 +33,10 @@ namespace RenamerNG.Settings
 		private System.Windows.Forms.Label lbl4;
 		private System.Windows.Forms.Button btFocused;
 		private System.Windows.Forms.TabPage tabMisc;
-		private System.Windows.Forms.CheckBox chkImmediateEdits;
-		private System.Windows.Forms.CheckBox chkLeaveExtAlone;
-		/// <summary>
-		/// Required designer variable.
-		/// </summary>
-		private System.ComponentModel.Container components = null;
+		private System.Windows.Forms.ToolTip toolTip;
+		private System.Windows.Forms.CheckBox chEditExtensions;
+		private System.Windows.Forms.CheckBox chImmediateEdits;
+		private System.ComponentModel.IContainer components;
 
 		public FrmSettings()
 		{
@@ -70,6 +68,7 @@ namespace RenamerNG.Settings
 		/// </summary>
 		private void InitializeComponent()
 		{
+			this.components = new System.ComponentModel.Container();
 			this.tabControl = new System.Windows.Forms.TabControl();
 			this.tabColours = new System.Windows.Forms.TabPage();
 			this.btFocused = new System.Windows.Forms.Button();
@@ -90,9 +89,10 @@ namespace RenamerNG.Settings
 			this.btSERemove = new System.Windows.Forms.Button();
 			this.btSEAdd = new System.Windows.Forms.Button();
 			this.tabMisc = new System.Windows.Forms.TabPage();
-			this.chkLeaveExtAlone = new System.Windows.Forms.CheckBox();
-			this.chkImmediateEdits = new System.Windows.Forms.CheckBox();
+			this.chEditExtensions = new System.Windows.Forms.CheckBox();
+			this.chImmediateEdits = new System.Windows.Forms.CheckBox();
 			this.colorDialog1 = new System.Windows.Forms.ColorDialog();
+			this.toolTip = new System.Windows.Forms.ToolTip(this.components);
 			this.tabControl.SuspendLayout();
 			this.tabColours.SuspendLayout();
 			this.tabSE.SuspendLayout();
@@ -289,29 +289,34 @@ namespace RenamerNG.Settings
 			// 
 			// tabMisc
 			// 
-			this.tabMisc.Controls.Add(this.chkLeaveExtAlone);
-			this.tabMisc.Controls.Add(this.chkImmediateEdits);
+			this.tabMisc.Controls.Add(this.chEditExtensions);
+			this.tabMisc.Controls.Add(this.chImmediateEdits);
 			this.tabMisc.Location = new System.Drawing.Point(4, 22);
 			this.tabMisc.Name = "tabMisc";
 			this.tabMisc.Size = new System.Drawing.Size(324, 221);
 			this.tabMisc.TabIndex = 2;
 			this.tabMisc.Text = "Miscellaneous";
 			// 
-			// chkLeaveExtAlone
+			// chEditExtensions
 			// 
-			this.chkLeaveExtAlone.Location = new System.Drawing.Point(8, 32);
-			this.chkLeaveExtAlone.Name = "chkLeaveExtAlone";
-			this.chkLeaveExtAlone.Size = new System.Drawing.Size(296, 16);
-			this.chkLeaveExtAlone.TabIndex = 1;
-			this.chkLeaveExtAlone.Text = "Leave filename extensions alone";
+			this.chEditExtensions.Checked = true;
+			this.chEditExtensions.CheckState = System.Windows.Forms.CheckState.Checked;
+			this.chEditExtensions.Location = new System.Drawing.Point(8, 32);
+			this.chEditExtensions.Name = "chEditExtensions";
+			this.chEditExtensions.Size = new System.Drawing.Size(296, 16);
+			this.chEditExtensions.TabIndex = 1;
+			this.chEditExtensions.Text = "Edit filename extensions";
+			this.toolTip.SetToolTip(this.chEditExtensions, "When enabled filename extensions are affected by changes, if not the extension is" +
+				" treated separatly.");
 			// 
-			// chkImmediateEdits
+			// chImmediateEdits
 			// 
-			this.chkImmediateEdits.Location = new System.Drawing.Point(8, 8);
-			this.chkImmediateEdits.Name = "chkImmediateEdits";
-			this.chkImmediateEdits.Size = new System.Drawing.Size(296, 16);
-			this.chkImmediateEdits.TabIndex = 0;
-			this.chkImmediateEdits.Text = "Edits to filenames are reflected in list immediately";
+			this.chImmediateEdits.Location = new System.Drawing.Point(8, 8);
+			this.chImmediateEdits.Name = "chImmediateEdits";
+			this.chImmediateEdits.Size = new System.Drawing.Size(296, 16);
+			this.chImmediateEdits.TabIndex = 0;
+			this.chImmediateEdits.Text = "Edits to filenames are reflected in list immediately";
+			this.toolTip.SetToolTip(this.chImmediateEdits, "NOT IMPLEMENTED YET!!!");
 			// 
 			// FrmSettings
 			// 
@@ -368,14 +373,14 @@ namespace RenamerNG.Settings
 			get { return successful; }
 		}
 
-		public bool ignoreExt
+		public bool EditExtensions
 		{
-			get { return chkLeaveExtAlone.Checked; }
+			get { return chEditExtensions.Checked; }
 		}
 
 		public bool ImmediateEdits
 		{
-			get { return chkImmediateEdits.Checked; }
+			get { return chImmediateEdits.Checked; }
 		}
 
 		static string ReadLine(StreamReader r)
@@ -461,8 +466,8 @@ namespace RenamerNG.Settings
 					ListColourFocusedText = Color.FromArgb(ReadInt(r));
 					ListColourSelectedBackground = Color.FromArgb(ReadInt(r));
 
-					chkImmediateEdits.Checked = ReadBool(r);
-					chkLeaveExtAlone.Checked = ReadBool(r);
+					chImmediateEdits.Checked = ReadBool(r);
+					chEditExtensions.Checked = ReadBool(r);
 				}
 
 				successful = true;
@@ -539,8 +544,8 @@ namespace RenamerNG.Settings
 					w.WriteLine(ListColourFocusedText.ToArgb().ToString());
 					w.WriteLine(ListColourSelectedBackground.ToArgb().ToString());
 					
-					w.WriteLine(chkImmediateEdits.Checked.ToString());
-					w.WriteLine(chkLeaveExtAlone.Checked.ToString());
+					w.WriteLine(chImmediateEdits.Checked.ToString());
+					w.WriteLine(chEditExtensions.Checked.ToString());
 				}
 			}
 			catch (Exception ex)

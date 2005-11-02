@@ -1100,7 +1100,7 @@ namespace RenamerNG
 
 			string pattern = comboPattern.Text;
 			AddItemDelegate d = new AddItemDelegate(AddItem);
-			FileScanner scanner = new FileScanner(tbPath.Text, chFiles.Checked, chDirs.Checked, chRecurse.Checked, pattern, settings.ignoreExt, d);
+			FileScanner scanner = new FileScanner(tbPath.Text, chFiles.Checked, chDirs.Checked, chRecurse.Checked, pattern, settings.EditExtensions, d);
 			bool suc = scanner.Scan();
 			listMain.EndUpdate();
 
