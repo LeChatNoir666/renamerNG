@@ -46,8 +46,6 @@ namespace RenamerNG.Settings
 			// Required for Windows Form Designer support
 			//
 			InitializeComponent();
-
-			InitTabPage();
 		}
 
 		/// <summary>
@@ -658,11 +656,7 @@ namespace RenamerNG.Settings
 
 		private void FrmSettings_Load(object sender, System.EventArgs e)
 		{
-		
+			InitTabPage();
 		}
-
-
-
-
 	}
 }
