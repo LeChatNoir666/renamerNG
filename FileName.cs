@@ -119,7 +119,7 @@ namespace RenamerNG
 
 		public string PathName
 		{
-			get { return path + '\\' + name; }
+			get { return path + '\\' + name + ext; }
 		}
 
 		public long Size
@@ -214,12 +214,14 @@ namespace RenamerNG
 			success = true;
 		}
 
-		public FileName(string file, bool ignoreExt)
+		public FileName(string file, bool editExt)
 		{
 			FileInfo f = new FileInfo(file);
 			attributes = f.Attributes;
-			
-			if (ignoreExt || IsDirectory) //filenames that start with a . are not extensions
+
+			//Directories don't have extensions
+			//Filenames that start with a . are not extensions
+			if (editExt || IsDirectory || f.Name.Length == f.Extension.Length)
 			{
 				ext = "";
 				restorePoint = undo = newName = name = f.Name;
@@ -227,7 +229,7 @@ namespace RenamerNG
 			else
 			{
 				ext = f.Extension;
-				restorePoint = undo = newName = name = f.Name.Substring(0,f.Name.Length - f.Extension.Length);
+				restorePoint = undo = newName = name = f.Name.Substring(0, f.Name.Length - f.Extension.Length);
 			}
 			path = f.DirectoryName;
 
@@ -269,7 +271,6 @@ namespace RenamerNG
 
 		public void Rename()
 		{
-			newName = newName + ext;//put the ext back on, if it was never off, then ext is "" and this a no-op
 			if (Changed)
 			{
 				try
@@ -302,7 +303,8 @@ namespace RenamerNG
 					}
 					else
 					{
-						File.Move(path + name, path + newName);
+						//Add the extension both to the original name and new name
+						File.Move(path + name + ext, path + newName + ext);
 					}
 
 					name = newName;

@@ -105,6 +105,9 @@ namespace RenamerNG
 			File.Create(pathBase + @"1").Close();
 			File.Create(pathBase + @"2").Close();
 			File.Create(pathBase + @"3").Close();
+			File.Create(pathBase + @".ext").Close();
+			File.Create(pathBase + @"test.extension").Close();
+			File.Create(pathBase + @"test.ext").Close();
 			File.Create(pathBase + @"Tyna Turner.txt").Close();
 			File.Create(pathBase + @"tyna turner.nfo").Close();
 			File.Create(pathBase + @"Tyna Turner - Simply the Best.mp3").Close();
