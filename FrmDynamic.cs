@@ -107,7 +107,8 @@ namespace RenamerNG
 						controls[i] = t;
 
 						t.Text = operation[i];
-						t.TextChanged +=new EventHandler(AnythingChanged);
+						t.TextChanged += new EventHandler(AnythingChanged);
+						t.KeyPress += new KeyPressEventHandler(textBox_KeyPress);
 
 						t.Width = width;
 						t.Top = height + 20;
@@ -125,7 +126,8 @@ namespace RenamerNG
 						n.Minimum = int.Parse(minmax[0]);
 						n.Maximum = int.Parse(minmax[1]);
 						n.Value = int.Parse(operation[i]);
-						n.ValueChanged +=new EventHandler(AnythingChanged);
+						n.ValueChanged += new EventHandler(AnythingChanged);
+						n.KeyPress += new KeyPressEventHandler(textBox_KeyPress);
 
 						n.Width = 100;
 						n.Top = height + 20;
@@ -143,6 +145,7 @@ namespace RenamerNG
 						ch.Checked = bool.Parse(operation[i]);
 						ch.Text = g.Name;
 						ch.CheckedChanged += new EventHandler(AnythingChanged);
+						ch.KeyPress += new KeyPressEventHandler(textBox_KeyPress);
 
 						ch.Width = width;
 						ch.Top = height;
@@ -163,6 +166,7 @@ namespace RenamerNG
 						p.MouseMove += new MouseEventHandler(position_MouseUp);
 						p.KeyUp += new KeyEventHandler(position_KeyDown);
 						p.KeyDown += new KeyEventHandler(position_KeyDown);
+						p.KeyPress += new KeyPressEventHandler(textBox_KeyPress);
 
 						p.Width = width - 60;
 						p.Top = height + 20;
@@ -222,6 +226,7 @@ namespace RenamerNG
 						s.MouseMove += new MouseEventHandler(selection_MouseUp);
 						s.KeyUp += new KeyEventHandler(selection_KeyDown);
 						s.KeyDown += new KeyEventHandler(selection_KeyDown);
+						s.KeyPress += new KeyPressEventHandler(textBox_KeyPress);
 
 						s.Width = width - 110;
 						s.Top = height + 20;
@@ -296,6 +301,7 @@ namespace RenamerNG
 							r.Left = 10;
 							r.Text = buttons[j];
 							r.CheckedChanged += new EventHandler(AnythingChanged);
+							r.KeyPress += new KeyPressEventHandler(textBox_KeyPress);
 
 							if (prev == null)
 								controls[i] = r;
@@ -557,7 +563,6 @@ namespace RenamerNG
 			selPrevs[selPrevLen] = tb.SelectionLength;
 			ch.Tag = selPrevs;
 
-			//l.Text = position.ToString() + "," + length.ToString() + "," + ch.Checked.ToString();
 			l.Text = position.ToString() + "," + length.ToString() + "," + ch.Checked.ToString().ToLower();
 		}
 
@@ -682,6 +687,12 @@ namespace RenamerNG
 			{
 				tbAfter.Text = ex.Message;
 			}
+		}
+
+		private void textBox_KeyPress(object sender, System.Windows.Forms.KeyPressEventArgs e)
+		{
+			if ((int)e.KeyChar == 13)
+				btOk_Click(null, null);
 		}
 	}
 }
