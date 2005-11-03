@@ -96,58 +96,6 @@ namespace RenamerNG
 			AddListOperations();
 			CreateOperationsMenu(fileOperations, miFileOperations, new EventHandler(miOperation_Click));
 			CreateOperationsMenu(listOperations, miEdit, new EventHandler(miOperation_Click));
-#if DEBUG
-			CheckDuplicateShortcuts();
-			#region Create a set of test file names
-			//const string pathBase = @"Z:\";
-			const string pathBase = @"C:\temp\RenamerNGTest\";
-			Directory.CreateDirectory(pathBase);
-			File.Create(pathBase + @"1").Close();
-			File.Create(pathBase + @"2").Close();
-			File.Create(pathBase + @"3").Close();
-			File.Create(pathBase + @".ext").Close();
-			File.Create(pathBase + @"test.extension").Close();
-			File.Create(pathBase + @"test.ext").Close();
-			File.Create(pathBase + @"Tyna Turner.txt").Close();
-			File.Create(pathBase + @"tyna turner.nfo").Close();
-			File.Create(pathBase + @"Tyna Turner - Simply the Best.mp3").Close();
-			File.Create(pathBase + @"Tyna Turner - Nutbush city limits.mp3").Close();
-			File.Create(pathBase + @"Metallica - Wherever I may roam.mp3").Close();
-			File.Create(pathBase + @"metallica - enter the sandman.mp3").Close();
-			File.Create(pathBase + @"Metallica - Master of Puppets.mp3").Close();
-			Directory.CreateDirectory(pathBase + @"Metallica");
-			Directory.CreateDirectory(pathBase + @"Metallica\Metallica");
-			Directory.CreateDirectory(pathBase + @"Metallica\... and Justice for All");
-			File.Create(pathBase + @"Metallica\Metallica - Wherever I may roam.mp3").Close();
-			File.Create(pathBase + @"Metallica\Metallica - Enter the sandman.mp3").Close();
-			Directory.CreateDirectory(pathBase + @"DateTime");
-			File.Create(pathBase + @"DateTime\Long 060505.doc").Close(); //Long 2005-06-05.doc
-			File.Create(pathBase + @"DateTime\Long 020502.doc").Close(); //Long 2002-02-05.doc
-			File.Create(pathBase + @"DateTime\Long 103185.doc").Close(); //Long 1985-10-31.doc
-			File.Create(pathBase + @"DateTime\Long 010100.doc").Close(); //Long 2000-01-01.doc
-			File.Create(pathBase + @"DateTime\Long 090899 v2.doc").Close(); //Long 1999-09-08 v2.doc
-			File.Create(pathBase + @"DateTime\Long 101288 s.doc").Close(); //Long 1988-10-12 s.doc
-			File.Create(pathBase + @"DateTime\Long 082099 v2.doc").Close(); //Long 1999-08-20 v2.doc
-			File.Create(pathBase + @"DateTime\Long8 05041996.doc").Close(); //Long8 1996-05-04.doc
-			File.Create(pathBase + @"DateTime\Short 0504.doc").Close(); //Short 2004-05.doc
-			File.Create(pathBase + @"DateTime\Short 0599.doc").Close(); //Short 1999-05.doc
-			File.Create(pathBase + @"DateTime\Invalid 082504v2.doc").Close(); //Unchanged because 6 integers not followed by space or “.”)
-			File.Create(pathBase + @"DateTime\Invalid 200899 v2.doc").Close(); //Not a valid date
-			File.Create(pathBase + @"DateTime\Invalid Last Sample Jan 8 2004.doc").Close(); //Unhandled date format
-			File.Create(pathBase + @"DateTime\Invalid 8-15-02.doc").Close(); //Unchanged not six characters
-			File.Create(pathBase + @"DateTime\Invalid-101288 s.doc").Close(); //
-			File.Create(pathBase + @"DateTime\Invalid101288 s.doc").Close(); //
-			File.Create(pathBase + @"DateTime\Invalid082099 v2.doc").Close(); //
-			File.Create(pathBase + @"DateTime\Valid (don't touch) 2002-02-05.doc").Close(); //Correct should be untouched
-			File.Create(pathBase + @"DateTime\Valid (don't touch) 2002-05.doc").Close(); //Correct should be untouched
-			File.Create(pathBase + @"DateTime\1104 short.doc").Close(); //2004-11 short.doc
-			File.Create(pathBase + @"DateTime\1199 short.doc").Close(); //1999-11 short.doc
-			File.Create(pathBase + @"DateTime\103185 long.doc").Close(); //1985-10-31 long.doc
-			File.Create(pathBase + @"DateTime\020502 long.doc").Close(); //2002-02-05 long.doc
-			//File.Create(pathBase + @"DateTime\").Close(); //
-			#endregion
-			tbPath.Text = pathBase;
-#endif
 
 			//Load settings
 			settings = new Settings.FrmSettings();
@@ -169,12 +117,64 @@ namespace RenamerNG
 			chDirs.Checked = settings.ScanDirs;
 			chRecurse.Checked = settings.ScanRecurse;
 
-#if !DEBUG
+			tbPath.Text = dir;
 			if (dir == "")
+			{
+#if DEBUG
+				CheckDuplicateShortcuts();
+				#region Create a set of test file names
+				//const string pathBase = @"Z:\";
+				const string pathBase = @"C:\temp\RenamerNGTest\";
+				Directory.CreateDirectory(pathBase);
+				File.Create(pathBase + @"1").Close();
+				File.Create(pathBase + @"2").Close();
+				File.Create(pathBase + @"3").Close();
+				File.Create(pathBase + @".ext").Close();
+				File.Create(pathBase + @"test.extension").Close();
+				File.Create(pathBase + @"test.ext").Close();
+				File.Create(pathBase + @"Tyna Turner.txt").Close();
+				File.Create(pathBase + @"tyna turner.nfo").Close();
+				File.Create(pathBase + @"Tyna Turner - Simply the Best.mp3").Close();
+				File.Create(pathBase + @"Tyna Turner - Nutbush city limits.mp3").Close();
+				File.Create(pathBase + @"Metallica - Wherever I may roam.mp3").Close();
+				File.Create(pathBase + @"metallica - enter the sandman.mp3").Close();
+				File.Create(pathBase + @"Metallica - Master of Puppets.mp3").Close();
+				Directory.CreateDirectory(pathBase + @"Metallica");
+				Directory.CreateDirectory(pathBase + @"Metallica\Metallica");
+				Directory.CreateDirectory(pathBase + @"Metallica\... and Justice for All");
+				File.Create(pathBase + @"Metallica\Metallica - Wherever I may roam.mp3").Close();
+				File.Create(pathBase + @"Metallica\Metallica - Enter the sandman.mp3").Close();
+				Directory.CreateDirectory(pathBase + @"DateTime");
+				File.Create(pathBase + @"DateTime\Long 060505.doc").Close(); //Long 2005-06-05.doc
+				File.Create(pathBase + @"DateTime\Long 020502.doc").Close(); //Long 2002-02-05.doc
+				File.Create(pathBase + @"DateTime\Long 103185.doc").Close(); //Long 1985-10-31.doc
+				File.Create(pathBase + @"DateTime\Long 010100.doc").Close(); //Long 2000-01-01.doc
+				File.Create(pathBase + @"DateTime\Long 090899 v2.doc").Close(); //Long 1999-09-08 v2.doc
+				File.Create(pathBase + @"DateTime\Long 101288 s.doc").Close(); //Long 1988-10-12 s.doc
+				File.Create(pathBase + @"DateTime\Long 082099 v2.doc").Close(); //Long 1999-08-20 v2.doc
+				File.Create(pathBase + @"DateTime\Long8 05041996.doc").Close(); //Long8 1996-05-04.doc
+				File.Create(pathBase + @"DateTime\Short 0504.doc").Close(); //Short 2004-05.doc
+				File.Create(pathBase + @"DateTime\Short 0599.doc").Close(); //Short 1999-05.doc
+				File.Create(pathBase + @"DateTime\Invalid 082504v2.doc").Close(); //Unchanged because 6 integers not followed by space or “.”)
+				File.Create(pathBase + @"DateTime\Invalid 200899 v2.doc").Close(); //Not a valid date
+				File.Create(pathBase + @"DateTime\Invalid Last Sample Jan 8 2004.doc").Close(); //Unhandled date format
+				File.Create(pathBase + @"DateTime\Invalid 8-15-02.doc").Close(); //Unchanged not six characters
+				File.Create(pathBase + @"DateTime\Invalid-101288 s.doc").Close(); //
+				File.Create(pathBase + @"DateTime\Invalid101288 s.doc").Close(); //
+				File.Create(pathBase + @"DateTime\Invalid082099 v2.doc").Close(); //
+				File.Create(pathBase + @"DateTime\Valid (don't touch) 2002-02-05.doc").Close(); //Correct should be untouched
+				File.Create(pathBase + @"DateTime\Valid (don't touch) 2002-05.doc").Close(); //Correct should be untouched
+				File.Create(pathBase + @"DateTime\1104 short.doc").Close(); //2004-11 short.doc
+				File.Create(pathBase + @"DateTime\1199 short.doc").Close(); //1999-11 short.doc
+				File.Create(pathBase + @"DateTime\103185 long.doc").Close(); //1985-10-31 long.doc
+				File.Create(pathBase + @"DateTime\020502 long.doc").Close(); //2002-02-05 long.doc
+				//File.Create(pathBase + @"DateTime\").Close(); //
+				#endregion
+				tbPath.Text = pathBase;
+#else
 				tbPath.Text = settings.ScanPath;
-			else
-				tbPath.Text = dir;
 #endif
+			}
 
 			UpdateListColumns();
 		}
