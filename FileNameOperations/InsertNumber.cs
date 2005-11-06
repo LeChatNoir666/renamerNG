@@ -51,7 +51,7 @@ namespace RenamerNG.FileNameOperations
       {
         return new GUIElement[]
         {
-          new GUIElement(GUIElement.Types.TEXTBOX, "Format", "", "Format of the number to insert"),
+          new GUIElement(GUIElement.Types.TEXTBOX, "Format", "", "Format of the number to insert, example: {0:d2} for 01, 02, 03 ..."),
           new GUIElement(GUIElement.Types.NUMERICUPDOWN, "Start value", "-2000000000,2000000000", "Start value for first number to be inserted"),
           new GUIElement(GUIElement.Types.NUMERICUPDOWN, "Change value", "-2000000000,2000000000", "Value to add for each file, for example 1 to increase by one."),
           new GUIElement(GUIElement.Types.POSITION, "Position", "", "Select position to insert number at")
