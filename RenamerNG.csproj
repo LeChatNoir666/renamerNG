@@ -212,6 +212,26 @@
                     BuildAction = "EmbeddedResource"
                 />
                 <File
+                    RelPath = "FileNameOperations\DateInsertCurrent.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "FileNameOperations\DateInsertFileCreated.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "FileNameOperations\DateInsertFileLastAccessed.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "FileNameOperations\DateInsertFileLastWritten.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
                     RelPath = "FileNameOperations\Insert.cs"
                     SubType = "Code"
                     BuildAction = "Compile"

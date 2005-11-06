@@ -197,6 +197,12 @@ namespace RenamerNG
 			fileOperations.Add(new FileNameOperations.RegExp());
 			fileOperations.Add(new FileNameOperations.Undo());
 
+			//Date operations
+			fileOperations.Add(new FileNameOperations.DateInsertCurrent());
+			fileOperations.Add(new FileNameOperations.DateInsertFileCreated());
+			fileOperations.Add(new FileNameOperations.DateInsertFileLastWritten());
+			fileOperations.Add(new FileNameOperations.DateInsertFileLastAccessed());
+
 			//Trimming operations
 			fileOperations.Add(new FileNameOperations.Trim());
 			fileOperations.Add(new FileNameOperations.TrimMultipleSpaces());

@@ -1,4 +1,6 @@
 -= TODO (ideas to possibly implement, in no particular order) =-
+* List dirs first as in most file managers
+* Use Esc-key to abort dialogs.
 * List Columns zip up to a default size when the prefs change - stop this, or resize the columns to fit the widest entry?
 * reorder columns by dragging rather than prefs dialog
 * Button to rename files (optional through setting?)
@@ -27,7 +29,6 @@
 	- Insert random number
 	- Remove read only attribute
 	- Truncate (with or without extension?) (trunkating extension (ex 8.3) ?)
-	- Insert date
 	- Force N digit numbers
 	- Ingore dirs (useful when having dirs in the list and avoid operations on them)
 	- Sort list after file
