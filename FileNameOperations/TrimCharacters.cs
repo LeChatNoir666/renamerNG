@@ -17,12 +17,12 @@ namespace RenamerNG.FileNameOperations
 
 		public override string Name
 		{
-			get{ return "Trim";}
+			get{ return "Trim characters";}
 		}
 
 		public override string Group
 		{
-			get{ return "";}
+			get{ return "Trim";}
 		}
 
 		public override string Help

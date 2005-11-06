@@ -195,11 +195,15 @@ namespace RenamerNG
 			fileOperations.Add(new FileNameOperations.Insert());
 			fileOperations.Add(new FileNameOperations.InsertNumber());
 			fileOperations.Add(new FileNameOperations.RegExp());
+			fileOperations.Add(new FileNameOperations.Undo());
+
+			//Trimming operations
 			fileOperations.Add(new FileNameOperations.Trim());
 			fileOperations.Add(new FileNameOperations.TrimMultipleSpaces());
 			fileOperations.Add(new FileNameOperations.TrimLeadingSpaces());
 			fileOperations.Add(new FileNameOperations.TrimTailingSpaces());
-			fileOperations.Add(new FileNameOperations.Undo());
+
+			//Case operations
 			fileOperations.Add(new FileNameOperations.LowerCase());
 			fileOperations.Add(new FileNameOperations.UpperCase());
 			fileOperations.Add(new FileNameOperations.LargeCase());

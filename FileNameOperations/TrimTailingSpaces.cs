@@ -22,7 +22,7 @@ namespace RenamerNG.FileNameOperations
 
 		public override string Group
 		{
-			get{ return "";}
+			get{ return "Trim";}
 		}
 
 		public override string Help
