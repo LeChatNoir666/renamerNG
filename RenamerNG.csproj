@@ -262,7 +262,7 @@
                     BuildAction = "Compile"
                 />
                 <File
-                    RelPath = "FileNameOperations\Trim.cs"
+                    RelPath = "FileNameOperations\TrimCharacters.cs"
                     SubType = "Code"
                     BuildAction = "Compile"
                 />
