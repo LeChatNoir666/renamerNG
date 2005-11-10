@@ -365,7 +365,7 @@ namespace RenamerNG.Settings
 
 		#region Open/Save
 		const string file = "\\settings.dat";
-		const int Version = 1;
+		const int Version = 2;
 
 		bool successful = false;
 
@@ -439,6 +439,7 @@ namespace RenamerNG.Settings
 					ViewNavigation = ReadBool(r);
 					ViewOperations = ReadBool(r);
 					ViewStatusbar = ReadBool(r);
+					if (version >= 2) ViewCommandLine = ReadBool(r);
 
 					count = ReadInt(r);
 					ScanPatterns = new string[count];
@@ -512,6 +513,7 @@ namespace RenamerNG.Settings
 					w.WriteLine(ViewNavigation);
 					w.WriteLine(ViewOperations);
 					w.WriteLine(ViewStatusbar);
+					w.WriteLine(ViewCommandLine);
 
 					w.WriteLine("'Scanning (patterncount, patterns, files, dirs, recurse)");
 					w.WriteLine(ScanPatterns.Length);
@@ -661,6 +663,7 @@ namespace RenamerNG.Settings
 		public bool ViewMacros = true;
 		public bool ViewOperations = true;
 		public bool ViewNavigation = true;
+		public bool ViewCommandLine = true;
 		public bool ViewStatusbar = false;
 		public string[] ScanPatterns = {"*.*"};
 		public bool ScanFiles = true;

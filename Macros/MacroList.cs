@@ -13,73 +13,74 @@ using Dialogs;
 
 namespace RenamerNG.Macros
 {
-  /// <summary>
-  /// Summary description for MacroList.
-  /// </summary>
-  public class MacroList : System.Windows.Forms.UserControl
-  {
-    public delegate void ExecuteEventHandler(object sender, Macro macro);
-    public event ExecuteEventHandler Execute;
-    public delegate void RecordingEventHandler(object sender);
-    public event RecordingEventHandler RecordingStarted;
-    public event RecordingEventHandler RecordingStopped;
+	/// <summary>
+	/// Summary description for MacroList.
+	/// </summary>
+	public class MacroList : System.Windows.Forms.UserControl
+	{
+		public delegate void ExecuteEventHandler(object sender, Macro macro);
+		public event ExecuteEventHandler Execute;
+		public delegate void RecordingEventHandler(object sender);
+		public event RecordingEventHandler RecordingStarted;
+		public event RecordingEventHandler RecordingStopped;
 
-    private System.Windows.Forms.ListBox listBox;
-    private System.Windows.Forms.ContextMenu contextMenu;
-    private System.Windows.Forms.MenuItem miRecord;
-    private System.Windows.Forms.MenuItem miExecute;
-    private System.Windows.Forms.MenuItem miAdd;
-    private System.Windows.Forms.MenuItem miEndRecording;
-    private System.Windows.Forms.MenuItem miEdit;
-    private System.Windows.Forms.MenuItem miCopy;
-    private System.Windows.Forms.MenuItem miDelete;
-    private System.Windows.Forms.MenuItem miMoveUp;
-    private System.Windows.Forms.MenuItem miMoveDown;
-    private System.Windows.Forms.MenuItem miSep1;
-    private System.Windows.Forms.MenuItem miSep2;
-    private System.Windows.Forms.MenuItem miSep3;
-    private System.Windows.Forms.MenuItem menuItem1;
-    private System.Windows.Forms.MenuItem miImport;
-    private System.Windows.Forms.MenuItem miExport;
-    /// <summary> 
-    /// Required designer variable.
-    /// </summary>
-    private System.ComponentModel.Container components = null;
+		private System.Windows.Forms.ListBox listBox;
+		private System.Windows.Forms.ContextMenu contextMenu;
+		private System.Windows.Forms.MenuItem miRecord;
+		private System.Windows.Forms.MenuItem miExecute;
+		private System.Windows.Forms.MenuItem miAdd;
+		private System.Windows.Forms.MenuItem miEndRecording;
+		private System.Windows.Forms.MenuItem miEdit;
+		private System.Windows.Forms.MenuItem miCopy;
+		private System.Windows.Forms.MenuItem miDelete;
+		private System.Windows.Forms.MenuItem miMoveUp;
+		private System.Windows.Forms.MenuItem miMoveDown;
+		private System.Windows.Forms.MenuItem miSep1;
+		private System.Windows.Forms.MenuItem miSep2;
+		private System.Windows.Forms.MenuItem miSep3;
+		private System.Windows.Forms.MenuItem menuItem1;
+		private System.Windows.Forms.MenuItem miImport;
+		private System.Windows.Forms.MenuItem miExport;
+		/// <summary> 
+		/// Required designer variable.
+		/// </summary>
+		private System.ComponentModel.Container components = null;
 
-    public MacroList()
-    {
-      // This call is required by the Windows.Forms Form Designer.
-      InitializeComponent();
+		public MacroList(FrmMain parent)
+		{
+			// This call is required by the Windows.Forms Form Designer.
+			InitializeComponent();
 
-      // TODO: Add any initialization after the InitializeComponent call
-    }
+			this.parent = parent;
+		}
 
-    private Macro recorder = null;
+		private Macro recorder = null;
+		private FrmMain parent = null;
 
-    public bool Recording
-    {
-      get
-      {
-        return recorder != null;
-      }
-    }
+		public bool Recording
+		{
+			get
+			{
+				return recorder != null;
+			}
+		}
 
-    /// <summary> 
-    /// Clean up any resources being used.
-    /// </summary>
-    protected override void Dispose( bool disposing )
-    {
-      if( disposing )
-      {
-        if(components != null)
-        {
-          components.Dispose();
-        }
-      }
-      base.Dispose( disposing );
-    }
+		/// <summary> 
+		/// Clean up any resources being used.
+		/// </summary>
+		protected override void Dispose( bool disposing )
+		{
+			if( disposing )
+			{
+				if(components != null)
+				{
+					components.Dispose();
+				}
+			}
+			base.Dispose( disposing );
+		}
 
-    #region Component Designer generated code
+		#region Component Designer generated code
     /// <summary> 
     /// Required method for Designer support - do not modify 
     /// the contents of this method with the code editor.
@@ -232,217 +233,230 @@ namespace RenamerNG.Macros
     }
     #endregion
 
-    private void UpdateMenuStatus()
-    {
-      miRecord.Enabled = !Recording;
-      miAdd.Enabled = !Recording;
-      miEndRecording.Enabled = Recording;
-    }
+		private void UpdateMenuStatus()
+		{
+			miRecord.Enabled = !Recording;
+			miAdd.Enabled = !Recording;
+			miEndRecording.Enabled = Recording;
+		}
 
-    private void miExecute_Click(object sender, System.EventArgs e)
-    {
-      if (listBox.SelectedIndex < 0)
-      {
-        FrmMain.ErrorMessage("Please select a macro to execute.");
-        return;
-      }
+		private void miExecute_Click(object sender, System.EventArgs e)
+		{
+			if (listBox.SelectedIndex < 0)
+			{
+				FrmMain.ErrorMessage("Please select a macro to execute.");
+				return;
+			}
 
-      if (Execute != null) Execute(this, (Macro)listBox.SelectedItem);
-    }
+			if (Execute != null) Execute(this, (Macro)listBox.SelectedItem);
+		}
 
-    private bool ValidMacroName(string name)
-    {
-      if (name == null) return false;
+		private bool ValidMacroName(string name)
+		{
+			if (name == null) return false;
 
-      foreach (Macro m in listBox.Items)
-        if (m.Name.ToLower() == name.ToLower())
-          return false;
+			if (!parent.ValidMacroName(name)) return false;
 
-      return true;
-    }
+			foreach (Macro m in listBox.Items)
+				if (m.Name.ToLower() == name.ToLower())
+					return false;
 
-    private void miRecord_Click(object sender, System.EventArgs e)
-    {
-      string name = GetString.Show("Record new macro", "Please enter macro name", 1);
+			return true;
+		}
 
-      if (name == null) return;
+		public Macro GetMacroFromName(string name)
+		{
+			if (name == null) return null;
 
-      if (!ValidMacroName(name))
-      {
-        FrmMain.ErrorMessage("A macro with that name already exists.");
-        return;
-      }
+			foreach (Macro m in listBox.Items)
+				if (m.Name.ToLower() == name.ToLower())
+					return m;
 
-      recorder = new Macro(name);
-      if (RecordingStarted != null) RecordingStarted(this);
+			return null;
+		}
 
-      UpdateMenuStatus();
-    }
+		private void miRecord_Click(object sender, System.EventArgs e)
+		{
+			string name = GetString.Show("Record new macro", "Please enter macro name", 1);
 
-    private void miAdd_Click(object sender, System.EventArgs e)
-    {
-      if (listBox.SelectedIndex < 0)
-      {
-        FrmMain.ErrorMessage("Please select a macro to add operations to.");
-        return;
-      }
+			if (name == null) return;
 
-      recorder = (Macro)listBox.SelectedItem;
-      if (RecordingStarted != null) RecordingStarted(this);
-      listBox.Items.RemoveAt(listBox.SelectedIndex);
+			if (!ValidMacroName(name))
+			{
+				FrmMain.ErrorMessage("A macro with that name already exists.");
+				return;
+			}
 
-      UpdateMenuStatus();
-    }
+			recorder = new Macro(name);
+			if (RecordingStarted != null) RecordingStarted(this);
 
-    private void miEndRecording_Click(object sender, System.EventArgs e)
-    {
-      EndRecording();
-    }
+			UpdateMenuStatus();
+		}
 
-    private void EndRecording()
-    {
-      listBox.Items.Add(recorder);
-      recorder = null;
-      if (RecordingStopped != null) RecordingStopped(this);
+		private void miAdd_Click(object sender, System.EventArgs e)
+		{
+			if (listBox.SelectedIndex < 0)
+			{
+				FrmMain.ErrorMessage("Please select a macro to add operations to.");
+				return;
+			}
 
-      UpdateMenuStatus();
-    }
+			recorder = (Macro)listBox.SelectedItem;
+			if (RecordingStarted != null) RecordingStarted(this);
+			listBox.Items.RemoveAt(listBox.SelectedIndex);
 
-    public void AbortRecording()
-    {
-      if (!Recording) return;
-      EndRecording();
-    }
+			UpdateMenuStatus();
+		}
 
-    public void RecordOperation(Operation op)
-    {
-      if (!Recording) throw new InvalidOperationException("RecordOperation may only be used when recording.");
-      recorder.AddOperation(op);
-    }
+		private void miEndRecording_Click(object sender, System.EventArgs e)
+		{
+			EndRecording();
+		}
 
-    private void listBox_KeyDown(object sender, System.Windows.Forms.KeyEventArgs e)
-    {
-      if (e.KeyValue == 38 && e.Control == true) //Up
-      {
-        miMoveUp_Click(null, null);
-        e.Handled = true;
-      }
-      if (e.KeyValue == 40 && e.Control == true) //Down
-      {
-        miMoveDown_Click(null, null);
-        e.Handled = true;
-      }
-    }
+		private void EndRecording()
+		{
+			listBox.Items.Add(recorder);
+			recorder = null;
+			if (RecordingStopped != null) RecordingStopped(this);
 
-    private void miMoveUp_Click(object sender, System.EventArgs e)
-    {
-      if (listBox.SelectedIndex < 0)
-      {
-        FrmMain.ErrorMessage("Please select an item to move.");
-        return;
-      }
+			UpdateMenuStatus();
+		}
 
-      if (listBox.SelectedIndex > 0)
-      {
-        int index = listBox.SelectedIndex;
-        object o = listBox.Items[index];
-        listBox.Items.RemoveAt(index);
-        listBox.Items.Insert(index - 1, o);
-        listBox.SelectedIndex = index - 1;
-      }
-    }
+		public void AbortRecording()
+		{
+			if (!Recording) return;
+			EndRecording();
+		}
 
-    private void miMoveDown_Click(object sender, System.EventArgs e)
-    {
-      if (listBox.SelectedIndex < 0)
-      {
-        FrmMain.ErrorMessage("Please select an item to move.");
-        return;
-      }
+		public void RecordOperation(Operation op)
+		{
+			if (!Recording) throw new InvalidOperationException("RecordOperation may only be used when recording.");
+			recorder.AddOperation(op);
+		}
 
-      if (listBox.SelectedIndex >= 0 && listBox.SelectedIndex < listBox.Items.Count - 1)
-      {
-        int index = listBox.SelectedIndex;
-        object o = listBox.Items[index];
-        listBox.Items.RemoveAt(index);
-        listBox.Items.Insert(index + 1, o);
-        listBox.SelectedIndex = index + 1;
-      }
-    }
+		private void listBox_KeyDown(object sender, System.Windows.Forms.KeyEventArgs e)
+		{
+			if (e.KeyValue == 38 && e.Control == true) //Up
+			{
+				miMoveUp_Click(null, null);
+				e.Handled = true;
+			}
+			if (e.KeyValue == 40 && e.Control == true) //Down
+			{
+				miMoveDown_Click(null, null);
+				e.Handled = true;
+			}
+		}
 
-    private void MacroList_DoubleClick(object sender, System.EventArgs e)
-    {
-      miExecute_Click(sender, e);
-    }
+		private void miMoveUp_Click(object sender, System.EventArgs e)
+		{
+			if (listBox.SelectedIndex < 0)
+			{
+				FrmMain.ErrorMessage("Please select an item to move.");
+				return;
+			}
 
-    private void miEdit_Click(object sender, System.EventArgs e)
-    {
-      if (listBox.SelectedIndex < 0)
-      {
-        FrmMain.ErrorMessage("Please select a macro to edit.");
-        return;
-      }
+			if (listBox.SelectedIndex > 0)
+			{
+				int index = listBox.SelectedIndex;
+				object o = listBox.Items[index];
+				listBox.Items.RemoveAt(index);
+				listBox.Items.Insert(index - 1, o);
+				listBox.SelectedIndex = index - 1;
+			}
+		}
 
-      FrmEditMacro dlg = new FrmEditMacro();
-      DialogResult res = dlg.ShowDialog((Macro)listBox.SelectedItem);
+		private void miMoveDown_Click(object sender, System.EventArgs e)
+		{
+			if (listBox.SelectedIndex < 0)
+			{
+				FrmMain.ErrorMessage("Please select an item to move.");
+				return;
+			}
 
-      if (res == DialogResult.OK)
-      {
-        int index = listBox.SelectedIndex;
-        listBox.Items.RemoveAt(index);
+			if (listBox.SelectedIndex >= 0 && listBox.SelectedIndex < listBox.Items.Count - 1)
+			{
+				int index = listBox.SelectedIndex;
+				object o = listBox.Items[index];
+				listBox.Items.RemoveAt(index);
+				listBox.Items.Insert(index + 1, o);
+				listBox.SelectedIndex = index + 1;
+			}
+		}
 
-        while (!ValidMacroName(dlg.Macro.Name))
-        {
-          FrmMain.ErrorMessage("A macro with that name already exists.");
-          string name = GetString.Show("Macro name", "Please enter macro name", 1);
-          if (name == null) continue;
-          dlg.Macro.Name = name;
-        }
+		private void MacroList_DoubleClick(object sender, System.EventArgs e)
+		{
+			miExecute_Click(sender, e);
+		}
 
-        listBox.Items.Insert(index, dlg.Macro);
-      }
-    }
+		private void miEdit_Click(object sender, System.EventArgs e)
+		{
+			if (listBox.SelectedIndex < 0)
+			{
+				FrmMain.ErrorMessage("Please select a macro to edit.");
+				return;
+			}
 
-    private void miCopy_Click(object sender, System.EventArgs e)
-    {
-      if (listBox.SelectedIndex < 0)
-      {
-        FrmMain.ErrorMessage("Please select a macro to copy.");
-        return;
-      }
+			FrmEditMacro dlg = new FrmEditMacro();
+			DialogResult res = dlg.ShowDialog((Macro)listBox.SelectedItem);
 
-      Macro n = (Macro)SerializationCopy.Copy(listBox.SelectedItem);
-      if (ValidMacroName("Copy of " + n.Name))
-      {
-        n.Name = "Copy of " + n.Name;
-      }
-      else
-      {
-        int i = 2;
+			if (res == DialogResult.OK)
+			{
+				int index = listBox.SelectedIndex;
+				listBox.Items.RemoveAt(index);
 
-        while (!ValidMacroName("Copy " + i.ToString() + " of " + n.Name))
-          i++;
+				while (!ValidMacroName(dlg.Macro.Name))
+				{
+					FrmMain.ErrorMessage("A macro with that name already exists.");
+					string name = GetString.Show("Macro name", "Please enter macro name", 1);
+					if (name == null) continue;
+					dlg.Macro.Name = name;
+				}
 
-        n.Name = "Copy " + i.ToString() + " of " + n.Name;
-      }
-      listBox.Items.Add(n);
-    }
+				listBox.Items.Insert(index, dlg.Macro);
+			}
+		}
 
-    private void miDelete_Click(object sender, System.EventArgs e)
-    {
-      if (listBox.SelectedIndex < 0)
-      {
-        FrmMain.ErrorMessage("Please select a macro to delete.");
-        return;
-      }
+		private void miCopy_Click(object sender, System.EventArgs e)
+		{
+			if (listBox.SelectedIndex < 0)
+			{
+				FrmMain.ErrorMessage("Please select a macro to copy.");
+				return;
+			}
 
-      DialogResult res = FrmMain.YesNoQuestion("The macro will be deleted!\nContinue?");
-      if (res != DialogResult.Yes) return;
+			Macro n = (Macro)SerializationCopy.Copy(listBox.SelectedItem);
+			if (ValidMacroName("Copy of " + n.Name))
+			{
+				n.Name = "Copy of " + n.Name;
+			}
+			else
+			{
+				int i = 2;
 
-      listBox.Items.RemoveAt(listBox.SelectedIndex);
-    }
+				while (!ValidMacroName("Copy " + i.ToString() + " of " + n.Name))
+					i++;
 
-    #region Open/Save
+				n.Name = "Copy " + i.ToString() + " of " + n.Name;
+			}
+			listBox.Items.Add(n);
+		}
+
+		private void miDelete_Click(object sender, System.EventArgs e)
+		{
+			if (listBox.SelectedIndex < 0)
+			{
+				FrmMain.ErrorMessage("Please select a macro to delete.");
+				return;
+			}
+
+			DialogResult res = FrmMain.YesNoQuestion("The macro will be deleted!\nContinue?");
+			if (res != DialogResult.Yes) return;
+
+			listBox.Items.RemoveAt(listBox.SelectedIndex);
+		}
+
+		#region Open/Save
     const string extension = "renamermacro.xml";
     const string file = "\\macros." + extension;
 
@@ -495,7 +509,7 @@ namespace RenamerNG.Macros
     }
     #endregion
 
-    #region Import/Export
+		#region Import/Export
     public void Import()
     {
       try
@@ -589,5 +603,5 @@ namespace RenamerNG.Macros
       Export();
     }
     #endregion
-  }
+	}
 }

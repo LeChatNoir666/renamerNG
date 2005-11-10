@@ -85,7 +85,7 @@ namespace RenamerNG
 			Text += Application.ProductVersion;
 
 			//Add macro event handlers and fix macro GUI
-			macroList1 = new RenamerNG.Macros.MacroList();
+			macroList1 = new RenamerNG.Macros.MacroList(this);
 			macroList1.Dock = DockStyle.Fill;
 			macroList1.Execute += new RenamerNG.Macros.MacroList.ExecuteEventHandler(macroList_Execute);
 			macroList1.RecordingStarted += new RenamerNG.Macros.MacroList.RecordingEventHandler(macroList1_RecordingStarted);
@@ -112,6 +112,7 @@ namespace RenamerNG
 			if (!settings.ViewMacros) miViewMacro_Click(null, null);
 			if (!settings.ViewNavigation) miViewNavigation_Click(null, null);
 			//if (!settings.ViewStatusbar) miViewStatusbar_Click(null, null);
+			if (settings.ViewCommandLine) miViewCommandLine_Click(null, null);
 
 			//Restore scan patterns
 			foreach (string s in settings.ScanPatterns)
@@ -232,6 +233,17 @@ namespace RenamerNG
 			listOperations.Add(new ListOperations.InvertSelection());
 			listOperations.Add(new ListOperations.FilterChanged());
 			listOperations.Add(new ListOperations.FilterSelected());
+		}
+
+		public bool ValidMacroName(string name)
+		{
+			foreach (Operation op in fileOperations.Values)
+				if (op.Name.ToLower() == name.ToLower()) return false;
+
+			foreach (Operation op in listOperations.Values)
+				if (op.Name.ToLower() == name.ToLower()) return false;
+
+			return true;
 		}
 
 		#region Build operations menu
@@ -1069,6 +1081,15 @@ namespace RenamerNG
 			return true;
 		}
 
+		private void Perform(object obj)
+		{
+			if (obj is Operation)
+				PerformOperation((Operation)obj);
+			else if (obj is Macro)
+				PerformMacro((Macro)obj);
+			else
+				throw new ArgumentException("Invalide type, can only perform Operations or Macros.");
+		}
 
 		private void PerformOperation(Operation op)
 		{
@@ -1401,6 +1422,7 @@ namespace RenamerNG
 			settings.ViewMacros = miViewMacro.Checked;
 			settings.ViewNavigation = miViewNavigation.Checked;
 			settings.ViewStatusbar = miViewStatusbar.Checked;
+			settings.ViewCommandLine = miViewCommandLine.Checked;
 
 			//Save scan patterns
 			int pos = 0;
@@ -1527,14 +1549,19 @@ namespace RenamerNG
 			}
 
 			previousAction = macro;
-			foreach (Operation op in macro)
-			{
-				PerformOperation(op);
-			}
+			PerformMacro(macro);
 
 			foreach (ListViewItem lvi in listMain.Items)
 			{
 				UpdateItem(lvi);
+			}
+		}
+
+		private void PerformMacro(Macro macro)
+		{
+			foreach (Operation op in macro)
+			{
+				PerformOperation(op);
 			}
 		}
 
@@ -1635,7 +1662,9 @@ namespace RenamerNG
 			if (e.KeyChar == 13)
 			{
 				e.Handled = true;
-				//TODO: Parse and execute commands
+				object o = ParseCommandLine(tbCommand.Text);
+				if (o != null)
+					Perform(o);
 			}
 		}
 
@@ -1647,6 +1676,91 @@ namespace RenamerNG
 
 			while (listboxCommandHistory.Items.Count > 100)
 				listboxCommandHistory.Items.RemoveAt(0);
+		}
+
+		private object ParseCommandLine(string text)
+		{
+			string name;
+			string parameters;
+
+			int parametersStart = text.IndexOf(" ");
+
+			if (parametersStart > 0)
+			{
+				name = text.Substring(0, parametersStart);
+				if (text.Length > parametersStart + 1)
+					parameters = text.Substring(parametersStart + 1);
+				else
+					parameters = "";
+			}
+			else
+			{
+				name = text;
+				parameters = "";
+			}
+
+			Macro m = macroList1.GetMacroFromName(name);
+			if (m != null) return m;
+
+			Operation o = null;
+			foreach (Operation op in fileOperations.Values)
+				if (op.Name.ToLower() == name.ToLower())
+					o = op;
+
+			foreach (Operation op in listOperations.Values)
+				if (op.Name.ToLower() == name.ToLower())
+					o = op;
+
+			if (o == null)
+			{
+				ErrorMessage("Not a valid Operation or Macro name.");
+				return null;
+			}
+
+			string[] parameterList = new string[o.ParameterCount];
+			ArrayList parameterDividers = new ArrayList();
+			if (parameters != "")
+			{
+				if (parameters[0] != '\"' || parameters[parameters.Length - 1] != '\"')
+				{
+					ErrorMessage("Parameters should start and end with a double quote character (\").");
+					return null;
+				}
+
+				parameterDividers.Add(0); //The first divider is already verified in the if-statement above
+				for (int i = 1 ; i < parameters.Length ; i++)
+				{
+					if (parameters[i-1] != '\\' && parameters[i] == '\"')
+					{
+						parameterDividers.Add(i);
+					}
+				}
+
+				if (parameterDividers.Count != o.ParameterCount * 2)
+				{
+					ErrorMessage("Invalid number of parameters, found " + parameterDividers.Count.ToString() + " parameter limiters, should find " + (2*o.ParameterCount).ToString() + ".");
+					return null;
+				}
+
+				for (int p = 0 ; p < o.ParameterCount ; p++)
+				{
+					int start = (int)parameterDividers[p*2] + 1;
+					int end = (int)parameterDividers[p*2+1];
+					int length = end - start;
+					parameterList[p] = parameters.Substring(start, length);
+				}
+
+				for (int p = 0 ; p < o.ParameterCount ; p++)
+				{
+					parameterList[p] = parameterList[p].Replace("\\\\", "\\");
+					parameterList[p] = parameterList[p].Replace("\\\"", "\"");
+					parameterList[p] = parameterList[p].Replace("\\n", "\n");
+				}
+
+				o.SetParameters(parameterList);
+			}
+
+			return o;
 		}
 		#endregion
 	}
