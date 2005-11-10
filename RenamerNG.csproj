@@ -193,6 +193,11 @@
                     BuildAction = "Compile"
                 />
                 <File
+                    RelPath = "Renamer.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
                     RelPath = "SerializationCopy.cs"
                     SubType = "Code"
                     BuildAction = "Compile"

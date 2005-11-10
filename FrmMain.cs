@@ -979,18 +979,6 @@ namespace RenamerNG
 		}
 		#endregion
 
-		/// <summary>
-		/// The main entry point for the application.
-		/// </summary>
-		[STAThread]
-		static void Main(string[] args) 
-		{
-			if (args.Length == 0)
-				Application.Run(new FrmMain(""));
-			else
-				Application.Run(new FrmMain(args[0]));
-		}
-
 		#region View menu
 		private void miViewStatusbar_Click(object sender, System.EventArgs e)
 		{
