@@ -110,7 +110,18 @@ namespace RenamerNG
 
 		public override string ToString()
 		{
-			return Name;
+			string s = Name;
+
+			for (int i = 0 ; i < ParameterCount ; i++)
+			{
+				string p = this[i];
+				p = p.Replace("\\", "\\\\");
+				p = p.Replace("\"", "\\\"");
+				p = p.Replace("\n", "\\n");
+				s += " \"" + p + "\"";
+			}
+
+			return s;
 		}
 
 		abstract public void Perform(ListViewItem lvi);
