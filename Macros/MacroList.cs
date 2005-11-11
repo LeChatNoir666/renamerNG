@@ -255,6 +255,8 @@ namespace RenamerNG.Macros
 		{
 			if (name == null) return false;
 
+			if (name.IndexOfAny(new char[]{'|', '\"', '\n', '\t'}) >= 0) return false;
+
 			if (!parent.ValidMacroName(name)) return false;
 
 			foreach (Macro m in listBox.Items)
@@ -283,7 +285,7 @@ namespace RenamerNG.Macros
 
 			if (!ValidMacroName(name))
 			{
-				FrmMain.ErrorMessage("A macro with that name already exists.");
+				FrmMain.ErrorMessage("Not a valid macro name.\n\nMacros names may not...\n* Contain character | or \"\n* Equal another macro name\n* Equal an operation name");
 				return;
 			}
 
