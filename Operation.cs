@@ -117,8 +117,9 @@ namespace RenamerNG
 				string p = this[i];
 				p = p.Replace("\\", "\\\\");
 				p = p.Replace("\"", "\\\"");
+				p = p.Replace("|", "\\|");
 				p = p.Replace("\n", "\\n");
-				s += " \"" + p + "\"";
+				s += '|' + p;
 			}
 
 			return s;

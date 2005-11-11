@@ -405,6 +405,9 @@ namespace RenamerNG
 			this.btPickDir = new System.Windows.Forms.Button();
 			this.lblPath = new System.Windows.Forms.Label();
 			this.panelCommandLine = new System.Windows.Forms.Panel();
+			this.listboxCommandHistory = new System.Windows.Forms.ListBox();
+			this.panelCommandLineEdit = new System.Windows.Forms.Panel();
+			this.tbCommand = new System.Windows.Forms.TextBox();
 			this.panelMain = new System.Windows.Forms.Panel();
 			this.panelList = new System.Windows.Forms.Panel();
 			this.listMain = new System.Windows.Forms.ListView();
@@ -428,6 +431,7 @@ namespace RenamerNG
 			this.miViewMacro = new System.Windows.Forms.MenuItem();
 			this.miViewNavigation = new System.Windows.Forms.MenuItem();
 			this.miViewStatusbar = new System.Windows.Forms.MenuItem();
+			this.miViewCommandLine = new System.Windows.Forms.MenuItem();
 			this.miFileOperations = new System.Windows.Forms.MenuItem();
 			this.miOperationsWorkOnAllItems = new System.Windows.Forms.MenuItem();
 			this.miOperationsWorkOnSelectedItems = new System.Windows.Forms.MenuItem();
@@ -443,27 +447,23 @@ namespace RenamerNG
 			this.miHelpAbout = new System.Windows.Forms.MenuItem();
 			this.toolTip = new System.Windows.Forms.ToolTip(this.components);
 			this.folderBrowserDialog = new System.Windows.Forms.FolderBrowserDialog();
-			this.panelCommandLineEdit = new System.Windows.Forms.Panel();
-			this.listboxCommandHistory = new System.Windows.Forms.ListBox();
-			this.tbCommand = new System.Windows.Forms.TextBox();
-			this.miViewCommandLine = new System.Windows.Forms.MenuItem();
 			this.panelNavigation.SuspendLayout();
 			this.panelPath.SuspendLayout();
 			this.panelPathButtons.SuspendLayout();
 			this.panelCommandLine.SuspendLayout();
+			this.panelCommandLineEdit.SuspendLayout();
 			this.panelMain.SuspendLayout();
 			this.panelList.SuspendLayout();
 			this.panelEdit.SuspendLayout();
 			this.panelEditButtons.SuspendLayout();
 			this.panelMacro.SuspendLayout();
 			this.grpMacro.SuspendLayout();
-			this.panelCommandLineEdit.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// panelStatusbar
 			// 
 			this.panelStatusbar.Dock = System.Windows.Forms.DockStyle.Bottom;
-			this.panelStatusbar.Location = new System.Drawing.Point(8, 403);
+			this.panelStatusbar.Location = new System.Drawing.Point(8, 424);
 			this.panelStatusbar.Name = "panelStatusbar";
 			this.panelStatusbar.Size = new System.Drawing.Size(596, 0);
 			this.panelStatusbar.TabIndex = 0;
@@ -621,11 +621,41 @@ namespace RenamerNG
 			this.panelCommandLine.Controls.Add(this.panelCommandLineEdit);
 			this.panelCommandLine.Dock = System.Windows.Forms.DockStyle.Bottom;
 			this.panelCommandLine.DockPadding.Top = 10;
-			this.panelCommandLine.Location = new System.Drawing.Point(8, 323);
+			this.panelCommandLine.Location = new System.Drawing.Point(8, 312);
 			this.panelCommandLine.Name = "panelCommandLine";
-			this.panelCommandLine.Size = new System.Drawing.Size(596, 80);
+			this.panelCommandLine.Size = new System.Drawing.Size(596, 112);
 			this.panelCommandLine.TabIndex = 5;
 			this.panelCommandLine.Visible = false;
+			// 
+			// listboxCommandHistory
+			// 
+			this.listboxCommandHistory.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.listboxCommandHistory.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
+			this.listboxCommandHistory.ItemHeight = 14;
+			this.listboxCommandHistory.Location = new System.Drawing.Point(0, 10);
+			this.listboxCommandHistory.Name = "listboxCommandHistory";
+			this.listboxCommandHistory.Size = new System.Drawing.Size(596, 74);
+			this.listboxCommandHistory.TabIndex = 2;
+			// 
+			// panelCommandLineEdit
+			// 
+			this.panelCommandLineEdit.Controls.Add(this.tbCommand);
+			this.panelCommandLineEdit.Dock = System.Windows.Forms.DockStyle.Bottom;
+			this.panelCommandLineEdit.Location = new System.Drawing.Point(0, 88);
+			this.panelCommandLineEdit.Name = "panelCommandLineEdit";
+			this.panelCommandLineEdit.Size = new System.Drawing.Size(596, 24);
+			this.panelCommandLineEdit.TabIndex = 1;
+			// 
+			// tbCommand
+			// 
+			this.tbCommand.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.tbCommand.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
+			this.tbCommand.Location = new System.Drawing.Point(0, 0);
+			this.tbCommand.Name = "tbCommand";
+			this.tbCommand.Size = new System.Drawing.Size(596, 20);
+			this.tbCommand.TabIndex = 0;
+			this.tbCommand.Text = "";
+			this.tbCommand.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbCommand_KeyPress);
 			// 
 			// panelMain
 			// 
@@ -634,7 +664,7 @@ namespace RenamerNG
 			this.panelMain.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.panelMain.Location = new System.Drawing.Point(8, 61);
 			this.panelMain.Name = "panelMain";
-			this.panelMain.Size = new System.Drawing.Size(596, 262);
+			this.panelMain.Size = new System.Drawing.Size(596, 251);
 			this.panelMain.TabIndex = 3;
 			// 
 			// panelList
@@ -645,7 +675,7 @@ namespace RenamerNG
 			this.panelList.DockPadding.Bottom = 2;
 			this.panelList.Location = new System.Drawing.Point(0, 0);
 			this.panelList.Name = "panelList";
-			this.panelList.Size = new System.Drawing.Size(436, 262);
+			this.panelList.Size = new System.Drawing.Size(436, 251);
 			this.panelList.TabIndex = 3;
 			// 
 			// listMain
@@ -657,7 +687,7 @@ namespace RenamerNG
 			this.listMain.LabelWrap = false;
 			this.listMain.Location = new System.Drawing.Point(0, 0);
 			this.listMain.Name = "listMain";
-			this.listMain.Size = new System.Drawing.Size(436, 238);
+			this.listMain.Size = new System.Drawing.Size(436, 227);
 			this.listMain.TabIndex = 0;
 			this.listMain.View = System.Windows.Forms.View.Details;
 			this.listMain.KeyDown += new System.Windows.Forms.KeyEventHandler(this.listMain_KeyDown);
@@ -673,7 +703,7 @@ namespace RenamerNG
 			this.panelEdit.Controls.Add(this.panelEditButtons);
 			this.panelEdit.Dock = System.Windows.Forms.DockStyle.Bottom;
 			this.panelEdit.DockPadding.Top = 2;
-			this.panelEdit.Location = new System.Drawing.Point(0, 238);
+			this.panelEdit.Location = new System.Drawing.Point(0, 227);
 			this.panelEdit.Name = "panelEdit";
 			this.panelEdit.Size = new System.Drawing.Size(436, 22);
 			this.panelEdit.TabIndex = 0;
@@ -718,7 +748,7 @@ namespace RenamerNG
 			this.panelMacro.DockPadding.Left = 8;
 			this.panelMacro.Location = new System.Drawing.Point(436, 0);
 			this.panelMacro.Name = "panelMacro";
-			this.panelMacro.Size = new System.Drawing.Size(160, 262);
+			this.panelMacro.Size = new System.Drawing.Size(160, 251);
 			this.panelMacro.TabIndex = 0;
 			// 
 			// grpMacro
@@ -727,7 +757,7 @@ namespace RenamerNG
 			this.grpMacro.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.grpMacro.Location = new System.Drawing.Point(8, 0);
 			this.grpMacro.Name = "grpMacro";
-			this.grpMacro.Size = new System.Drawing.Size(152, 260);
+			this.grpMacro.Size = new System.Drawing.Size(152, 249);
 			this.grpMacro.TabIndex = 0;
 			this.grpMacro.TabStop = false;
 			this.grpMacro.Text = "Macro";
@@ -738,7 +768,7 @@ namespace RenamerNG
 			this.panelMacroInternal.DockPadding.All = 4;
 			this.panelMacroInternal.Location = new System.Drawing.Point(3, 16);
 			this.panelMacroInternal.Name = "panelMacroInternal";
-			this.panelMacroInternal.Size = new System.Drawing.Size(146, 241);
+			this.panelMacroInternal.Size = new System.Drawing.Size(146, 230);
 			this.panelMacroInternal.TabIndex = 0;
 			// 
 			// mainMenu
@@ -835,6 +865,12 @@ namespace RenamerNG
 			this.miViewStatusbar.Visible = false;
 			this.miViewStatusbar.Click += new System.EventHandler(this.miViewStatusbar_Click);
 			// 
+			// miViewCommandLine
+			// 
+			this.miViewCommandLine.Index = 4;
+			this.miViewCommandLine.Text = "Command line";
+			this.miViewCommandLine.Click += new System.EventHandler(this.miViewCommandLine_Click);
+			// 
 			// miFileOperations
 			// 
 			this.miFileOperations.Index = 3;
@@ -925,43 +961,10 @@ namespace RenamerNG
 			// 
 			this.folderBrowserDialog.ShowNewFolderButton = false;
 			// 
-			// panelCommandLineEdit
-			// 
-			this.panelCommandLineEdit.Controls.Add(this.tbCommand);
-			this.panelCommandLineEdit.Dock = System.Windows.Forms.DockStyle.Bottom;
-			this.panelCommandLineEdit.Location = new System.Drawing.Point(0, 56);
-			this.panelCommandLineEdit.Name = "panelCommandLineEdit";
-			this.panelCommandLineEdit.Size = new System.Drawing.Size(596, 24);
-			this.panelCommandLineEdit.TabIndex = 1;
-			// 
-			// listboxCommandHistory
-			// 
-			this.listboxCommandHistory.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.listboxCommandHistory.Location = new System.Drawing.Point(0, 10);
-			this.listboxCommandHistory.Name = "listboxCommandHistory";
-			this.listboxCommandHistory.Size = new System.Drawing.Size(596, 43);
-			this.listboxCommandHistory.TabIndex = 2;
-			// 
-			// tbCommand
-			// 
-			this.tbCommand.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.tbCommand.Location = new System.Drawing.Point(0, 0);
-			this.tbCommand.Name = "tbCommand";
-			this.tbCommand.Size = new System.Drawing.Size(596, 20);
-			this.tbCommand.TabIndex = 0;
-			this.tbCommand.Text = "";
-			this.tbCommand.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbCommand_KeyPress);
-			// 
-			// miViewCommandLine
-			// 
-			this.miViewCommandLine.Index = 4;
-			this.miViewCommandLine.Text = "Command line";
-			this.miViewCommandLine.Click += new System.EventHandler(this.miViewCommandLine_Click);
-			// 
 			// FrmMain
 			// 
 			this.AutoScaleBaseSize = new System.Drawing.Size(5, 13);
-			this.ClientSize = new System.Drawing.Size(612, 411);
+			this.ClientSize = new System.Drawing.Size(612, 432);
 			this.Controls.Add(this.panelMain);
 			this.Controls.Add(this.panelNavigation);
 			this.Controls.Add(this.panelCommandLine);
@@ -979,13 +982,13 @@ namespace RenamerNG
 			this.panelPath.ResumeLayout(false);
 			this.panelPathButtons.ResumeLayout(false);
 			this.panelCommandLine.ResumeLayout(false);
+			this.panelCommandLineEdit.ResumeLayout(false);
 			this.panelMain.ResumeLayout(false);
 			this.panelList.ResumeLayout(false);
 			this.panelEdit.ResumeLayout(false);
 			this.panelEditButtons.ResumeLayout(false);
 			this.panelMacro.ResumeLayout(false);
 			this.grpMacro.ResumeLayout(false);
-			this.panelCommandLineEdit.ResumeLayout(false);
 			this.ResumeLayout(false);
 
 		}
@@ -1680,28 +1683,83 @@ namespace RenamerNG
 
 		private object ParseCommandLine(string text)
 		{
-			string name;
-			string parameters;
-
-			int parametersStart = text.IndexOf(" ");
-
-			if (parametersStart > 0)
+			//Check escaping sequences
+			bool escape = false;
+			for (int i = 0 ; i < text.Length ; i++)
 			{
-				name = text.Substring(0, parametersStart);
-				if (text.Length > parametersStart + 1)
-					parameters = text.Substring(parametersStart + 1);
-				else
-					parameters = "";
-			}
-			else
-			{
-				name = text;
-				parameters = "";
+				if (escape)
+				{
+					string c = text[i].ToString();
+					if (c.IndexOfAny(new char[]{'|', '\\', 'n', '\"'}) < 0)
+					{
+						ErrorMessage("Invalid escape sequence at character index " + i.ToString() + ".");
+						return null;
+					}
+					escape = false;
+					continue;
+				}
+
+				if (text[i] == '\\')
+				{
+					escape = true;
+					continue;
+				}
 			}
 
+			if (escape)
+			{
+				ErrorMessage("Non terminated escape sequence at end of command.");
+				return null;
+			}
+
+			//Find dividers
+			text = '|' + text + '|';
+			ArrayList dividers = new ArrayList();
+			escape = false;
+			for (int i = 0 ; i < text.Length ; i++)
+			{
+				if (escape)
+				{
+					escape = false;
+					continue;
+				}
+
+				if (text[i] == '\\')
+				{
+					escape = true;
+					continue;
+				}
+				
+				if (text[i] == '|')
+					dividers.Add(i);
+			}
+
+			//Divide into parts
+			string[] parts = new string[dividers.Count - 1];
+			for (int i = 0 ; i < dividers.Count - 1 ; i++)
+			{
+				int start = (int)dividers[i] + 1;
+				int end = (int) dividers[i + 1];
+				parts[i] = text.Substring(start, end - start);
+			}
+
+			//Unescape escape sequences
+			for (int i = 0 ; i < parts.Length ; i++)
+			{
+				parts[i] = parts[i].Replace("\\\\", "\\");
+				parts[i] = parts[i].Replace("\\\"", "\"");
+				parts[i] = parts[i].Replace("\\|", "|");
+				parts[i] = parts[i].Replace("\\n", "\n");
+			}
+
+			//Get the name
+			string name = parts[0];
+
+			//Is it a macro?
 			Macro m = macroList1.GetMacroFromName(name);
 			if (m != null) return m;
 
+			//Is it an operation?
 			Operation o = null;
 			foreach (Operation op in fileOperations.Values)
 				if (op.Name.ToLower() == name.ToLower())
@@ -1711,54 +1769,25 @@ namespace RenamerNG
 				if (op.Name.ToLower() == name.ToLower())
 					o = op;
 
+			//Not an op, invalid name
 			if (o == null)
 			{
 				ErrorMessage("Not a valid Operation or Macro name.");
 				return null;
 			}
 
-			string[] parameterList = new string[o.ParameterCount];
-			ArrayList parameterDividers = new ArrayList();
-			if (parameters != "")
+			//Verify number of parameters
+			if (parts.Length - 1 != o.ParameterCount)
 			{
-				if (parameters[0] != '\"' || parameters[parameters.Length - 1] != '\"')
-				{
-					ErrorMessage("Parameters should start and end with a double quote character (\").");
-					return null;
-				}
-
-				parameterDividers.Add(0); //The first divider is already verified in the if-statement above
-				for (int i = 1 ; i < parameters.Length ; i++)
-				{
-					if (parameters[i-1] != '\\' && parameters[i] == '\"')
-					{
-						parameterDividers.Add(i);
-					}
-				}
-
-				if (parameterDividers.Count != o.ParameterCount * 2)
-				{
-					ErrorMessage("Invalid number of parameters, found " + parameterDividers.Count.ToString() + " parameter limiters, should find " + (2*o.ParameterCount).ToString() + ".");
-					return null;
-				}
-
-				for (int p = 0 ; p < o.ParameterCount ; p++)
-				{
-					int start = (int)parameterDividers[p*2] + 1;
-					int end = (int)parameterDividers[p*2+1];
-					int length = end - start;
-					parameterList[p] = parameters.Substring(start, length);
-				}
-
-				for (int p = 0 ; p < o.ParameterCount ; p++)
-				{
-					parameterList[p] = parameterList[p].Replace("\\\\", "\\");
-					parameterList[p] = parameterList[p].Replace("\\\"", "\"");
-					parameterList[p] = parameterList[p].Replace("\\n", "\n");
-				}
-
-				o.SetParameters(parameterList);
+				int count = parts.Length - 1;
+				ErrorMessage("Invalid number of parameters, found " + count.ToString() + " parameters, should find " + o.ParameterCount.ToString() + ".");
+				return null;
 			}
+			
+			//Set the parameters
+			string[] parameters = new string[parts.Length - 1];
+			Array.Copy(parts, 1, parameters, 0, parts.Length - 1);
+			o.SetParameters(parameters);
 
 			return o;
 		}
