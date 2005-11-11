@@ -1,0 +1,50 @@
+Short documentation of RenamerNG (the stuff that is hard to find out):
+
+
+Contents:
+Regular expressions
+Command Line Interface
+Parameters during startup
+
+
+
+Regular expressions:
+One of the most powerful features of RenamerNG is the possibility to execute
+regular expressions. If you are new to regular expressions you can have a look
+at http://www.regular-expressions.info to learn more.
+
+
+
+Command Line Interface (CLI):
+
+RenamerNG now as an experimental CLI that enables the user to enter commands
+(operations or macros) as text and execute them.
+
+Syntax:
+
+operation or macro name[|parameter1][|parameter2][...]
+
+The syntax checking is not that advanced and you can easily cause a command to
+fail by spelling wrong, but If you like to tinker with it, it's available. If
+many users like this feature it will be further developed. To specify a | in
+for example a replace operation use \| other escapes are \n for new line and
+\" for double quote.
+
+
+
+Parameters during startup:
+
+RenamerNG can be started with three different sets of parameters if
+none or one parameter is given RenamerNG will start and scan the dir
+if specified. If the complete set of parameters (all 6) is given RenamerNG
+will start, scan the dir with the specified parameters, execute the command
+and finally exit.
+
+Syntax:
+
+RenamerNG [directory] [dirs, files, recurse, pattern, command]
+
+directory - Should be a valid directory used for simple shell integration
+dirs, files, recurse - True or false indicating the scanning parameters
+pattern - Pattern to use when scanning
+command - A command that will be executed directly, see command line interface
