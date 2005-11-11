@@ -1,4 +1,6 @@
-Short documentation of RenamerNG (the stuff that is hard to find out):
+Short documentation of RenamerNG (the stuff that is hard to find out)
+This manual only specifies a few things for further help check out the
+RenamerNG discussion forum at: http://www.renamerng.ipbfree.org/
 
 
 Contents:
