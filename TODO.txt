@@ -13,7 +13,7 @@
 * Add "Execute" operation to support external programs. - maybe we can double click the file entry in the list to run this
 * Progress display for operations and macros
 * Fix settings so that size is restored correctly (even with different DPI settings)
-* Support for command line operation?
+* Improve command line operation, split Engine from FrmMain.
 * Move scanning to separate dialog?
 * Work mode auto? Is this mode unclear or too dangerous?
 * Change macro list into a listview to make the selected item change when right-clicking.
