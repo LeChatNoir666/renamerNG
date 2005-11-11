@@ -1186,8 +1186,6 @@ namespace RenamerNG
 
 			if (DontLoseChanges()) return;
 
-
-
 			listMain.Items.Clear();
 			listMain.SuspendLayout();
 			listMain.BeginUpdate();
@@ -1485,6 +1483,11 @@ namespace RenamerNG
 
 		private void miFileRename_Click(object sender, System.EventArgs e)
 		{
+			Rename();
+		}
+
+		public void Rename()
+		{
 			if (miOperationsWorkOnSelectedItems.Checked)
 			{
 				DialogResult res = YesNoQuestion("Renaming files works on all items, not just the selected ones.\nIf you want to exclude some files from renaming please use\nthe Edit->Filter operations to filter your list.\n\nRename ALL changed files?");
@@ -1665,10 +1668,15 @@ namespace RenamerNG
 			if (e.KeyChar == 13)
 			{
 				e.Handled = true;
-				object o = ParseCommandLine(tbCommand.Text);
-				if (o != null)
-					Perform(o);
+				ExecuteCommand(tbCommand.Text);
 			}
+		}
+
+		private void ExecuteCommand(string text)
+		{
+			object o = ParseCommandLine(text);
+			if (o != null)
+				Perform(o);
 		}
 
 		private void DisplayCommandLineOperation(Operation op)
