@@ -44,9 +44,6 @@ and finally exit.
 
 Syntax:
 
-RenamerNG [directory] [dirs, files, recurse, pattern, command]
+RenamerNG [directory]
 
 directory - Should be a valid directory used for simple shell integration
-dirs, files, recurse - True or false indicating the scanning parameters
-pattern - Pattern to use when scanning
-command - A command that will be executed directly, see command line interface
