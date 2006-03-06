@@ -75,7 +75,6 @@ namespace RenamerNG
 
 		public FrmMain(string dir)
 		{
-			Color c = new Color();
 			//
 			// Required for Windows Form Designer support
 			//
@@ -183,6 +182,9 @@ namespace RenamerNG
 			}
 
 			UpdateListColumns();
+
+            //Remove this eventhandler since default is n"work on all items".
+            listMain.ItemSelectionChanged -= new System.Windows.Forms.ListViewItemSelectionChangedEventHandler(listMain_ItemSelectionChanged);
 		}
 
 		RenamerNG.Macros.RecordingIndicator recordingIndicator1;
@@ -387,609 +389,610 @@ namespace RenamerNG
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.components = new System.ComponentModel.Container();
-			System.Resources.ResourceManager resources = new System.Resources.ResourceManager(typeof(FrmMain));
-			this.panelStatusbar = new System.Windows.Forms.Panel();
-			this.lblItems = new System.Windows.Forms.Label();
-			this.panelNavigation = new System.Windows.Forms.Panel();
-			this.comboPattern = new System.Windows.Forms.ComboBox();
-			this.label1 = new System.Windows.Forms.Label();
-			this.chRecurse = new System.Windows.Forms.CheckBox();
-			this.chFiles = new System.Windows.Forms.CheckBox();
-			this.chDirs = new System.Windows.Forms.CheckBox();
-			this.panelPath = new System.Windows.Forms.Panel();
-			this.tbPath = new System.Windows.Forms.TextBox();
-			this.panelPathButtons = new System.Windows.Forms.Panel();
-			this.btScan = new System.Windows.Forms.Button();
-			this.btUp = new System.Windows.Forms.Button();
-			this.btPickDir = new System.Windows.Forms.Button();
-			this.lblPath = new System.Windows.Forms.Label();
-			this.panelCommandLine = new System.Windows.Forms.Panel();
-			this.listboxCommandHistory = new System.Windows.Forms.ListBox();
-			this.panelCommandLineEdit = new System.Windows.Forms.Panel();
-			this.tbCommand = new System.Windows.Forms.TextBox();
-			this.panelMain = new System.Windows.Forms.Panel();
-			this.panelList = new System.Windows.Forms.Panel();
-			this.listMain = new System.Windows.Forms.ListView();
-			this.panelEdit = new System.Windows.Forms.Panel();
-			this.tbEdit = new System.Windows.Forms.TextBox();
-			this.panelEditButtons = new System.Windows.Forms.Panel();
-			this.lblLength = new System.Windows.Forms.Label();
-			this.panelMacro = new System.Windows.Forms.Panel();
-			this.grpMacro = new System.Windows.Forms.GroupBox();
-			this.panelMacroInternal = new System.Windows.Forms.Panel();
-			this.mainMenu = new System.Windows.Forms.MainMenu();
-			this.miFile = new System.Windows.Forms.MenuItem();
-			this.miFileRename = new System.Windows.Forms.MenuItem();
-			this.menuItem5 = new System.Windows.Forms.MenuItem();
-			this.miFileRepeat = new System.Windows.Forms.MenuItem();
-			this.menuItem2 = new System.Windows.Forms.MenuItem();
-			this.miFileExit = new System.Windows.Forms.MenuItem();
-			this.miEdit = new System.Windows.Forms.MenuItem();
-			this.miView = new System.Windows.Forms.MenuItem();
-			this.miViewEdit = new System.Windows.Forms.MenuItem();
-			this.miViewMacro = new System.Windows.Forms.MenuItem();
-			this.miViewNavigation = new System.Windows.Forms.MenuItem();
-			this.miViewStatusbar = new System.Windows.Forms.MenuItem();
-			this.miViewCommandLine = new System.Windows.Forms.MenuItem();
-			this.miFileOperations = new System.Windows.Forms.MenuItem();
-			this.miOperationsWorkOnAllItems = new System.Windows.Forms.MenuItem();
-			this.miOperationsWorkOnSelectedItems = new System.Windows.Forms.MenuItem();
-			this.menuItem1 = new System.Windows.Forms.MenuItem();
-			this.miOperationsSpecial = new System.Windows.Forms.MenuItem();
-			this.miOperationsFreeEdit = new System.Windows.Forms.MenuItem();
-			this.menuItem4 = new System.Windows.Forms.MenuItem();
-			this.miListOperations = new System.Windows.Forms.MenuItem();
-			this.miEditListColumns = new System.Windows.Forms.MenuItem();
-			this.miEditMacros = new System.Windows.Forms.MenuItem();
-			this.miEditSettings = new System.Windows.Forms.MenuItem();
-			this.miHelp = new System.Windows.Forms.MenuItem();
-			this.miHelpAbout = new System.Windows.Forms.MenuItem();
-			this.toolTip = new System.Windows.Forms.ToolTip(this.components);
-			this.folderBrowserDialog = new System.Windows.Forms.FolderBrowserDialog();
-			this.panelNavigation.SuspendLayout();
-			this.panelPath.SuspendLayout();
-			this.panelPathButtons.SuspendLayout();
-			this.panelCommandLine.SuspendLayout();
-			this.panelCommandLineEdit.SuspendLayout();
-			this.panelMain.SuspendLayout();
-			this.panelList.SuspendLayout();
-			this.panelEdit.SuspendLayout();
-			this.panelEditButtons.SuspendLayout();
-			this.panelMacro.SuspendLayout();
-			this.grpMacro.SuspendLayout();
-			this.SuspendLayout();
-			// 
-			// panelStatusbar
-			// 
-			this.panelStatusbar.Dock = System.Windows.Forms.DockStyle.Bottom;
-			this.panelStatusbar.Location = new System.Drawing.Point(8, 424);
-			this.panelStatusbar.Name = "panelStatusbar";
-			this.panelStatusbar.Size = new System.Drawing.Size(596, 0);
-			this.panelStatusbar.TabIndex = 0;
-			this.panelStatusbar.Visible = false;
-			// 
-			// lblItems
-			// 
-			this.lblItems.Location = new System.Drawing.Point(0, 35);
-			this.lblItems.Name = "lblItems";
-			this.lblItems.Size = new System.Drawing.Size(47, 19);
-			this.lblItems.TabIndex = 1;
-			this.lblItems.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
-			this.toolTip.SetToolTip(this.lblItems, "Number of items in list");
-			// 
-			// panelNavigation
-			// 
-			this.panelNavigation.Controls.Add(this.comboPattern);
-			this.panelNavigation.Controls.Add(this.label1);
-			this.panelNavigation.Controls.Add(this.chRecurse);
-			this.panelNavigation.Controls.Add(this.chFiles);
-			this.panelNavigation.Controls.Add(this.chDirs);
-			this.panelNavigation.Controls.Add(this.panelPath);
-			this.panelNavigation.Controls.Add(this.lblItems);
-			this.panelNavigation.Dock = System.Windows.Forms.DockStyle.Top;
-			this.panelNavigation.Location = new System.Drawing.Point(8, 8);
-			this.panelNavigation.Name = "panelNavigation";
-			this.panelNavigation.Size = new System.Drawing.Size(596, 53);
-			this.panelNavigation.TabIndex = 4;
-			// 
-			// comboPattern
-			// 
-			this.comboPattern.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
-			this.comboPattern.Location = new System.Drawing.Point(313, 28);
-			this.comboPattern.Name = "comboPattern";
-			this.comboPattern.Size = new System.Drawing.Size(74, 21);
-			this.comboPattern.TabIndex = 4;
-			this.toolTip.SetToolTip(this.comboPattern, "File pattern to match (files only)");
-			// 
-			// label1
-			// 
-			this.label1.Location = new System.Drawing.Point(387, 28);
-			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(45, 20);
-			this.label1.TabIndex = 3;
-			this.label1.Text = "Pattern";
-			this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-			// 
-			// chRecurse
-			// 
-			this.chRecurse.Location = new System.Drawing.Point(233, 28);
-			this.chRecurse.Name = "chRecurse";
-			this.chRecurse.Size = new System.Drawing.Size(67, 21);
-			this.chRecurse.TabIndex = 2;
-			this.chRecurse.Text = "Recurse";
-			this.toolTip.SetToolTip(this.chRecurse, "Recurse into sub directories");
-			// 
-			// chFiles
-			// 
-			this.chFiles.Checked = true;
-			this.chFiles.CheckState = System.Windows.Forms.CheckState.Checked;
-			this.chFiles.Location = new System.Drawing.Point(160, 28);
-			this.chFiles.Name = "chFiles";
-			this.chFiles.Size = new System.Drawing.Size(67, 21);
-			this.chFiles.TabIndex = 1;
-			this.chFiles.Text = "Add files";
-			this.toolTip.SetToolTip(this.chFiles, "Add files");
-			this.chFiles.CheckedChanged += new System.EventHandler(this.chDirs_CheckedChanged);
-			// 
-			// chDirs
-			// 
-			this.chDirs.Location = new System.Drawing.Point(87, 28);
-			this.chDirs.Name = "chDirs";
-			this.chDirs.Size = new System.Drawing.Size(66, 21);
-			this.chDirs.TabIndex = 0;
-			this.chDirs.Text = "Add dirs";
-			this.toolTip.SetToolTip(this.chDirs, "Add directories");
-			this.chDirs.CheckedChanged += new System.EventHandler(this.chDirs_CheckedChanged);
-			// 
-			// panelPath
-			// 
-			this.panelPath.Controls.Add(this.tbPath);
-			this.panelPath.Controls.Add(this.panelPathButtons);
-			this.panelPath.Controls.Add(this.lblPath);
-			this.panelPath.Dock = System.Windows.Forms.DockStyle.Top;
-			this.panelPath.Location = new System.Drawing.Point(0, 0);
-			this.panelPath.Name = "panelPath";
-			this.panelPath.Size = new System.Drawing.Size(596, 21);
-			this.panelPath.TabIndex = 0;
-			// 
-			// tbPath
-			// 
-			this.tbPath.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.tbPath.Location = new System.Drawing.Point(53, 0);
-			this.tbPath.Name = "tbPath";
-			this.tbPath.Size = new System.Drawing.Size(410, 20);
-			this.tbPath.TabIndex = 1;
-			this.tbPath.Text = "";
-			this.toolTip.SetToolTip(this.tbPath, "Current path");
-			this.tbPath.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbPath_KeyPress);
-			// 
-			// panelPathButtons
-			// 
-			this.panelPathButtons.Controls.Add(this.btScan);
-			this.panelPathButtons.Controls.Add(this.btUp);
-			this.panelPathButtons.Controls.Add(this.btPickDir);
-			this.panelPathButtons.Dock = System.Windows.Forms.DockStyle.Right;
-			this.panelPathButtons.Location = new System.Drawing.Point(463, 0);
-			this.panelPathButtons.Name = "panelPathButtons";
-			this.panelPathButtons.Size = new System.Drawing.Size(133, 21);
-			this.panelPathButtons.TabIndex = 3;
-			// 
-			// btScan
-			// 
-			this.btScan.Location = new System.Drawing.Point(93, 0);
-			this.btScan.Name = "btScan";
-			this.btScan.Size = new System.Drawing.Size(40, 21);
-			this.btScan.TabIndex = 2;
-			this.btScan.Text = "Scan";
-			this.toolTip.SetToolTip(this.btScan, "Move up a directory");
-			this.btScan.Click += new System.EventHandler(this.btScan_Click);
-			// 
-			// btUp
-			// 
-			this.btUp.Location = new System.Drawing.Point(50, 0);
-			this.btUp.Name = "btUp";
-			this.btUp.Size = new System.Drawing.Size(40, 21);
-			this.btUp.TabIndex = 1;
-			this.btUp.Text = "Up";
-			this.toolTip.SetToolTip(this.btUp, "Move up a directory");
-			this.btUp.Click += new System.EventHandler(this.btUp_Click);
-			// 
-			// btPickDir
-			// 
-			this.btPickDir.Location = new System.Drawing.Point(7, 0);
-			this.btPickDir.Name = "btPickDir";
-			this.btPickDir.Size = new System.Drawing.Size(40, 21);
-			this.btPickDir.TabIndex = 0;
-			this.btPickDir.Text = "Pick";
-			this.toolTip.SetToolTip(this.btPickDir, "Select directory");
-			this.btPickDir.Click += new System.EventHandler(this.btPickDir_Click);
-			// 
-			// lblPath
-			// 
-			this.lblPath.Dock = System.Windows.Forms.DockStyle.Left;
-			this.lblPath.Location = new System.Drawing.Point(0, 0);
-			this.lblPath.Name = "lblPath";
-			this.lblPath.Size = new System.Drawing.Size(53, 21);
-			this.lblPath.TabIndex = 0;
-			this.lblPath.Text = "Directory";
-			this.lblPath.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-			// 
-			// panelCommandLine
-			// 
-			this.panelCommandLine.Controls.Add(this.listboxCommandHistory);
-			this.panelCommandLine.Controls.Add(this.panelCommandLineEdit);
-			this.panelCommandLine.Dock = System.Windows.Forms.DockStyle.Bottom;
-			this.panelCommandLine.DockPadding.Top = 10;
-			this.panelCommandLine.Location = new System.Drawing.Point(8, 312);
-			this.panelCommandLine.Name = "panelCommandLine";
-			this.panelCommandLine.Size = new System.Drawing.Size(596, 112);
-			this.panelCommandLine.TabIndex = 5;
-			this.panelCommandLine.Visible = false;
-			// 
-			// listboxCommandHistory
-			// 
-			this.listboxCommandHistory.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.listboxCommandHistory.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
-			this.listboxCommandHistory.ItemHeight = 14;
-			this.listboxCommandHistory.Location = new System.Drawing.Point(0, 10);
-			this.listboxCommandHistory.Name = "listboxCommandHistory";
-			this.listboxCommandHistory.Size = new System.Drawing.Size(596, 74);
-			this.listboxCommandHistory.TabIndex = 2;
-			// 
-			// panelCommandLineEdit
-			// 
-			this.panelCommandLineEdit.Controls.Add(this.tbCommand);
-			this.panelCommandLineEdit.Dock = System.Windows.Forms.DockStyle.Bottom;
-			this.panelCommandLineEdit.Location = new System.Drawing.Point(0, 88);
-			this.panelCommandLineEdit.Name = "panelCommandLineEdit";
-			this.panelCommandLineEdit.Size = new System.Drawing.Size(596, 24);
-			this.panelCommandLineEdit.TabIndex = 1;
-			// 
-			// tbCommand
-			// 
-			this.tbCommand.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.tbCommand.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
-			this.tbCommand.Location = new System.Drawing.Point(0, 0);
-			this.tbCommand.Name = "tbCommand";
-			this.tbCommand.Size = new System.Drawing.Size(596, 20);
-			this.tbCommand.TabIndex = 0;
-			this.tbCommand.Text = "";
-			this.tbCommand.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbCommand_KeyPress);
-			// 
-			// panelMain
-			// 
-			this.panelMain.Controls.Add(this.panelList);
-			this.panelMain.Controls.Add(this.panelMacro);
-			this.panelMain.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.panelMain.Location = new System.Drawing.Point(8, 61);
-			this.panelMain.Name = "panelMain";
-			this.panelMain.Size = new System.Drawing.Size(596, 251);
-			this.panelMain.TabIndex = 3;
-			// 
-			// panelList
-			// 
-			this.panelList.Controls.Add(this.listMain);
-			this.panelList.Controls.Add(this.panelEdit);
-			this.panelList.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.panelList.DockPadding.Bottom = 2;
-			this.panelList.Location = new System.Drawing.Point(0, 0);
-			this.panelList.Name = "panelList";
-			this.panelList.Size = new System.Drawing.Size(436, 251);
-			this.panelList.TabIndex = 3;
-			// 
-			// listMain
-			// 
-			this.listMain.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.listMain.ForeColor = System.Drawing.Color.Black;
-			this.listMain.FullRowSelect = true;
-			this.listMain.LabelEdit = true;
-			this.listMain.LabelWrap = false;
-			this.listMain.Location = new System.Drawing.Point(0, 0);
-			this.listMain.Name = "listMain";
-			this.listMain.Size = new System.Drawing.Size(436, 227);
-			this.listMain.TabIndex = 0;
-			this.listMain.View = System.Windows.Forms.View.Details;
-			this.listMain.KeyDown += new System.Windows.Forms.KeyEventHandler(this.listMain_KeyDown);
-			this.listMain.MouseDown += new System.Windows.Forms.MouseEventHandler(this.listMain_MouseDown);
-			this.listMain.DoubleClick += new System.EventHandler(this.listMain_DoubleClick);
-			this.listMain.MouseUp += new System.Windows.Forms.MouseEventHandler(this.listMain_MouseDown);
-			this.listMain.KeyUp += new System.Windows.Forms.KeyEventHandler(this.listMain_KeyDown);
-			this.listMain.SelectedIndexChanged += new System.EventHandler(this.listMain_SelectedIndexChanged);
-			// 
-			// panelEdit
-			// 
-			this.panelEdit.Controls.Add(this.tbEdit);
-			this.panelEdit.Controls.Add(this.panelEditButtons);
-			this.panelEdit.Dock = System.Windows.Forms.DockStyle.Bottom;
-			this.panelEdit.DockPadding.Top = 2;
-			this.panelEdit.Location = new System.Drawing.Point(0, 227);
-			this.panelEdit.Name = "panelEdit";
-			this.panelEdit.Size = new System.Drawing.Size(436, 22);
-			this.panelEdit.TabIndex = 0;
-			// 
-			// tbEdit
-			// 
-			this.tbEdit.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.tbEdit.Location = new System.Drawing.Point(0, 2);
-			this.tbEdit.Name = "tbEdit";
-			this.tbEdit.Size = new System.Drawing.Size(390, 20);
-			this.tbEdit.TabIndex = 0;
-			this.tbEdit.Text = "";
-			this.tbEdit.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tbEdit_KeyDown);
-			this.tbEdit.TextChanged += new System.EventHandler(this.tbEdit_TextChanged);
-			this.tbEdit.KeyUp += new System.Windows.Forms.KeyEventHandler(this.tbEdit_KeyUp);
-			// 
-			// panelEditButtons
-			// 
-			this.panelEditButtons.Controls.Add(this.lblLength);
-			this.panelEditButtons.Dock = System.Windows.Forms.DockStyle.Right;
-			this.panelEditButtons.Location = new System.Drawing.Point(390, 2);
-			this.panelEditButtons.Name = "panelEditButtons";
-			this.panelEditButtons.Size = new System.Drawing.Size(46, 20);
-			this.panelEditButtons.TabIndex = 0;
-			// 
-			// lblLength
-			// 
-			this.lblLength.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-			this.lblLength.Dock = System.Windows.Forms.DockStyle.Right;
-			this.lblLength.Location = new System.Drawing.Point(6, 0);
-			this.lblLength.Name = "lblLength";
-			this.lblLength.Size = new System.Drawing.Size(40, 20);
-			this.lblLength.TabIndex = 0;
-			this.lblLength.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-			this.toolTip.SetToolTip(this.lblLength, "Length of edited text");
-			// 
-			// panelMacro
-			// 
-			this.panelMacro.Controls.Add(this.grpMacro);
-			this.panelMacro.Dock = System.Windows.Forms.DockStyle.Right;
-			this.panelMacro.DockPadding.Bottom = 2;
-			this.panelMacro.DockPadding.Left = 8;
-			this.panelMacro.Location = new System.Drawing.Point(436, 0);
-			this.panelMacro.Name = "panelMacro";
-			this.panelMacro.Size = new System.Drawing.Size(160, 251);
-			this.panelMacro.TabIndex = 0;
-			// 
-			// grpMacro
-			// 
-			this.grpMacro.Controls.Add(this.panelMacroInternal);
-			this.grpMacro.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.grpMacro.Location = new System.Drawing.Point(8, 0);
-			this.grpMacro.Name = "grpMacro";
-			this.grpMacro.Size = new System.Drawing.Size(152, 249);
-			this.grpMacro.TabIndex = 0;
-			this.grpMacro.TabStop = false;
-			this.grpMacro.Text = "Macro";
-			// 
-			// panelMacroInternal
-			// 
-			this.panelMacroInternal.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.panelMacroInternal.DockPadding.All = 4;
-			this.panelMacroInternal.Location = new System.Drawing.Point(3, 16);
-			this.panelMacroInternal.Name = "panelMacroInternal";
-			this.panelMacroInternal.Size = new System.Drawing.Size(146, 230);
-			this.panelMacroInternal.TabIndex = 0;
-			// 
-			// mainMenu
-			// 
-			this.mainMenu.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
-																					 this.miFile,
-																					 this.miEdit,
-																					 this.miView,
-																					 this.miFileOperations,
-																					 this.miListOperations,
-																					 this.miHelp});
-			// 
-			// miFile
-			// 
-			this.miFile.Index = 0;
-			this.miFile.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
-																				   this.miFileRename,
-																				   this.menuItem5,
-																				   this.miFileRepeat,
-																				   this.menuItem2,
-																				   this.miFileExit});
-			this.miFile.Text = "&File";
-			// 
-			// miFileRename
-			// 
-			this.miFileRename.Index = 0;
-			this.miFileRename.Text = "&Rename";
-			this.miFileRename.Click += new System.EventHandler(this.miFileRename_Click);
-			// 
-			// menuItem5
-			// 
-			this.menuItem5.Index = 1;
-			this.menuItem5.Text = "-";
-			// 
-			// miFileRepeat
-			// 
-			this.miFileRepeat.Index = 2;
-			this.miFileRepeat.Shortcut = System.Windows.Forms.Shortcut.CtrlShiftR;
-			this.miFileRepeat.Text = "Repeat previous operation/macro";
-			this.miFileRepeat.Click += new System.EventHandler(this.miFileRepeat_Click);
-			// 
-			// menuItem2
-			// 
-			this.menuItem2.Index = 3;
-			this.menuItem2.Text = "-";
-			// 
-			// miFileExit
-			// 
-			this.miFileExit.Index = 4;
-			this.miFileExit.Text = "E&xit";
-			this.miFileExit.Click += new System.EventHandler(this.miFileExit_Click);
-			// 
-			// miEdit
-			// 
-			this.miEdit.Index = 1;
-			this.miEdit.Text = "&Edit";
-			// 
-			// miView
-			// 
-			this.miView.Index = 2;
-			this.miView.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
-																				   this.miViewEdit,
-																				   this.miViewMacro,
-																				   this.miViewNavigation,
-																				   this.miViewStatusbar,
-																				   this.miViewCommandLine});
-			this.miView.Text = "&View";
-			// 
-			// miViewEdit
-			// 
-			this.miViewEdit.Checked = true;
-			this.miViewEdit.Index = 0;
-			this.miViewEdit.Text = "&Edit";
-			this.miViewEdit.Click += new System.EventHandler(this.miViewEdit_Click);
-			// 
-			// miViewMacro
-			// 
-			this.miViewMacro.Checked = true;
-			this.miViewMacro.Index = 1;
-			this.miViewMacro.Text = "&Macro";
-			this.miViewMacro.Click += new System.EventHandler(this.miViewMacro_Click);
-			// 
-			// miViewNavigation
-			// 
-			this.miViewNavigation.Checked = true;
-			this.miViewNavigation.Index = 2;
-			this.miViewNavigation.Text = "&Navigation";
-			this.miViewNavigation.Click += new System.EventHandler(this.miViewNavigation_Click);
-			// 
-			// miViewStatusbar
-			// 
-			this.miViewStatusbar.Index = 3;
-			this.miViewStatusbar.Text = "&Statusbar";
-			this.miViewStatusbar.Visible = false;
-			this.miViewStatusbar.Click += new System.EventHandler(this.miViewStatusbar_Click);
-			// 
-			// miViewCommandLine
-			// 
-			this.miViewCommandLine.Index = 4;
-			this.miViewCommandLine.Text = "Command line";
-			this.miViewCommandLine.Click += new System.EventHandler(this.miViewCommandLine_Click);
-			// 
-			// miFileOperations
-			// 
-			this.miFileOperations.Index = 3;
-			this.miFileOperations.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
-																							 this.miOperationsWorkOnAllItems,
-																							 this.miOperationsWorkOnSelectedItems,
-																							 this.menuItem1,
-																							 this.miOperationsSpecial,
-																							 this.menuItem4});
-			this.miFileOperations.Text = "&Operations";
-			// 
-			// miOperationsWorkOnAllItems
-			// 
-			this.miOperationsWorkOnAllItems.Checked = true;
-			this.miOperationsWorkOnAllItems.Index = 0;
-			this.miOperationsWorkOnAllItems.Text = "Work on all items";
-			this.miOperationsWorkOnAllItems.Click += new System.EventHandler(this.miOperationsWorkOnAllItems_Click);
-			// 
-			// miOperationsWorkOnSelectedItems
-			// 
-			this.miOperationsWorkOnSelectedItems.Index = 1;
-			this.miOperationsWorkOnSelectedItems.Text = "Work on selected items";
-			this.miOperationsWorkOnSelectedItems.Click += new System.EventHandler(this.miOperationsWorkOnSelectedItems_Click);
-			// 
-			// menuItem1
-			// 
-			this.menuItem1.Index = 2;
-			this.menuItem1.Text = "-";
-			// 
-			// miOperationsSpecial
-			// 
-			this.miOperationsSpecial.Index = 3;
-			this.miOperationsSpecial.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
-																								this.miOperationsFreeEdit});
-			this.miOperationsSpecial.Text = "Special";
-			// 
-			// miOperationsFreeEdit
-			// 
-			this.miOperationsFreeEdit.Index = 0;
-			this.miOperationsFreeEdit.Text = "Free edit";
-			this.miOperationsFreeEdit.Click += new System.EventHandler(this.miOperationsFreeEdit_Click);
-			// 
-			// menuItem4
-			// 
-			this.menuItem4.Index = 4;
-			this.menuItem4.Text = "-";
-			// 
-			// miListOperations
-			// 
-			this.miListOperations.Index = 4;
-			this.miListOperations.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
-																							 this.miEditListColumns,
-																							 this.miEditMacros,
-																							 this.miEditSettings});
-			this.miListOperations.Text = "&Tools";
-			// 
-			// miEditListColumns
-			// 
-			this.miEditListColumns.Index = 0;
-			this.miEditListColumns.Text = "&List columns";
-			this.miEditListColumns.Click += new System.EventHandler(this.miEditListColumns_Click);
-			// 
-			// miEditMacros
-			// 
-			this.miEditMacros.Index = 1;
-			this.miEditMacros.Text = "&Macros";
-			// 
-			// miEditSettings
-			// 
-			this.miEditSettings.Index = 2;
-			this.miEditSettings.Text = "&Options";
-			this.miEditSettings.Click += new System.EventHandler(this.miEditSettings_Click);
-			// 
-			// miHelp
-			// 
-			this.miHelp.Index = 5;
-			this.miHelp.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
-																				   this.miHelpAbout});
-			this.miHelp.Text = "&Help";
-			// 
-			// miHelpAbout
-			// 
-			this.miHelpAbout.Index = 0;
-			this.miHelpAbout.Text = "&About";
-			this.miHelpAbout.Click += new System.EventHandler(this.miHelpAbout_Click);
-			// 
-			// folderBrowserDialog
-			// 
-			this.folderBrowserDialog.ShowNewFolderButton = false;
-			// 
-			// FrmMain
-			// 
-			this.AutoScaleBaseSize = new System.Drawing.Size(5, 13);
-			this.ClientSize = new System.Drawing.Size(612, 432);
-			this.Controls.Add(this.panelMain);
-			this.Controls.Add(this.panelNavigation);
-			this.Controls.Add(this.panelCommandLine);
-			this.Controls.Add(this.panelStatusbar);
-			this.DockPadding.All = 8;
-			this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
-			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-			this.Menu = this.mainMenu;
-			this.MinimumSize = new System.Drawing.Size(620, 460);
-			this.Name = "FrmMain";
-			this.Text = "Renamer NG -= BETA =- by Albert Bertilsson, version ";
-			this.Closing += new System.ComponentModel.CancelEventHandler(this.FrmMain_Closing);
-			this.Load += new System.EventHandler(this.FrmMain_Load);
-			this.panelNavigation.ResumeLayout(false);
-			this.panelPath.ResumeLayout(false);
-			this.panelPathButtons.ResumeLayout(false);
-			this.panelCommandLine.ResumeLayout(false);
-			this.panelCommandLineEdit.ResumeLayout(false);
-			this.panelMain.ResumeLayout(false);
-			this.panelList.ResumeLayout(false);
-			this.panelEdit.ResumeLayout(false);
-			this.panelEditButtons.ResumeLayout(false);
-			this.panelMacro.ResumeLayout(false);
-			this.grpMacro.ResumeLayout(false);
-			this.ResumeLayout(false);
+            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMain));
+            this.panelStatusbar = new System.Windows.Forms.Panel();
+            this.lblItems = new System.Windows.Forms.Label();
+            this.panelNavigation = new System.Windows.Forms.Panel();
+            this.comboPattern = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.chRecurse = new System.Windows.Forms.CheckBox();
+            this.chFiles = new System.Windows.Forms.CheckBox();
+            this.chDirs = new System.Windows.Forms.CheckBox();
+            this.panelPath = new System.Windows.Forms.Panel();
+            this.tbPath = new System.Windows.Forms.TextBox();
+            this.panelPathButtons = new System.Windows.Forms.Panel();
+            this.btScan = new System.Windows.Forms.Button();
+            this.btUp = new System.Windows.Forms.Button();
+            this.btPickDir = new System.Windows.Forms.Button();
+            this.lblPath = new System.Windows.Forms.Label();
+            this.panelCommandLine = new System.Windows.Forms.Panel();
+            this.listboxCommandHistory = new System.Windows.Forms.ListBox();
+            this.panelCommandLineEdit = new System.Windows.Forms.Panel();
+            this.tbCommand = new System.Windows.Forms.TextBox();
+            this.panelMain = new System.Windows.Forms.Panel();
+            this.panelList = new System.Windows.Forms.Panel();
+            this.listMain = new System.Windows.Forms.ListView();
+            this.panelEdit = new System.Windows.Forms.Panel();
+            this.tbEdit = new System.Windows.Forms.TextBox();
+            this.panelEditButtons = new System.Windows.Forms.Panel();
+            this.lblLength = new System.Windows.Forms.Label();
+            this.panelMacro = new System.Windows.Forms.Panel();
+            this.grpMacro = new System.Windows.Forms.GroupBox();
+            this.panelMacroInternal = new System.Windows.Forms.Panel();
+            this.mainMenu = new System.Windows.Forms.MainMenu(this.components);
+            this.miFile = new System.Windows.Forms.MenuItem();
+            this.miFileRename = new System.Windows.Forms.MenuItem();
+            this.menuItem5 = new System.Windows.Forms.MenuItem();
+            this.miFileRepeat = new System.Windows.Forms.MenuItem();
+            this.menuItem2 = new System.Windows.Forms.MenuItem();
+            this.miFileExit = new System.Windows.Forms.MenuItem();
+            this.miEdit = new System.Windows.Forms.MenuItem();
+            this.miView = new System.Windows.Forms.MenuItem();
+            this.miViewEdit = new System.Windows.Forms.MenuItem();
+            this.miViewMacro = new System.Windows.Forms.MenuItem();
+            this.miViewNavigation = new System.Windows.Forms.MenuItem();
+            this.miViewStatusbar = new System.Windows.Forms.MenuItem();
+            this.miViewCommandLine = new System.Windows.Forms.MenuItem();
+            this.miFileOperations = new System.Windows.Forms.MenuItem();
+            this.miOperationsWorkOnAllItems = new System.Windows.Forms.MenuItem();
+            this.miOperationsWorkOnSelectedItems = new System.Windows.Forms.MenuItem();
+            this.menuItem1 = new System.Windows.Forms.MenuItem();
+            this.miOperationsSpecial = new System.Windows.Forms.MenuItem();
+            this.miOperationsFreeEdit = new System.Windows.Forms.MenuItem();
+            this.menuItem4 = new System.Windows.Forms.MenuItem();
+            this.miListOperations = new System.Windows.Forms.MenuItem();
+            this.miEditListColumns = new System.Windows.Forms.MenuItem();
+            this.miEditMacros = new System.Windows.Forms.MenuItem();
+            this.miEditSettings = new System.Windows.Forms.MenuItem();
+            this.miHelp = new System.Windows.Forms.MenuItem();
+            this.miHelpAbout = new System.Windows.Forms.MenuItem();
+            this.toolTip = new System.Windows.Forms.ToolTip(this.components);
+            this.folderBrowserDialog = new System.Windows.Forms.FolderBrowserDialog();
+            this.panelNavigation.SuspendLayout();
+            this.panelPath.SuspendLayout();
+            this.panelPathButtons.SuspendLayout();
+            this.panelCommandLine.SuspendLayout();
+            this.panelCommandLineEdit.SuspendLayout();
+            this.panelMain.SuspendLayout();
+            this.panelList.SuspendLayout();
+            this.panelEdit.SuspendLayout();
+            this.panelEditButtons.SuspendLayout();
+            this.panelMacro.SuspendLayout();
+            this.grpMacro.SuspendLayout();
+            this.SuspendLayout();
+            // 
+            // panelStatusbar
+            // 
+            this.panelStatusbar.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panelStatusbar.Location = new System.Drawing.Point(8, 424);
+            this.panelStatusbar.Name = "panelStatusbar";
+            this.panelStatusbar.Size = new System.Drawing.Size(596, 0);
+            this.panelStatusbar.TabIndex = 0;
+            this.panelStatusbar.Visible = false;
+            // 
+            // lblItems
+            // 
+            this.lblItems.Location = new System.Drawing.Point(0, 35);
+            this.lblItems.Name = "lblItems";
+            this.lblItems.Size = new System.Drawing.Size(47, 19);
+            this.lblItems.TabIndex = 1;
+            this.lblItems.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
+            this.toolTip.SetToolTip(this.lblItems, "Number of items in list");
+            // 
+            // panelNavigation
+            // 
+            this.panelNavigation.Controls.Add(this.comboPattern);
+            this.panelNavigation.Controls.Add(this.label1);
+            this.panelNavigation.Controls.Add(this.chRecurse);
+            this.panelNavigation.Controls.Add(this.chFiles);
+            this.panelNavigation.Controls.Add(this.chDirs);
+            this.panelNavigation.Controls.Add(this.panelPath);
+            this.panelNavigation.Controls.Add(this.lblItems);
+            this.panelNavigation.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelNavigation.Location = new System.Drawing.Point(8, 8);
+            this.panelNavigation.Name = "panelNavigation";
+            this.panelNavigation.Size = new System.Drawing.Size(596, 53);
+            this.panelNavigation.TabIndex = 4;
+            // 
+            // comboPattern
+            // 
+            this.comboPattern.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboPattern.Location = new System.Drawing.Point(313, 28);
+            this.comboPattern.Name = "comboPattern";
+            this.comboPattern.Size = new System.Drawing.Size(74, 21);
+            this.comboPattern.TabIndex = 4;
+            this.toolTip.SetToolTip(this.comboPattern, "File pattern to match (files only)");
+            // 
+            // label1
+            // 
+            this.label1.Location = new System.Drawing.Point(387, 28);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(45, 20);
+            this.label1.TabIndex = 3;
+            this.label1.Text = "Pattern";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // chRecurse
+            // 
+            this.chRecurse.Location = new System.Drawing.Point(233, 28);
+            this.chRecurse.Name = "chRecurse";
+            this.chRecurse.Size = new System.Drawing.Size(67, 21);
+            this.chRecurse.TabIndex = 2;
+            this.chRecurse.Text = "Recurse";
+            this.toolTip.SetToolTip(this.chRecurse, "Recurse into sub directories");
+            // 
+            // chFiles
+            // 
+            this.chFiles.Checked = true;
+            this.chFiles.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chFiles.Location = new System.Drawing.Point(160, 28);
+            this.chFiles.Name = "chFiles";
+            this.chFiles.Size = new System.Drawing.Size(67, 21);
+            this.chFiles.TabIndex = 1;
+            this.chFiles.Text = "Add files";
+            this.toolTip.SetToolTip(this.chFiles, "Add files");
+            this.chFiles.CheckedChanged += new System.EventHandler(this.chDirs_CheckedChanged);
+            // 
+            // chDirs
+            // 
+            this.chDirs.Location = new System.Drawing.Point(87, 28);
+            this.chDirs.Name = "chDirs";
+            this.chDirs.Size = new System.Drawing.Size(66, 21);
+            this.chDirs.TabIndex = 0;
+            this.chDirs.Text = "Add dirs";
+            this.toolTip.SetToolTip(this.chDirs, "Add directories");
+            this.chDirs.CheckedChanged += new System.EventHandler(this.chDirs_CheckedChanged);
+            // 
+            // panelPath
+            // 
+            this.panelPath.Controls.Add(this.tbPath);
+            this.panelPath.Controls.Add(this.panelPathButtons);
+            this.panelPath.Controls.Add(this.lblPath);
+            this.panelPath.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelPath.Location = new System.Drawing.Point(0, 0);
+            this.panelPath.Name = "panelPath";
+            this.panelPath.Size = new System.Drawing.Size(596, 21);
+            this.panelPath.TabIndex = 0;
+            // 
+            // tbPath
+            // 
+            this.tbPath.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tbPath.Location = new System.Drawing.Point(53, 0);
+            this.tbPath.Name = "tbPath";
+            this.tbPath.Size = new System.Drawing.Size(410, 20);
+            this.tbPath.TabIndex = 1;
+            this.toolTip.SetToolTip(this.tbPath, "Current path");
+            this.tbPath.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbPath_KeyPress);
+            // 
+            // panelPathButtons
+            // 
+            this.panelPathButtons.Controls.Add(this.btScan);
+            this.panelPathButtons.Controls.Add(this.btUp);
+            this.panelPathButtons.Controls.Add(this.btPickDir);
+            this.panelPathButtons.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panelPathButtons.Location = new System.Drawing.Point(463, 0);
+            this.panelPathButtons.Name = "panelPathButtons";
+            this.panelPathButtons.Size = new System.Drawing.Size(133, 21);
+            this.panelPathButtons.TabIndex = 3;
+            // 
+            // btScan
+            // 
+            this.btScan.Location = new System.Drawing.Point(93, 0);
+            this.btScan.Name = "btScan";
+            this.btScan.Size = new System.Drawing.Size(40, 21);
+            this.btScan.TabIndex = 2;
+            this.btScan.Text = "Scan";
+            this.toolTip.SetToolTip(this.btScan, "Move up a directory");
+            this.btScan.Click += new System.EventHandler(this.btScan_Click);
+            // 
+            // btUp
+            // 
+            this.btUp.Location = new System.Drawing.Point(50, 0);
+            this.btUp.Name = "btUp";
+            this.btUp.Size = new System.Drawing.Size(40, 21);
+            this.btUp.TabIndex = 1;
+            this.btUp.Text = "Up";
+            this.toolTip.SetToolTip(this.btUp, "Move up a directory");
+            this.btUp.Click += new System.EventHandler(this.btUp_Click);
+            // 
+            // btPickDir
+            // 
+            this.btPickDir.Location = new System.Drawing.Point(7, 0);
+            this.btPickDir.Name = "btPickDir";
+            this.btPickDir.Size = new System.Drawing.Size(40, 21);
+            this.btPickDir.TabIndex = 0;
+            this.btPickDir.Text = "Pick";
+            this.toolTip.SetToolTip(this.btPickDir, "Select directory");
+            this.btPickDir.Click += new System.EventHandler(this.btPickDir_Click);
+            // 
+            // lblPath
+            // 
+            this.lblPath.Dock = System.Windows.Forms.DockStyle.Left;
+            this.lblPath.Location = new System.Drawing.Point(0, 0);
+            this.lblPath.Name = "lblPath";
+            this.lblPath.Size = new System.Drawing.Size(53, 21);
+            this.lblPath.TabIndex = 0;
+            this.lblPath.Text = "Directory";
+            this.lblPath.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // panelCommandLine
+            // 
+            this.panelCommandLine.Controls.Add(this.listboxCommandHistory);
+            this.panelCommandLine.Controls.Add(this.panelCommandLineEdit);
+            this.panelCommandLine.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panelCommandLine.Location = new System.Drawing.Point(8, 312);
+            this.panelCommandLine.Name = "panelCommandLine";
+            this.panelCommandLine.Padding = new System.Windows.Forms.Padding(0, 10, 0, 0);
+            this.panelCommandLine.Size = new System.Drawing.Size(596, 112);
+            this.panelCommandLine.TabIndex = 5;
+            this.panelCommandLine.Visible = false;
+            // 
+            // listboxCommandHistory
+            // 
+            this.listboxCommandHistory.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.listboxCommandHistory.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.listboxCommandHistory.ItemHeight = 14;
+            this.listboxCommandHistory.Location = new System.Drawing.Point(0, 10);
+            this.listboxCommandHistory.Name = "listboxCommandHistory";
+            this.listboxCommandHistory.Size = new System.Drawing.Size(596, 74);
+            this.listboxCommandHistory.TabIndex = 2;
+            // 
+            // panelCommandLineEdit
+            // 
+            this.panelCommandLineEdit.Controls.Add(this.tbCommand);
+            this.panelCommandLineEdit.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panelCommandLineEdit.Location = new System.Drawing.Point(0, 88);
+            this.panelCommandLineEdit.Name = "panelCommandLineEdit";
+            this.panelCommandLineEdit.Size = new System.Drawing.Size(596, 24);
+            this.panelCommandLineEdit.TabIndex = 1;
+            // 
+            // tbCommand
+            // 
+            this.tbCommand.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tbCommand.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbCommand.Location = new System.Drawing.Point(0, 0);
+            this.tbCommand.Name = "tbCommand";
+            this.tbCommand.Size = new System.Drawing.Size(596, 20);
+            this.tbCommand.TabIndex = 0;
+            this.tbCommand.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbCommand_KeyPress);
+            // 
+            // panelMain
+            // 
+            this.panelMain.Controls.Add(this.panelList);
+            this.panelMain.Controls.Add(this.panelMacro);
+            this.panelMain.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelMain.Location = new System.Drawing.Point(8, 61);
+            this.panelMain.Name = "panelMain";
+            this.panelMain.Size = new System.Drawing.Size(596, 251);
+            this.panelMain.TabIndex = 3;
+            // 
+            // panelList
+            // 
+            this.panelList.Controls.Add(this.listMain);
+            this.panelList.Controls.Add(this.panelEdit);
+            this.panelList.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelList.Location = new System.Drawing.Point(0, 0);
+            this.panelList.Name = "panelList";
+            this.panelList.Padding = new System.Windows.Forms.Padding(0, 0, 0, 2);
+            this.panelList.Size = new System.Drawing.Size(436, 251);
+            this.panelList.TabIndex = 3;
+            // 
+            // listMain
+            // 
+            this.listMain.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.listMain.ForeColor = System.Drawing.Color.Black;
+            this.listMain.FullRowSelect = true;
+            this.listMain.LabelEdit = true;
+            this.listMain.LabelWrap = false;
+            this.listMain.Location = new System.Drawing.Point(0, 0);
+            this.listMain.Name = "listMain";
+            this.listMain.Size = new System.Drawing.Size(436, 227);
+            this.listMain.TabIndex = 0;
+            this.listMain.UseCompatibleStateImageBehavior = false;
+            this.listMain.View = System.Windows.Forms.View.Details;
+            this.listMain.DoubleClick += new System.EventHandler(this.listMain_DoubleClick);
+            this.listMain.SelectedIndexChanged += new System.EventHandler(this.listMain_SelectedIndexChanged);
+            this.listMain.MouseUp += new System.Windows.Forms.MouseEventHandler(this.listMain_MouseDown);
+            this.listMain.KeyDown += new System.Windows.Forms.KeyEventHandler(this.listMain_KeyDown);
+            this.listMain.ItemSelectionChanged += new System.Windows.Forms.ListViewItemSelectionChangedEventHandler(this.listMain_ItemSelectionChanged);
+            this.listMain.KeyUp += new System.Windows.Forms.KeyEventHandler(this.listMain_KeyDown);
+            this.listMain.MouseDown += new System.Windows.Forms.MouseEventHandler(this.listMain_MouseDown);
+            // 
+            // panelEdit
+            // 
+            this.panelEdit.Controls.Add(this.tbEdit);
+            this.panelEdit.Controls.Add(this.panelEditButtons);
+            this.panelEdit.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panelEdit.Location = new System.Drawing.Point(0, 227);
+            this.panelEdit.Name = "panelEdit";
+            this.panelEdit.Padding = new System.Windows.Forms.Padding(0, 2, 0, 0);
+            this.panelEdit.Size = new System.Drawing.Size(436, 22);
+            this.panelEdit.TabIndex = 0;
+            // 
+            // tbEdit
+            // 
+            this.tbEdit.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tbEdit.Location = new System.Drawing.Point(0, 2);
+            this.tbEdit.Name = "tbEdit";
+            this.tbEdit.Size = new System.Drawing.Size(390, 20);
+            this.tbEdit.TabIndex = 0;
+            this.tbEdit.KeyUp += new System.Windows.Forms.KeyEventHandler(this.tbEdit_KeyUp);
+            this.tbEdit.TextChanged += new System.EventHandler(this.tbEdit_TextChanged);
+            this.tbEdit.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tbEdit_KeyDown);
+            // 
+            // panelEditButtons
+            // 
+            this.panelEditButtons.Controls.Add(this.lblLength);
+            this.panelEditButtons.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panelEditButtons.Location = new System.Drawing.Point(390, 2);
+            this.panelEditButtons.Name = "panelEditButtons";
+            this.panelEditButtons.Size = new System.Drawing.Size(46, 20);
+            this.panelEditButtons.TabIndex = 0;
+            // 
+            // lblLength
+            // 
+            this.lblLength.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.lblLength.Dock = System.Windows.Forms.DockStyle.Right;
+            this.lblLength.Location = new System.Drawing.Point(6, 0);
+            this.lblLength.Name = "lblLength";
+            this.lblLength.Size = new System.Drawing.Size(40, 20);
+            this.lblLength.TabIndex = 0;
+            this.lblLength.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.toolTip.SetToolTip(this.lblLength, "Length of edited text");
+            // 
+            // panelMacro
+            // 
+            this.panelMacro.Controls.Add(this.grpMacro);
+            this.panelMacro.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panelMacro.Location = new System.Drawing.Point(436, 0);
+            this.panelMacro.Name = "panelMacro";
+            this.panelMacro.Padding = new System.Windows.Forms.Padding(8, 0, 0, 2);
+            this.panelMacro.Size = new System.Drawing.Size(160, 251);
+            this.panelMacro.TabIndex = 0;
+            // 
+            // grpMacro
+            // 
+            this.grpMacro.Controls.Add(this.panelMacroInternal);
+            this.grpMacro.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.grpMacro.Location = new System.Drawing.Point(8, 0);
+            this.grpMacro.Name = "grpMacro";
+            this.grpMacro.Size = new System.Drawing.Size(152, 249);
+            this.grpMacro.TabIndex = 0;
+            this.grpMacro.TabStop = false;
+            this.grpMacro.Text = "Macro";
+            // 
+            // panelMacroInternal
+            // 
+            this.panelMacroInternal.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelMacroInternal.Location = new System.Drawing.Point(3, 16);
+            this.panelMacroInternal.Name = "panelMacroInternal";
+            this.panelMacroInternal.Padding = new System.Windows.Forms.Padding(4);
+            this.panelMacroInternal.Size = new System.Drawing.Size(146, 230);
+            this.panelMacroInternal.TabIndex = 0;
+            // 
+            // mainMenu
+            // 
+            this.mainMenu.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
+            this.miFile,
+            this.miEdit,
+            this.miView,
+            this.miFileOperations,
+            this.miListOperations,
+            this.miHelp});
+            // 
+            // miFile
+            // 
+            this.miFile.Index = 0;
+            this.miFile.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
+            this.miFileRename,
+            this.menuItem5,
+            this.miFileRepeat,
+            this.menuItem2,
+            this.miFileExit});
+            this.miFile.Text = "&File";
+            // 
+            // miFileRename
+            // 
+            this.miFileRename.Index = 0;
+            this.miFileRename.Text = "&Rename";
+            this.miFileRename.Click += new System.EventHandler(this.miFileRename_Click);
+            // 
+            // menuItem5
+            // 
+            this.menuItem5.Index = 1;
+            this.menuItem5.Text = "-";
+            // 
+            // miFileRepeat
+            // 
+            this.miFileRepeat.Index = 2;
+            this.miFileRepeat.Shortcut = System.Windows.Forms.Shortcut.CtrlShiftR;
+            this.miFileRepeat.Text = "Repeat previous operation/macro";
+            this.miFileRepeat.Click += new System.EventHandler(this.miFileRepeat_Click);
+            // 
+            // menuItem2
+            // 
+            this.menuItem2.Index = 3;
+            this.menuItem2.Text = "-";
+            // 
+            // miFileExit
+            // 
+            this.miFileExit.Index = 4;
+            this.miFileExit.Text = "E&xit";
+            this.miFileExit.Click += new System.EventHandler(this.miFileExit_Click);
+            // 
+            // miEdit
+            // 
+            this.miEdit.Index = 1;
+            this.miEdit.Text = "&Edit";
+            // 
+            // miView
+            // 
+            this.miView.Index = 2;
+            this.miView.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
+            this.miViewEdit,
+            this.miViewMacro,
+            this.miViewNavigation,
+            this.miViewStatusbar,
+            this.miViewCommandLine});
+            this.miView.Text = "&View";
+            // 
+            // miViewEdit
+            // 
+            this.miViewEdit.Checked = true;
+            this.miViewEdit.Index = 0;
+            this.miViewEdit.Text = "&Edit";
+            this.miViewEdit.Click += new System.EventHandler(this.miViewEdit_Click);
+            // 
+            // miViewMacro
+            // 
+            this.miViewMacro.Checked = true;
+            this.miViewMacro.Index = 1;
+            this.miViewMacro.Text = "&Macro";
+            this.miViewMacro.Click += new System.EventHandler(this.miViewMacro_Click);
+            // 
+            // miViewNavigation
+            // 
+            this.miViewNavigation.Checked = true;
+            this.miViewNavigation.Index = 2;
+            this.miViewNavigation.Text = "&Navigation";
+            this.miViewNavigation.Click += new System.EventHandler(this.miViewNavigation_Click);
+            // 
+            // miViewStatusbar
+            // 
+            this.miViewStatusbar.Index = 3;
+            this.miViewStatusbar.Text = "&Statusbar";
+            this.miViewStatusbar.Visible = false;
+            this.miViewStatusbar.Click += new System.EventHandler(this.miViewStatusbar_Click);
+            // 
+            // miViewCommandLine
+            // 
+            this.miViewCommandLine.Index = 4;
+            this.miViewCommandLine.Text = "Command line";
+            this.miViewCommandLine.Click += new System.EventHandler(this.miViewCommandLine_Click);
+            // 
+            // miFileOperations
+            // 
+            this.miFileOperations.Index = 3;
+            this.miFileOperations.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
+            this.miOperationsWorkOnAllItems,
+            this.miOperationsWorkOnSelectedItems,
+            this.menuItem1,
+            this.miOperationsSpecial,
+            this.menuItem4});
+            this.miFileOperations.Text = "&Operations";
+            // 
+            // miOperationsWorkOnAllItems
+            // 
+            this.miOperationsWorkOnAllItems.Checked = true;
+            this.miOperationsWorkOnAllItems.Index = 0;
+            this.miOperationsWorkOnAllItems.Text = "Work on all items";
+            this.miOperationsWorkOnAllItems.Click += new System.EventHandler(this.miOperationsWorkOnAllItems_Click);
+            // 
+            // miOperationsWorkOnSelectedItems
+            // 
+            this.miOperationsWorkOnSelectedItems.Index = 1;
+            this.miOperationsWorkOnSelectedItems.Text = "Work on selected items";
+            this.miOperationsWorkOnSelectedItems.Click += new System.EventHandler(this.miOperationsWorkOnSelectedItems_Click);
+            // 
+            // menuItem1
+            // 
+            this.menuItem1.Index = 2;
+            this.menuItem1.Text = "-";
+            // 
+            // miOperationsSpecial
+            // 
+            this.miOperationsSpecial.Index = 3;
+            this.miOperationsSpecial.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
+            this.miOperationsFreeEdit});
+            this.miOperationsSpecial.Text = "Special";
+            // 
+            // miOperationsFreeEdit
+            // 
+            this.miOperationsFreeEdit.Index = 0;
+            this.miOperationsFreeEdit.Text = "Free edit";
+            this.miOperationsFreeEdit.Click += new System.EventHandler(this.miOperationsFreeEdit_Click);
+            // 
+            // menuItem4
+            // 
+            this.menuItem4.Index = 4;
+            this.menuItem4.Text = "-";
+            // 
+            // miListOperations
+            // 
+            this.miListOperations.Index = 4;
+            this.miListOperations.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
+            this.miEditListColumns,
+            this.miEditMacros,
+            this.miEditSettings});
+            this.miListOperations.Text = "&Tools";
+            // 
+            // miEditListColumns
+            // 
+            this.miEditListColumns.Index = 0;
+            this.miEditListColumns.Text = "&List columns";
+            this.miEditListColumns.Click += new System.EventHandler(this.miEditListColumns_Click);
+            // 
+            // miEditMacros
+            // 
+            this.miEditMacros.Index = 1;
+            this.miEditMacros.Text = "&Macros";
+            // 
+            // miEditSettings
+            // 
+            this.miEditSettings.Index = 2;
+            this.miEditSettings.Text = "&Options";
+            this.miEditSettings.Click += new System.EventHandler(this.miEditSettings_Click);
+            // 
+            // miHelp
+            // 
+            this.miHelp.Index = 5;
+            this.miHelp.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
+            this.miHelpAbout});
+            this.miHelp.Text = "&Help";
+            // 
+            // miHelpAbout
+            // 
+            this.miHelpAbout.Index = 0;
+            this.miHelpAbout.Text = "&About";
+            this.miHelpAbout.Click += new System.EventHandler(this.miHelpAbout_Click);
+            // 
+            // folderBrowserDialog
+            // 
+            this.folderBrowserDialog.ShowNewFolderButton = false;
+            // 
+            // FrmMain
+            // 
+            this.AutoScaleBaseSize = new System.Drawing.Size(5, 13);
+            this.ClientSize = new System.Drawing.Size(612, 432);
+            this.Controls.Add(this.panelMain);
+            this.Controls.Add(this.panelNavigation);
+            this.Controls.Add(this.panelCommandLine);
+            this.Controls.Add(this.panelStatusbar);
+            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Menu = this.mainMenu;
+            this.MinimumSize = new System.Drawing.Size(620, 460);
+            this.Name = "FrmMain";
+            this.Padding = new System.Windows.Forms.Padding(8);
+            this.Text = "Renamer NG -= BETA =- by Albert Bertilsson, version ";
+            this.Closing += new System.ComponentModel.CancelEventHandler(this.FrmMain_Closing);
+            this.Load += new System.EventHandler(this.FrmMain_Load);
+            this.panelNavigation.ResumeLayout(false);
+            this.panelPath.ResumeLayout(false);
+            this.panelPath.PerformLayout();
+            this.panelPathButtons.ResumeLayout(false);
+            this.panelCommandLine.ResumeLayout(false);
+            this.panelCommandLineEdit.ResumeLayout(false);
+            this.panelCommandLineEdit.PerformLayout();
+            this.panelMain.ResumeLayout(false);
+            this.panelList.ResumeLayout(false);
+            this.panelEdit.ResumeLayout(false);
+            this.panelEdit.PerformLayout();
+            this.panelEditButtons.ResumeLayout(false);
+            this.panelMacro.ResumeLayout(false);
+            this.grpMacro.ResumeLayout(false);
+            this.ResumeLayout(false);
 
 		}
 		#endregion
@@ -1117,7 +1120,8 @@ namespace RenamerNG
 
 			int failed = 0;
 			op.Init();
-			foreach (ListViewItem lvi in listMain.Items)
+            //listMain.SelectedIndexChanged -= new System.EventHandler(listMain_SelectedIndexChanged);
+            foreach (ListViewItem lvi in listMain.Items)
 			{
 				if (AffectedFileName(lvi, op))
 				{
@@ -1125,8 +1129,9 @@ namespace RenamerNG
 					f.Updated = false;
 					op.Perform(lvi);
 					if (!f.Success) failed++;
-				}
+      			}
 			}
+            //listMain.SelectedIndexChanged += new System.EventHandler(listMain_SelectedIndexChanged);
 
 			PostOperationWork(failed);
 		}
@@ -1218,8 +1223,6 @@ namespace RenamerNG
 				listMain.Items.Clear();
 			}
 
-			ColorList();
-
 			listMain.ResumeLayout(true);
 		}
 
@@ -1277,43 +1280,47 @@ namespace RenamerNG
 			Scan();
 		}
 
-		private void listMain_SelectedIndexChanged(object sender, System.EventArgs e)
+        private void listMain_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e)
+        {
+            ListViewItem lvi = e.Item;
+
+            if (lvi.Selected)
+                lvi.BackColor = settings.ListColourSelectedBackground;
+            else
+                lvi.BackColor = settings.ListColourBackground;
+        }
+
+        static int focusedItem = -1;
+        private void listMain_SelectedIndexChanged(object sender, System.EventArgs e)
 		{
-			if (listMain.Items.Count == 0)
-			{
-				tbEdit.Text = "";
-				return;
-			}
+            if (listMain.Items.Count == 0)
+            {
+                tbEdit.Text = "";
+                return;
+            }
 
-			if (listMain.FocusedItem == null)
-				listMain.Items[0].Focused = true;
+            if (listMain.FocusedItem == null)
+                listMain.Items[0].Focused = true;
 
-			tbEdit.Text = ((FileName)listMain.FocusedItem.Tag).NewName;
-			tbEdit.Focus();
-			tbEdit.SelectionStart = editPosition;
-			tbEdit.SelectionLength = 0;
+            if (focusedItem >= 0 && focusedItem < listMain.Items.Count)
+                listMain.Items[focusedItem].ForeColor = settings.ListColourText;
 
-			ColorList();
-		}
+            ListViewItem lvi = listMain.FocusedItem;
+            if (lvi.Focused)
+            {
+                lvi.ForeColor = settings.ListColourFocusedText;
+                focusedItem = lvi.Index;
+            }
+            else
+            {
+                lvi.ForeColor = settings.ListColourText;
+            }
 
-		private void ColorList()
-		{
-			foreach (ListViewItem lvi in listMain.Items)
-			{
-				if (miOperationsWorkOnAllItems.Checked && lvi.Selected)
-					lvi.Selected = false;
-
-				if (lvi.Selected)
-					lvi.BackColor = settings.ListColourSelectedBackground;
-				else
-					lvi.BackColor = settings.ListColourBackground;
-
-				if (lvi.Focused)
-					lvi.ForeColor = settings.ListColourFocusedText;
-				else
-					lvi.ForeColor = settings.ListColourText;
-			}
-		}
+            tbEdit.Text = ((FileName)lvi.Tag).NewName;
+            tbEdit.Focus();
+            tbEdit.SelectionStart = editPosition;
+            tbEdit.SelectionLength = 0;
+        }
 
 		private void listMain_KeyDown(object sender, System.Windows.Forms.KeyEventArgs e)
 		{
@@ -1555,8 +1562,6 @@ namespace RenamerNG
 		private void miEditSettings_Click(object sender, System.EventArgs e)
 		{
 			settings.ShowDialog();
-
-			ColorList();
 		}
 
 
@@ -1599,16 +1604,23 @@ namespace RenamerNG
 
 		private void miOperationsWorkOnAllItems_Click(object sender, System.EventArgs e)
 		{
-			miOperationsWorkOnAllItems.Checked = true;
+            foreach (ListViewItem lvi in listMain.Items)
+                lvi.Selected = false;
+
+            listMain.ItemSelectionChanged -= new System.Windows.Forms.ListViewItemSelectionChangedEventHandler(listMain_ItemSelectionChanged);
+
+            miOperationsWorkOnAllItems.Checked = true;
 			miOperationsWorkOnSelectedItems.Checked = false;
-			ColorList();
 		}
 
 		private void miOperationsWorkOnSelectedItems_Click(object sender, System.EventArgs e)
 		{
-			miOperationsWorkOnAllItems.Checked = false;
+            foreach (ListViewItem lvi in listMain.Items)
+                lvi.Selected = false;
+
+            listMain.ItemSelectionChanged += new System.Windows.Forms.ListViewItemSelectionChangedEventHandler(listMain_ItemSelectionChanged);
+            miOperationsWorkOnAllItems.Checked = false;
 			miOperationsWorkOnSelectedItems.Checked = true;
-			ColorList();
 		}
 
 		#region Dialogs
