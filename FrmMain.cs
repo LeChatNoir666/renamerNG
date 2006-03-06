@@ -231,7 +231,8 @@ namespace RenamerNG
 			listOperations.Add(new ListOperations.SelectAll());
 			listOperations.Add(new ListOperations.SelectNone());
 			listOperations.Add(new ListOperations.SelectMatching());
-			listOperations.Add(new ListOperations.DeselectMatching());
+            listOperations.Add(new ListOperations.SelectRegExp());
+            listOperations.Add(new ListOperations.DeselectMatching());
 			listOperations.Add(new ListOperations.InvertSelection());
 			listOperations.Add(new ListOperations.FilterChanged());
 			listOperations.Add(new ListOperations.FilterSelected());
@@ -1602,22 +1603,23 @@ namespace RenamerNG
 		}
 		#endregion
 
-		private void miOperationsWorkOnAllItems_Click(object sender, System.EventArgs e)
-		{
+        private void ClearSelected()
+        {
             foreach (ListViewItem lvi in listMain.Items)
                 lvi.Selected = false;
+        }
 
+		private void miOperationsWorkOnAllItems_Click(object sender, System.EventArgs e)
+		{
+            ClearSelected();
             listMain.ItemSelectionChanged -= new System.Windows.Forms.ListViewItemSelectionChangedEventHandler(listMain_ItemSelectionChanged);
-
             miOperationsWorkOnAllItems.Checked = true;
 			miOperationsWorkOnSelectedItems.Checked = false;
 		}
 
 		private void miOperationsWorkOnSelectedItems_Click(object sender, System.EventArgs e)
 		{
-            foreach (ListViewItem lvi in listMain.Items)
-                lvi.Selected = false;
-
+            ClearSelected();
             listMain.ItemSelectionChanged += new System.Windows.Forms.ListViewItemSelectionChangedEventHandler(listMain_ItemSelectionChanged);
             miOperationsWorkOnAllItems.Checked = false;
 			miOperationsWorkOnSelectedItems.Checked = true;
