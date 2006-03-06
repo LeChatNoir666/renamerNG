@@ -693,6 +693,9 @@ namespace RenamerNG
 		{
 			if ((int)e.KeyChar == 13)
 				btOk_Click(null, null);
-		}
+
+            if ((int)e.KeyChar == 27)
+                btCancel_Click(null, null);
+        }
 	}
 }

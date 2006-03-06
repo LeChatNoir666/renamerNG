@@ -1,11 +1,8 @@
 -= TODO (ideas to possibly implement, in no particular order) =-
-* Use Esc-key to abort dialogs.
-* OnScan persisten macro that is executed on scanning.
-* Improve speed of selection/filtering operations.
+* OnScan persistent macro that is executed on scanning.
 * Add reg exp filtering of list?
 * List dirs first as in most file managers
 * List Columns zip up to a default size when the prefs change - stop this, or resize the columns to fit the widest entry?
-* reorder columns by dragging rather than prefs dialog
 * Button to rename files (optional through setting?)
 * Sort by clicking columns
 * Sort by moving around items.
