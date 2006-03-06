@@ -1,443 +1,304 @@
-<VisualStudioProject>
-    <CSHARP
-        ProjectType = "Local"
-        ProductVersion = "7.10.3077"
-        SchemaVersion = "2.0"
-        ProjectGuid = "{E128D5EA-F87D-486B-B44A-DC4FCBC98721}"
-    >
-        <Build>
-            <Settings
-                ApplicationIcon = "App.ico"
-                AssemblyKeyContainerName = ""
-                AssemblyName = "RenamerNG"
-                AssemblyOriginatorKeyFile = ""
-                DefaultClientScript = "JScript"
-                DefaultHTMLPageLayout = "Grid"
-                DefaultTargetSchema = "IE50"
-                DelaySign = "false"
-                OutputType = "WinExe"
-                PreBuildEvent = ""
-                PostBuildEvent = ""
-                RootNamespace = "RenamerNG"
-                RunPostBuildEvent = "OnBuildSuccess"
-                StartupObject = ""
-            >
-                <Config
-                    Name = "Debug"
-                    AllowUnsafeBlocks = "false"
-                    BaseAddress = "285212672"
-                    CheckForOverflowUnderflow = "false"
-                    ConfigurationOverrideFile = ""
-                    DefineConstants = "DEBUG;TRACE"
-                    DocumentationFile = ""
-                    DebugSymbols = "true"
-                    FileAlignment = "4096"
-                    IncrementalBuild = "false"
-                    NoStdLib = "false"
-                    NoWarn = ""
-                    Optimize = "false"
-                    OutputPath = "bin\Debug\"
-                    RegisterForComInterop = "false"
-                    RemoveIntegerChecks = "false"
-                    TreatWarningsAsErrors = "false"
-                    WarningLevel = "4"
-                />
-                <Config
-                    Name = "Release"
-                    AllowUnsafeBlocks = "false"
-                    BaseAddress = "285212672"
-                    CheckForOverflowUnderflow = "false"
-                    ConfigurationOverrideFile = ""
-                    DefineConstants = "TRACE"
-                    DocumentationFile = ""
-                    DebugSymbols = "false"
-                    FileAlignment = "4096"
-                    IncrementalBuild = "false"
-                    NoStdLib = "false"
-                    NoWarn = ""
-                    Optimize = "true"
-                    OutputPath = "bin\Release\"
-                    RegisterForComInterop = "false"
-                    RemoveIntegerChecks = "false"
-                    TreatWarningsAsErrors = "false"
-                    WarningLevel = "4"
-                />
-            </Settings>
-            <References>
-                <Reference
-                    Name = "System"
-                    AssemblyName = "System"
-                    HintPath = "..\..\..\..\..\..\WINDOWS\Microsoft.NET\Framework\v1.1.4322\System.dll"
-                />
-                <Reference
-                    Name = "System.Data"
-                    AssemblyName = "System.Data"
-                    HintPath = "..\..\..\..\..\..\WINDOWS\Microsoft.NET\Framework\v1.1.4322\System.Data.dll"
-                />
-                <Reference
-                    Name = "System.Drawing"
-                    AssemblyName = "System.Drawing"
-                    HintPath = "..\..\..\..\..\..\WINDOWS\Microsoft.NET\Framework\v1.1.4322\System.Drawing.dll"
-                />
-                <Reference
-                    Name = "System.Windows.Forms"
-                    AssemblyName = "System.Windows.Forms"
-                    HintPath = "..\..\..\..\..\..\WINDOWS\Microsoft.NET\Framework\v1.1.4322\System.Windows.Forms.dll"
-                />
-                <Reference
-                    Name = "System.XML"
-                    AssemblyName = "System.Xml"
-                    HintPath = "..\..\..\..\..\..\WINDOWS\Microsoft.NET\Framework\v1.1.4322\System.XML.dll"
-                />
-                <Reference
-                    Name = "System.Runtime.Serialization.Formatters.Soap"
-                    AssemblyName = "System.Runtime.Serialization.Formatters.Soap"
-                    HintPath = "C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\System.Runtime.Serialization.Formatters.Soap.dll"
-                />
-            </References>
-        </Build>
-        <Files>
-            <Include>
-                <File
-                    RelPath = "App.ico"
-                    BuildAction = "Content"
-                />
-                <File
-                    RelPath = "AssemblyInfo.cs"
-                    SubType = "Code"
-                    BuildAction = "Compile"
-                />
-                <File
-                    RelPath = "FileName.cs"
-                    SubType = "Code"
-                    BuildAction = "Compile"
-                />
-                <File
-                    RelPath = "FileScanner.cs"
-                    SubType = "Code"
-                    BuildAction = "Compile"
-                />
-                <File
-                    RelPath = "FrmAbout.cs"
-                    SubType = "Form"
-                    BuildAction = "Compile"
-                />
-                <File
-                    RelPath = "FrmAbout.resx"
-                    DependentUpon = "FrmAbout.cs"
-                    BuildAction = "EmbeddedResource"
-                />
-                <File
-                    RelPath = "FrmDefaultDialog.cs"
-                    SubType = "Form"
-                    BuildAction = "Compile"
-                />
-                <File
-                    RelPath = "FrmDefaultDialog.resx"
-                    DependentUpon = "FrmDefaultDialog.cs"
-                    BuildAction = "EmbeddedResource"
-                />
-                <File
-                    RelPath = "FrmDynamic.cs"
-                    SubType = "Form"
-                    BuildAction = "Compile"
-                />
-                <File
-                    RelPath = "FrmDynamic.resx"
-                    DependentUpon = "FrmDynamic.cs"
-                    BuildAction = "EmbeddedResource"
-                />
-                <File
-                    RelPath = "FrmListColumns.cs"
-                    SubType = "Form"
-                    BuildAction = "Compile"
-                />
-                <File
-                    RelPath = "FrmListColumns.resx"
-                    DependentUpon = "FrmListColumns.cs"
-                    BuildAction = "EmbeddedResource"
-                />
-                <File
-                    RelPath = "FrmMain.cs"
-                    SubType = "Form"
-                    BuildAction = "Compile"
-                />
-                <File
-                    RelPath = "FrmMain.resx"
-                    DependentUpon = "FrmMain.cs"
-                    BuildAction = "EmbeddedResource"
-                />
-                <File
-                    RelPath = "FrmProgress.cs"
-                    SubType = "Form"
-                    BuildAction = "Compile"
-                />
-                <File
-                    RelPath = "FrmProgress.resx"
-                    DependentUpon = "FrmProgress.cs"
-                    BuildAction = "EmbeddedResource"
-                />
-                <File
-                    RelPath = "GUIElement.cs"
-                    SubType = "Code"
-                    BuildAction = "Compile"
-                />
-                <File
-                    RelPath = "Operation.cs"
-                    SubType = "Code"
-                    BuildAction = "Compile"
-                />
-                <File
-                    RelPath = "OperationList.cs"
-                    SubType = "Code"
-                    BuildAction = "Compile"
-                />
-                <File
-                    RelPath = "Renamer.cs"
-                    SubType = "Code"
-                    BuildAction = "Compile"
-                />
-                <File
-                    RelPath = "SerializationCopy.cs"
-                    SubType = "Code"
-                    BuildAction = "Compile"
-                />
-                <File
-                    RelPath = "TODO.txt"
-                    BuildAction = "Content"
-                />
-                <File
-                    RelPath = "Dialogs\GetString.cs"
-                    SubType = "Form"
-                    BuildAction = "Compile"
-                />
-                <File
-                    RelPath = "Dialogs\GetString.resx"
-                    DependentUpon = "GetString.cs"
-                    BuildAction = "EmbeddedResource"
-                />
-                <File
-                    RelPath = "FileNameOperations\DateInsertCurrent.cs"
-                    SubType = "Code"
-                    BuildAction = "Compile"
-                />
-                <File
-                    RelPath = "FileNameOperations\DateInsertFileCreated.cs"
-                    SubType = "Code"
-                    BuildAction = "Compile"
-                />
-                <File
-                    RelPath = "FileNameOperations\DateInsertFileLastAccessed.cs"
-                    SubType = "Code"
-                    BuildAction = "Compile"
-                />
-                <File
-                    RelPath = "FileNameOperations\DateInsertFileLastWritten.cs"
-                    SubType = "Code"
-                    BuildAction = "Compile"
-                />
-                <File
-                    RelPath = "FileNameOperations\Insert.cs"
-                    SubType = "Code"
-                    BuildAction = "Compile"
-                />
-                <File
-                    RelPath = "FileNameOperations\InsertNumber.cs"
-                    SubType = "Code"
-                    BuildAction = "Compile"
-                />
-                <File
-                    RelPath = "FileNameOperations\InvertCase.cs"
-                    SubType = "Code"
-                    BuildAction = "Compile"
-                />
-                <File
-                    RelPath = "FileNameOperations\LargeCase.cs"
-                    SubType = "Code"
-                    BuildAction = "Compile"
-                />
-                <File
-                    RelPath = "FileNameOperations\LowerCase.cs"
-                    SubType = "Code"
-                    BuildAction = "Compile"
-                />
-                <File
-                    RelPath = "FileNameOperations\RandomCase.cs"
-                    SubType = "Code"
-                    BuildAction = "Compile"
-                />
-                <File
-                    RelPath = "FileNameOperations\RegExp.cs"
-                    SubType = "Code"
-                    BuildAction = "Compile"
-                />
-                <File
-                    RelPath = "FileNameOperations\Replace.cs"
-                    SubType = "Code"
-                    BuildAction = "Compile"
-                />
-                <File
-                    RelPath = "FileNameOperations\ReplaceCharacters.cs"
-                    SubType = "Code"
-                    BuildAction = "Compile"
-                />
-                <File
-                    RelPath = "FileNameOperations\SentenceCase.cs"
-                    SubType = "Code"
-                    BuildAction = "Compile"
-                />
-                <File
-                    RelPath = "FileNameOperations\TrimCharacters.cs"
-                    SubType = "Code"
-                    BuildAction = "Compile"
-                />
-                <File
-                    RelPath = "FileNameOperations\TrimLeadingSpaces.cs"
-                    SubType = "Code"
-                    BuildAction = "Compile"
-                />
-                <File
-                    RelPath = "FileNameOperations\TrimMultipleSpaces.cs"
-                    SubType = "Code"
-                    BuildAction = "Compile"
-                />
-                <File
-                    RelPath = "FileNameOperations\TrimTailingSpaces.cs"
-                    SubType = "Code"
-                    BuildAction = "Compile"
-                />
-                <File
-                    RelPath = "FileNameOperations\Undo.cs"
-                    SubType = "Code"
-                    BuildAction = "Compile"
-                />
-                <File
-                    RelPath = "FileNameOperations\UpperCase.cs"
-                    SubType = "Code"
-                    BuildAction = "Compile"
-                />
-                <File
-                    RelPath = "ListOperations\DeselectMatching.cs"
-                    SubType = "Code"
-                    BuildAction = "Compile"
-                />
-                <File
-                    RelPath = "ListOperations\FilterChanged.cs"
-                    SubType = "Code"
-                    BuildAction = "Compile"
-                />
-                <File
-                    RelPath = "ListOperations\FilterSelected.cs"
-                    SubType = "Code"
-                    BuildAction = "Compile"
-                />
-                <File
-                    RelPath = "ListOperations\InvertSelection.cs"
-                    SubType = "Code"
-                    BuildAction = "Compile"
-                />
-                <File
-                    RelPath = "ListOperations\SelectAll.cs"
-                    SubType = "Code"
-                    BuildAction = "Compile"
-                />
-                <File
-                    RelPath = "ListOperations\SelectMatching.cs"
-                    SubType = "Code"
-                    BuildAction = "Compile"
-                />
-                <File
-                    RelPath = "ListOperations\SelectNone.cs"
-                    SubType = "Code"
-                    BuildAction = "Compile"
-                />
-                <File
-                    RelPath = "Macros\FrmEditMacro.cs"
-                    SubType = "Form"
-                    BuildAction = "Compile"
-                />
-                <File
-                    RelPath = "Macros\FrmEditMacro.resx"
-                    DependentUpon = "FrmEditMacro.cs"
-                    BuildAction = "EmbeddedResource"
-                />
-                <File
-                    RelPath = "Macros\Macro.cs"
-                    SubType = "Code"
-                    BuildAction = "Compile"
-                />
-                <File
-                    RelPath = "Macros\MacroFile.cs"
-                    SubType = "Code"
-                    BuildAction = "Compile"
-                />
-                <File
-                    RelPath = "Macros\MacroList.cs"
-                    SubType = "UserControl"
-                    BuildAction = "Compile"
-                />
-                <File
-                    RelPath = "Macros\MacroList.resx"
-                    DependentUpon = "MacroList.cs"
-                    BuildAction = "EmbeddedResource"
-                />
-                <File
-                    RelPath = "Macros\RecordingIndicator.cs"
-                    SubType = "UserControl"
-                    BuildAction = "Compile"
-                />
-                <File
-                    RelPath = "Macros\RecordingIndicator.resx"
-                    DependentUpon = "RecordingIndicator.cs"
-                    BuildAction = "EmbeddedResource"
-                />
-                <File
-                    RelPath = "Settings\FrmSettings.cs"
-                    SubType = "Form"
-                    BuildAction = "Compile"
-                />
-                <File
-                    RelPath = "Settings\FrmSettings.resx"
-                    DependentUpon = "FrmSettings.cs"
-                    BuildAction = "EmbeddedResource"
-                />
-                <File
-                    RelPath = "Settings\PathFinder.cs"
-                    SubType = "Code"
-                    BuildAction = "Compile"
-                />
-                <File
-                    RelPath = "Settings\ShellExtension.cs"
-                    SubType = "Code"
-                    BuildAction = "Compile"
-                />
-                <File
-                    RelPath = "SpecialOperations\FreeEdit.cs"
-                    SubType = "Code"
-                    BuildAction = "Compile"
-                />
-                <File
-                    RelPath = "SpecialOperations\FrmDefault.cs"
-                    SubType = "Form"
-                    BuildAction = "Compile"
-                />
-                <File
-                    RelPath = "SpecialOperations\FrmDefault.resx"
-                    DependentUpon = "FrmDefault.cs"
-                    BuildAction = "EmbeddedResource"
-                />
-                <File
-                    RelPath = "SpecialOperations\FrmFreeEdit.cs"
-                    SubType = "Form"
-                    BuildAction = "Compile"
-                />
-                <File
-                    RelPath = "SpecialOperations\FrmFreeEdit.resx"
-                    DependentUpon = "FrmFreeEdit.cs"
-                    BuildAction = "EmbeddedResource"
-                />
-            </Include>
-        </Files>
-    </CSHARP>
-</VisualStudioProject>
-
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <ProjectType>Local</ProjectType>
+    <ProductVersion>8.0.50727</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{E128D5EA-F87D-486B-B44A-DC4FCBC98721}</ProjectGuid>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ApplicationIcon>App.ico</ApplicationIcon>
+    <AssemblyKeyContainerName>
+    </AssemblyKeyContainerName>
+    <AssemblyName>RenamerNG</AssemblyName>
+    <AssemblyOriginatorKeyFile>
+    </AssemblyOriginatorKeyFile>
+    <DefaultClientScript>JScript</DefaultClientScript>
+    <DefaultHTMLPageLayout>Grid</DefaultHTMLPageLayout>
+    <DefaultTargetSchema>IE50</DefaultTargetSchema>
+    <DelaySign>false</DelaySign>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>RenamerNG</RootNamespace>
+    <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
+    <StartupObject>
+    </StartupObject>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>bin\Debug\</OutputPath>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+    <BaseAddress>285212672</BaseAddress>
+    <CheckForOverflowUnderflow>false</CheckForOverflowUnderflow>
+    <ConfigurationOverrideFile>
+    </ConfigurationOverrideFile>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DocumentationFile>
+    </DocumentationFile>
+    <DebugSymbols>true</DebugSymbols>
+    <FileAlignment>4096</FileAlignment>
+    <NoStdLib>false</NoStdLib>
+    <NoWarn>
+    </NoWarn>
+    <Optimize>false</Optimize>
+    <RegisterForComInterop>false</RegisterForComInterop>
+    <RemoveIntegerChecks>false</RemoveIntegerChecks>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <WarningLevel>4</WarningLevel>
+    <DebugType>full</DebugType>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>bin\Release\</OutputPath>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+    <BaseAddress>285212672</BaseAddress>
+    <CheckForOverflowUnderflow>false</CheckForOverflowUnderflow>
+    <ConfigurationOverrideFile>
+    </ConfigurationOverrideFile>
+    <DefineConstants>TRACE</DefineConstants>
+    <DocumentationFile>
+    </DocumentationFile>
+    <DebugSymbols>false</DebugSymbols>
+    <FileAlignment>4096</FileAlignment>
+    <NoStdLib>false</NoStdLib>
+    <NoWarn>
+    </NoWarn>
+    <Optimize>true</Optimize>
+    <RegisterForComInterop>false</RegisterForComInterop>
+    <RemoveIntegerChecks>false</RemoveIntegerChecks>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <WarningLevel>4</WarningLevel>
+    <DebugType>none</DebugType>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System">
+      <Name>System</Name>
+    </Reference>
+    <Reference Include="System.Data">
+      <Name>System.Data</Name>
+    </Reference>
+    <Reference Include="System.Drawing">
+      <Name>System.Drawing</Name>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization.Formatters.Soap">
+      <Name>System.Runtime.Serialization.Formatters.Soap</Name>
+    </Reference>
+    <Reference Include="System.Windows.Forms">
+      <Name>System.Windows.Forms</Name>
+    </Reference>
+    <Reference Include="System.Xml">
+      <Name>System.XML</Name>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App.ico" />
+    <Content Include="TODO.txt" />
+    <Compile Include="AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Dialogs\GetString.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FileName.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="FileNameOperations\DateInsertCurrent.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="FileNameOperations\DateInsertFileCreated.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="FileNameOperations\DateInsertFileLastAccessed.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="FileNameOperations\DateInsertFileLastWritten.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="FileNameOperations\Insert.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="FileNameOperations\InsertNumber.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="FileNameOperations\InvertCase.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="FileNameOperations\LargeCase.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="FileNameOperations\LowerCase.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="FileNameOperations\RandomCase.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="FileNameOperations\RegExp.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="FileNameOperations\Replace.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="FileNameOperations\ReplaceCharacters.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="FileNameOperations\SentenceCase.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="FileNameOperations\TrimCharacters.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="FileNameOperations\TrimLeadingSpaces.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="FileNameOperations\TrimMultipleSpaces.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="FileNameOperations\TrimTailingSpaces.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="FileNameOperations\Undo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="FileNameOperations\UpperCase.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="FileScanner.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="FrmAbout.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmDefaultDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmDynamic.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmListColumns.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmProgress.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUIElement.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ListOperations\DeselectMatching.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ListOperations\FilterChanged.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ListOperations\FilterSelected.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ListOperations\InvertSelection.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ListOperations\SelectAll.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ListOperations\SelectMatching.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ListOperations\SelectNone.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Macros\FrmEditMacro.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Macros\Macro.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Macros\MacroFile.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Macros\MacroList.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Macros\RecordingIndicator.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Operation.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="OperationList.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Renamer.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SerializationCopy.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Settings\FrmSettings.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Settings\PathFinder.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Settings\ShellExtension.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SpecialOperations\FreeEdit.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SpecialOperations\FrmDefault.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SpecialOperations\FrmFreeEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <EmbeddedResource Include="Dialogs\GetString.resx">
+      <DependentUpon>GetString.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmAbout.resx">
+      <DependentUpon>FrmAbout.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmDefaultDialog.resx">
+      <DependentUpon>FrmDefaultDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmDynamic.resx">
+      <DependentUpon>FrmDynamic.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmListColumns.resx">
+      <DependentUpon>FrmListColumns.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmMain.resx">
+      <DependentUpon>FrmMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmProgress.resx">
+      <DependentUpon>FrmProgress.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Macros\FrmEditMacro.resx">
+      <DependentUpon>FrmEditMacro.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Macros\MacroList.resx">
+      <DependentUpon>MacroList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Macros\RecordingIndicator.resx">
+      <DependentUpon>RecordingIndicator.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Settings\FrmSettings.resx">
+      <DependentUpon>FrmSettings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SpecialOperations\FrmDefault.resx">
+      <DependentUpon>FrmDefault.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SpecialOperations\FrmFreeEdit.resx">
+      <DependentUpon>FrmFreeEdit.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PreBuildEvent>
+    </PreBuildEvent>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+</Project>

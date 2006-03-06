@@ -1223,6 +1223,21 @@ namespace RenamerNG
 			listMain.ResumeLayout(true);
 		}
 
+        delegate void AddItemCallback(ListViewItem lvi);
+
+        private void AddItem(ListViewItem lvi)
+        {
+            if (listMain.InvokeRequired)
+            {
+                AddItemCallback cb = new AddItemCallback(AddItem);
+                Invoke(cb, new object[] { lvi });
+            }
+            else
+            {
+                listMain.Items.Add(lvi);
+            }
+        }
+
 		private void AddItem(FileName f)
 		{
 			ListViewItem lvi = new ListViewItem(f[settings.ListColumns[0]]);
@@ -1233,7 +1248,7 @@ namespace RenamerNG
 			}
 
 			lvi.Tag = f;
-			listMain.Items.Add(lvi);
+			AddItem(lvi);
 		}
 
 		private void UpdateItem(ListViewItem lvi)

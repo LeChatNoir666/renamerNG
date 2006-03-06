@@ -117,9 +117,9 @@ namespace RenamerNG
 
 				if (depth == 0)
 				{
-					progress.progress.Minimum = 0;
-					progress.progress.Maximum = paths.Length;
-					progress.progress.Value = 0;
+					progress.SetMinimum(0);
+					progress.SetMaximum(paths.Length);
+					progress.SetValue(0);
 				}
 
 				foreach (string p in paths)
@@ -131,7 +131,7 @@ namespace RenamerNG
 					PerformRecursiveScan();
 					depth--;
 
-					if (depth == 0) progress.progress.Value++;
+                    if (depth == 0) progress.IncreaseValue();
 					path = temp;
 				}
 
