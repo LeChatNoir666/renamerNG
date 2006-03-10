@@ -45,14 +45,14 @@ namespace RenamerNG
 				if (recurse)
 				{
 					depth = 0;
-					progress = new FrmProgress();
-					Thread t = new Thread(new ThreadStart(PerformRecursiveScan));
-					t.Start();
-					progress.ShowDialog();
-				}
+                    progress = new FrmProgress();
+                    Thread t = new Thread(new ThreadStart(PerformRecursiveScan));
+                    t.Start();
+                    progress.ShowDialog();
+                }
 				else
 				{
-					PerformScan();
+                    PerformScan();
 				}
 			}
 			catch (UnauthorizedAccessException)
@@ -111,7 +111,9 @@ namespace RenamerNG
 		{
 			try
 			{
-				if (progress.Cancel) return;
+                while (!progress.Visible) Thread.Sleep(10);
+
+                if (progress.Cancel) return;
 
 				string[] paths = Directory.GetDirectories(path);
 
@@ -140,8 +142,8 @@ namespace RenamerNG
 				if (depth == 0)
 				{
 					if (progress.Cancel) successful = false;
-					progress.Close();
-				}
+                    progress.Close();
+                }
 			}
 			catch (UnauthorizedAccessException)
 			{
