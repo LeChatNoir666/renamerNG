@@ -7,6 +7,7 @@ Contents:
 Regular expressions
 Command Line Interface
 Parameters during startup
+OnScan macro
 
 
 
@@ -47,3 +48,11 @@ Syntax:
 RenamerNG [directory]
 
 directory - Should be a valid directory used for simple shell integration
+
+
+
+OnScan macro:
+After each time a directory is scanned RenamerNG will look for a macro named
+"OnScan" if this macro exists it will be automatically executed. This allows
+you to record any operations in this macro that you want to be executed when
+you scan a directory.

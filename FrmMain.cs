@@ -1225,6 +1225,10 @@ namespace RenamerNG
 			}
 
 			listMain.ResumeLayout(true);
+
+            //Execute OnScan macro if present...
+            Macro m = macroList1.GetMacroFromName("OnScan");
+            if (m != null) PerformMacro(m);
 		}
 
         delegate void AddItemCallback(ListViewItem lvi);
