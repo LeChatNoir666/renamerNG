@@ -20,7 +20,6 @@
 * Support all operations from Renamer 6.0
 	- Multi change (reg exp enough?)
 	- Auto replace?
-	- Trim extension
 	- Make it a Title
 	- Upper Case after find (make the character after a find operation upper case)
 	- ABBREVIATIONS (example u.s.a. -> U.S.A)
