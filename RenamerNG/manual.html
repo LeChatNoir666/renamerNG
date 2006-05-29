@@ -1,58 +1,60 @@
-Short documentation of RenamerNG (the stuff that is hard to find out)
+<html>
+<head>
+<title>RenamerNG manual</title>
+</head>
+<body>
+<h1>RenamerNG manual</h1>
+Short documentation of RenamerNG (for the stuff that is hard to find out)
 This manual only specifies a few things for further help check out the
-RenamerNG discussion forum at: http://www.renamerng.ipbfree.org/
-
-
-Contents:
-Regular expressions
-Command Line Interface
-Parameters during startup
-OnScan macro
-
-
-
-Regular expressions:
+RenamerNG discussion forum at: <a href="http://www.renamerng.ipbfree.org/" target="_blank">http://www.renamerng.ipbfree.org/</a>
+<br>
+<br>
+<b>Contents</b><br>
+<a href="#regexp">Regular expressions</a><br>
+<a href="#cli">Command Line Interface</a><br>
+<a href="#args">Parameters during startup</a><br>
+<a href="#onscan">OnScan macro</a><br>
+<br>
+<br>
+<h1><a name="regexp">Regular expressions</h1>
 One of the most powerful features of RenamerNG is the possibility to execute
 regular expressions. If you are new to regular expressions you can have a look
-at http://www.regular-expressions.info to learn more.
-
-
-
-Command Line Interface (CLI):
-
+at <a href="http://www.regular-expressions.info" target="_blank">http://www.regular-expressions.info</a>
+to learn more.<br>
+<br>
+<br>
+<h1><a name="cli">Command Line Interface (CLI)</h1>
 RenamerNG now as an experimental CLI that enables the user to enter commands
-(operations or macros) as text and execute them.
-
+(operations or macros) as text and execute them.<br>
+<pre>
 Syntax:
 
 operation or macro name[|parameter1][|parameter2][...]
-
+</pre>
 The syntax checking is not that advanced and you can easily cause a command to
 fail by spelling wrong, but If you like to tinker with it, it's available. If
 many users like this feature it will be further developed. To specify a | in
 for example a replace operation use \| other escapes are \n for new line and
-\" for double quote.
-
-
-
-Parameters during startup:
-
+\" for double quote.<br>
+<br>
+<br>
+<h1><a name="args">Parameters during startup</h1>
 RenamerNG can be started with three different sets of parameters if
 none or one parameter is given RenamerNG will start and scan the dir
-if specified. If the complete set of parameters (all 6) is given RenamerNG
-will start, scan the dir with the specified parameters, execute the command
-and finally exit.
-
+if specified.<br>
+<pre>
 Syntax:
 
 RenamerNG [directory]
 
 directory - Should be a valid directory used for simple shell integration
-
-
-
-OnScan macro:
+</pre>
+<br>
+<br>
+<h1><a name="onscan">OnScan macro</h1>
 After each time a directory is scanned RenamerNG will look for a macro named
 "OnScan" if this macro exists it will be automatically executed. This allows
 you to record any operations in this macro that you want to be executed when
 you scan a directory.
+</body>
+</html>
