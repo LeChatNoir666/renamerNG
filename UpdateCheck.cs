@@ -8,7 +8,6 @@ namespace RenamerNG
 {
     static class UpdateCheck
     {
-        static string url;
         static long lastCheck;
         static bool check;
         static bool checkBeta;
@@ -23,9 +22,8 @@ namespace RenamerNG
             }
         }
 
-        public static void Check(string urlArg, long lastCheckArg, bool checkArg, bool checkBetaArg, string versionArg, string betaVersionArg)
+        public static void Check(long lastCheckArg, bool checkArg, bool checkBetaArg, string versionArg, string betaVersionArg)
         {
-            url = urlArg;
             lastCheck = lastCheckArg;
             check = checkArg;
             checkBeta = checkBetaArg;
@@ -59,7 +57,11 @@ namespace RenamerNG
         {
             try
             {
-                HttpWebResponse response = (HttpWebResponse)((HttpWebRequest)WebRequest.Create(url)).GetResponse();
+                const string urlBase = @"http://www.albert.nu/programs/renamerng/";
+                const string urlVersion = @"version.txt";
+                const string urlProgram = "renamerng.zip";
+                const string urlBetaProgram = "renamerng-beta.zip";
+                HttpWebResponse response = (HttpWebResponse)((HttpWebRequest)WebRequest.Create(urlBase + urlVersion)).GetResponse();
                 using (response)
                 {
                     StreamReader r = new StreamReader(response.GetResponseStream());
@@ -77,7 +79,7 @@ namespace RenamerNG
                                 DialogResult res = MessageBox.Show("A new version is available. Download it now?", "Info", MessageBoxButtons.YesNo);
                                 if (res == DialogResult.Yes)
                                 {
-                                    System.Diagnostics.Process.Start(@"http://www.albert.nu/programs/renamerng/renamerng.zip");
+                                    System.Diagnostics.Process.Start(urlBase + urlProgram);
                                 }
                             }
                         }
@@ -90,7 +92,7 @@ namespace RenamerNG
                                 DialogResult res = MessageBox.Show("A new BETA version is available. Download it now?", "Info", MessageBoxButtons.YesNo);
                                 if (res == DialogResult.Yes)
                                 {
-                                    System.Diagnostics.Process.Start(@"http://www.albert.nu/programs/renamerng/renamerng-beta.zip");
+                                    System.Diagnostics.Process.Start(urlBase + urlBetaProgram);
                                 }
                             }
                         }

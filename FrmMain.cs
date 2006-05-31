@@ -186,7 +186,8 @@ namespace RenamerNG
             //Remove this eventhandler since default is "work on all items".
             listMain.ItemSelectionChanged -= new System.Windows.Forms.ListViewItemSelectionChangedEventHandler(listMain_ItemSelectionChanged);
 
-            UpdateCheck.Check(@"http://www.albert.nu/programs/renamerng/version.txt", settings.LastCheck, settings.CheckVersion, settings.CheckBetaVersion, "0.0.0.0", Application.ProductVersion);
+            //Change this when new versions are released!
+            UpdateCheck.Check(settings.LastCheck, settings.CheckVersion, settings.CheckBetaVersion, "0.0.0.0", Application.ProductVersion);
 		}
 
 		RenamerNG.Macros.RecordingIndicator recordingIndicator1;
