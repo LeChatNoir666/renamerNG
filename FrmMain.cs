@@ -183,8 +183,10 @@ namespace RenamerNG
 
 			UpdateListColumns();
 
-            //Remove this eventhandler since default is n"work on all items".
+            //Remove this eventhandler since default is "work on all items".
             listMain.ItemSelectionChanged -= new System.Windows.Forms.ListViewItemSelectionChangedEventHandler(listMain_ItemSelectionChanged);
+
+            UpdateCheck.Check(@"http://www.albert.nu/programs/renamerng/version.txt", settings.LastCheck, settings.CheckVersion, settings.CheckBetaVersion, "0.0.0.0", Application.ProductVersion);
 		}
 
 		RenamerNG.Macros.RecordingIndicator recordingIndicator1;
@@ -1464,6 +1466,8 @@ namespace RenamerNG
 			settings.ScanDirs = chDirs.Checked;
 			settings.ScanRecurse = chRecurse.Checked;
 			settings.ScanPath = tbPath.Text;
+
+            settings.LastCheck = UpdateCheck.LastCheck;
 
 			settings.Save();
 			macroList1.Save();

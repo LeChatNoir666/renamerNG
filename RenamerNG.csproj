@@ -256,6 +256,7 @@
     <Compile Include="SpecialOperations\FrmFreeEdit.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="UpdateCheck.cs" />
     <EmbeddedResource Include="Dialogs\GetString.resx">
       <DependentUpon>GetString.cs</DependentUpon>
     </EmbeddedResource>

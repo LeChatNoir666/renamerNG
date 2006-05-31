@@ -5,7 +5,6 @@
 * Sort by clicking columns
 * Sort by moving around items.
 * Fix preview of selection? Possible to implement easily?
-* Search for updates on the internet
 * Settings dialog with save/restore?
 * Reduce flicker when moving in list with arrow keys
 * Add "Execute" operation to support external programs. - maybe we can double click the file entry in the list to run this
