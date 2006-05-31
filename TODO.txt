@@ -7,7 +7,6 @@
 * Fix preview of selection? Possible to implement easily?
 * Settings dialog with save/restore?
 * Reduce flicker when moving in list with arrow keys
-* Add "Execute" operation to support external programs. - maybe we can double click the file entry in the list to run this
 * Progress display for operations and macros
 * Fix settings so that size is restored correctly (even with different DPI settings)
 * Improve command line operation, split Engine from FrmMain.
@@ -18,7 +17,6 @@
 * Get tagging info from dir name.
 * Support all operations from Renamer 6.0
 	- Multi change (reg exp enough?)
-	- Auto replace?
 	- Make it a Title
 	- Upper Case after find (make the character after a find operation upper case)
 	- ABBREVIATIONS (example u.s.a. -> U.S.A)
