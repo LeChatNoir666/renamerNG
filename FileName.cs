@@ -182,7 +182,9 @@ namespace RenamerNG
 		{
 			if (undo != newName)
 			{
+                string temp = newName;
 				newName = undo;
+                undo = temp;
 				updated = true;
 			}
 			else
