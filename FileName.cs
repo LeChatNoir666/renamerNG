@@ -117,12 +117,7 @@ namespace RenamerNG
 			get { return path; }
 		}
 
-		public string PathName
-		{
-			get { return path + '\\' + name + ext; }
-		}
-
-		public long Size
+        public long Size
 		{
 			get { return size; }
 		}

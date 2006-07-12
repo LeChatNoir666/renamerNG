@@ -104,6 +104,7 @@
     <Compile Include="FileName.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="FileNameOperations\RegExpPath.cs" />
     <Compile Include="FileNameOperations\TrimExtension.cs" />
     <Compile Include="FileNameOperations\DateInsertCurrent.cs">
       <SubType>Code</SubType>

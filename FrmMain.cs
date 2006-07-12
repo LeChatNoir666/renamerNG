@@ -206,7 +206,8 @@ namespace RenamerNG
 			fileOperations.Add(new FileNameOperations.Insert());
 			fileOperations.Add(new FileNameOperations.InsertNumber());
 			fileOperations.Add(new FileNameOperations.RegExp());
-			fileOperations.Add(new FileNameOperations.Undo());
+            fileOperations.Add(new FileNameOperations.RegExpPath());
+            fileOperations.Add(new FileNameOperations.Undo());
 
 			//Date operations
 			fileOperations.Add(new FileNameOperations.DateInsertCurrent());
