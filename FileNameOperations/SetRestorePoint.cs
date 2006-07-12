@@ -5,18 +5,18 @@ using RenamerNG;
 namespace RenamerNG.FileNameOperations
 {
 	/// <summary>
-	/// Summary description for Undo.
+	/// Summary description for SetRestorePoint.
 	/// </summary>
 	[Serializable()]
-	public class Undo : Operation
+	public class SetRestorePoint : Operation
 	{
-		public Undo()
+        public SetRestorePoint()
 		{
 		}
 
 		public override string Name
 		{
-			get{ return "Undo";}
+            get { return "Set restore point"; }
 		}
 
 		public override string Group
@@ -26,7 +26,7 @@ namespace RenamerNG.FileNameOperations
 
 		public override string Help
 		{
-			get{ return "Undo changes performed by last operation.";}
+            get { return "Remember the current filename."; }
 		}
 
 		public override int ParameterCount
@@ -36,7 +36,7 @@ namespace RenamerNG.FileNameOperations
 
 		public override Shortcut Key
 		{
-			get{ return Shortcut.CtrlZ;}
+			get{ return Shortcut.CtrlS;}
 		}
 
 		public override GUIElement[] Gui
@@ -51,7 +51,7 @@ namespace RenamerNG.FileNameOperations
 		{
 			FileName f = (FileName)lvi.Tag;
 
-			f.Undo();
+            f.SetRestorePoint();
 		}
 	}
 }
