@@ -97,6 +97,13 @@ namespace RenamerNG
 					case ListColumns.Path:
 						data = Path;
 						break;
+                    case ListColumns.ChangeFromRestorePoint:
+                        data = "";
+                        if (ChangedFromRestorepoint) data = "CFRP";
+                        break;
+                    case ListColumns.RestorePoint:
+                        data = restorePoint;
+                        break;
 					default:
 						throw new IndexOutOfRangeException();
 				}
@@ -126,6 +133,11 @@ namespace RenamerNG
 		{
 			get { return name != newName; }
 		}
+
+        public bool ChangedFromRestorepoint
+        {
+            get { return newName != restorePoint; }
+        }
 
 		public bool Updated
 		{
