@@ -48,7 +48,7 @@ namespace RenamerNG.FileNameOperations.Id3v1
 			{
                 return new GUIElement[]
 				{
-					new GUIElement(GUIElement.Types.TEXTBOX, "Filename", "", "The resulting file name use:\n$1 = Current name\n$2 = Song title\n$3 = Artist"),
+					new GUIElement(GUIElement.Types.TEXTBOX, "Filename", "", "The resulting file name use:\n$1 Current name\n$2 Song title\n$3 Artist\n$4 Album\n$5 Year\n$6 Comment\n$7 Track #\n$8 Genre"),
 					new GUIElement(GUIElement.Types.TEXTBOX, "Missing tag text", "ALLOWEMPTY", "The text to insert in case the tag is missing")
 				};
             }
