@@ -213,16 +213,7 @@ namespace RenamerNG
 		public void Restore()
 		{
             NewName = restorePoint;
-/*			if (newName != restorePoint)
-			{
-				newName = restorePoint;
-				updated = true;
-			}
-			else
-				updated = false;
-
-			success = true;
-*/		}
+		}
 
 		public FileName(string file, bool editExt)
 		{
