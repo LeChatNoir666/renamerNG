@@ -233,6 +233,9 @@ namespace RenamerNG
 			fileOperations.Add(new FileNameOperations.SentenceCase());
 			fileOperations.Add(new FileNameOperations.InvertCase());
 			fileOperations.Add(new FileNameOperations.RandomCase());
+
+            //Id3v1 operations
+            fileOperations.Add(new FileNameOperations.Id3v1.ReadTag());
 		}
 
 		private void AddListOperations()
