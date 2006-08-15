@@ -64,11 +64,9 @@ namespace RenamerNG.FileNameOperations.Id3v1
                 return;
             }
 
-            string file = f.Path + f.Name + f.Ext;
-
             try
             {
-                StreamReader sr = new StreamReader(file, System.Text.Encoding.Default);
+                StreamReader sr = new StreamReader(f.Filename, System.Text.Encoding.Default);
                 using (sr)
                 {
                     sr.BaseStream.Seek(-Id3v1Tag.Size, SeekOrigin.End);

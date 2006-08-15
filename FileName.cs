@@ -114,6 +114,11 @@ namespace RenamerNG
 
 		FileAttributes attributes;
 
+        public string Filename
+        {
+            get { return Path + Name + Ext; }
+        }
+
 		public string Name
 		{
 			get { return name; }
@@ -128,6 +133,12 @@ namespace RenamerNG
 		{
 			get { return size; }
 		}
+
+        public void GetSize()
+        {
+            FileInfo fi = new FileInfo(Filename);
+            size = fi.Length;
+        }
 
 		public bool Changed
 		{

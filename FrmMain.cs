@@ -236,7 +236,8 @@ namespace RenamerNG
 
             //Id3v1 operations
             fileOperations.Add(new FileNameOperations.Id3v1.ReadTag());
-		}
+            fileOperations.Add(new FileNameOperations.Id3v1.RemoveTag());
+        }
 
 		private void AddListOperations()
 		{

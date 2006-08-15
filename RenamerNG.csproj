@@ -104,6 +104,7 @@
     <Compile Include="FileName.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="FileNameOperations\Id3v1\RemoveTag.cs" />
     <Compile Include="FileNameOperations\Id3v1\Id3v1Tag.cs" />
     <Compile Include="FileNameOperations\Id3v1\ReadTag.cs" />
     <Compile Include="FileNameOperations\SetRestorePoint.cs" />

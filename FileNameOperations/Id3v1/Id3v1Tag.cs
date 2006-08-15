@@ -22,6 +22,14 @@ namespace RenamerNG.FileNameOperations.Id3v1
             }
         }
 
+        public static bool IsValid(byte[] buffer)
+        {
+            if (buffer.Length == 128 && buffer[0] == 84 && buffer[1] == 65 && buffer[2] == 71)
+                return true;
+            else
+                return false;
+        }
+
         public string Song
         {
             get
