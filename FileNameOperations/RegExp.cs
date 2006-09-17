@@ -64,11 +64,11 @@ namespace RenamerNG.FileNameOperations
 
 			try
 			{
-				if (matchCase)
-					f.NewName = Regex.Replace(f.NewName, pattern, replacement, RegexOptions.Singleline);
-				else
-					f.NewName = Regex.Replace(f.NewName, pattern, replacement,
-						RegexOptions.Singleline | RegexOptions.IgnoreCase);
+                RegexOptions opt = RegexOptions.Singleline;
+                if (!matchCase) opt |= RegexOptions.IgnoreCase;
+
+                if (Regex.Match(f.NewName, pattern, opt).Success)
+                    f.NewName = Regex.Replace(f.NewName, pattern, replacement, opt);
 			}
 			catch
 			{
