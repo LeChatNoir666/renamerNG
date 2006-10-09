@@ -34,6 +34,3 @@
 	- Insert unique random number or hash of some kind
 	- Internet or FreeDbOffline search
 	- "Execute" operation to support external programs.
-
-
--= Working on (if working on an item move it here (when done delete it)) =-
