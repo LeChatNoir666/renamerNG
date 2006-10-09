@@ -1,3 +1,5 @@
+* Idea! Support general data sources and targets?
+
 -= TODO (ideas to possibly implement, in no particular order) =-
 * Test and support Mono?
 * List dirs first as in most file managers
