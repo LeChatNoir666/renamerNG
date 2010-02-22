@@ -35,4 +35,3 @@
 	- Internet or FreeDbOffline search
 	- "Execute" operation to support external programs.
 * Preview pictures.
-* Shortcut key to jump into "Work on selected items"-mode.
