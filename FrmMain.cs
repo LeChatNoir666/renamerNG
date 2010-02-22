@@ -989,7 +989,7 @@ namespace RenamerNG
             this.MinimumSize = new System.Drawing.Size(620, 460);
             this.Name = "FrmMain";
             this.Padding = new System.Windows.Forms.Padding(8);
-            this.Text = "Renamer NG -= BETA =- by Albert Bertilsson, version ";
+            this.Text = "Renamer NG by Albert Bertilsson, version ";
             this.Closing += new System.ComponentModel.CancelEventHandler(this.FrmMain_Closing);
             this.Load += new System.EventHandler(this.FrmMain_Load);
             this.panelNavigation.ResumeLayout(false);
