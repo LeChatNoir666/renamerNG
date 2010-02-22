@@ -28,11 +28,11 @@
 	- Force N digit numbers
 	- Ingore dirs (useful when having dirs in the list and avoid operations on them)
 	- Sort list after file
-	- Remove item from list
-	- Delete item from disk
 	- Export file (for example to create a batch file for renaming or exporting a dir list)
 * Support some new operations
 	- Lower case after find
 	- Insert unique random number or hash of some kind
 	- Internet or FreeDbOffline search
 	- "Execute" operation to support external programs.
+* Preview pictures.
+* Shortcut key to jump into "Work on selected items"-mode.

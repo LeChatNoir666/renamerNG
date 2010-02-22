@@ -31,24 +31,6 @@ namespace RenamerNG.SpecialOperations
 			get { return "Remove the largest common substring.";}
 		}
 
-		public override int ParameterCount
-		{
-			get { return 0;}
-		}
-
-		public override Shortcut Key
-		{
-			get { return Shortcut.None;}
-		}
-
-		public override GUIElement[] Gui
-		{
-			get
-			{
-				return null;
-			}
-		}
-
 		public override bool Recordable
 		{
 			get { return false; }

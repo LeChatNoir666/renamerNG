@@ -35,12 +35,7 @@ namespace RenamerNG.FileNameOperations
 			get{ return 1;}
 		}
 
-		public override Shortcut Key
-		{
-			get{ return Shortcut.None;}
-		}
-
-		public override GUIElement[] Gui
+        public override GUIElement[] Gui
 		{
 			get
 			{

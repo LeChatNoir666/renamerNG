@@ -45,24 +45,6 @@ namespace RenamerNG.FileNameOperations
 			get{ return "Randomly change letters to upper or lower case.";}
 		}
 
-		public override int ParameterCount
-		{
-			get{ return 0;}
-		}
-
-		public override Shortcut Key
-		{
-			get{ return Shortcut.None;}
-		}
-
-		public override GUIElement[] Gui
-		{
-			get
-			{
-				return null;
-			}
-		}
-
 		public override void Perform(ListViewItem lvi)
 		{
 			FileName f = (FileName)lvi.Tag;

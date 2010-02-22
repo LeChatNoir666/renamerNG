@@ -36,24 +36,6 @@ namespace RenamerNG.SpecialOperations
 			get { return "Use a normal text editor to edit the file names.";}
 		}
 
-		public override int ParameterCount
-		{
-			get { return 0;}
-		}
-
-		public override Shortcut Key
-		{
-			get { return Shortcut.None;}
-		}
-
-		public override GUIElement[] Gui
-		{
-			get
-			{
-				return null;
-			}
-		}
-
 		public override bool Recordable
 		{
 			get { return false; }

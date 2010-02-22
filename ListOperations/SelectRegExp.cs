@@ -35,11 +35,6 @@ namespace RenamerNG.ListOperations
       get{ return 2;}
     }
 
-    public override Shortcut Key
-    {
-      get{ return Shortcut.None;}
-    }
-
     public override GUIElement[] Gui
     {
       get

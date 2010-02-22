@@ -467,6 +467,7 @@ namespace RenamerNG
             this.menuItem1 = new System.Windows.Forms.MenuItem();
             this.miOperationsSpecial = new System.Windows.Forms.MenuItem();
             this.miOperationsFreeEdit = new System.Windows.Forms.MenuItem();
+            this.miRemoveLargestCommonSubstring = new System.Windows.Forms.MenuItem();
             this.menuItem4 = new System.Windows.Forms.MenuItem();
             this.miListOperations = new System.Windows.Forms.MenuItem();
             this.miEditListColumns = new System.Windows.Forms.MenuItem();
@@ -476,7 +477,6 @@ namespace RenamerNG
             this.miHelpAbout = new System.Windows.Forms.MenuItem();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
             this.folderBrowserDialog = new System.Windows.Forms.FolderBrowserDialog();
-            this.miRemoveLargestCommonSubstring = new System.Windows.Forms.MenuItem();
             this.panelNavigation.SuspendLayout();
             this.panelPath.SuspendLayout();
             this.panelPathButtons.SuspendLayout();
@@ -921,6 +921,7 @@ namespace RenamerNG
             // miOperationsWorkOnSelectedItems
             // 
             this.miOperationsWorkOnSelectedItems.Index = 1;
+            this.miOperationsWorkOnSelectedItems.Shortcut = System.Windows.Forms.Shortcut.CtrlS;
             this.miOperationsWorkOnSelectedItems.Text = "Work on selected items";
             this.miOperationsWorkOnSelectedItems.Click += new System.EventHandler(this.miOperationsWorkOnSelectedItems_Click);
             // 
@@ -942,6 +943,12 @@ namespace RenamerNG
             this.miOperationsFreeEdit.Index = 0;
             this.miOperationsFreeEdit.Text = "Free edit";
             this.miOperationsFreeEdit.Click += new System.EventHandler(this.miOperationsFreeEdit_Click);
+            // 
+            // miRemoveLargestCommonSubstring
+            // 
+            this.miRemoveLargestCommonSubstring.Index = 1;
+            this.miRemoveLargestCommonSubstring.Text = "Remove largest common substring";
+            this.miRemoveLargestCommonSubstring.Click += new System.EventHandler(this.miRemoveLargestCommonSubstring_Click);
             // 
             // menuItem4
             // 
@@ -989,12 +996,6 @@ namespace RenamerNG
             // folderBrowserDialog
             // 
             this.folderBrowserDialog.ShowNewFolderButton = false;
-            // 
-            // miRemoveLargestCommonSubstring
-            // 
-            this.miRemoveLargestCommonSubstring.Index = 1;
-            this.miRemoveLargestCommonSubstring.Text = "Remove largest common substring";
-            this.miRemoveLargestCommonSubstring.Click += new System.EventHandler(this.miRemoveLargestCommonSubstring_Click);
             // 
             // FrmMain
             // 

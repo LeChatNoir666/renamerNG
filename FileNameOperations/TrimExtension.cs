@@ -29,24 +29,6 @@ namespace RenamerNG.FileNameOperations
 			get{ return "Trims the extension from the file name (if the file has an extension)";}
 		}
 
-		public override int ParameterCount
-		{
-			get{ return 0;}
-		}
-
-		public override Shortcut Key
-		{
-			get{ return Shortcut.None;}
-		}
-
-		public override GUIElement[] Gui
-		{
-			get
-			{
-				return null;
-			}
-		}
-
 		public override void Perform(ListViewItem lvi)
 		{
 			FileName f = (FileName)lvi.Tag;

@@ -29,22 +29,9 @@ namespace RenamerNG.FileNameOperations
 			get{ return "Undo changes performed by last operation.";}
 		}
 
-		public override int ParameterCount
-		{
-			get{ return 0;}
-		}
-
 		public override Shortcut Key
 		{
 			get{ return Shortcut.CtrlZ;}
-		}
-
-		public override GUIElement[] Gui
-		{
-			get
-			{
-				return null;
-			}
 		}
 
 		public override void Perform(ListViewItem lvi)

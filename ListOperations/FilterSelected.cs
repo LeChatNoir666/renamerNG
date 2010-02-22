@@ -28,24 +28,6 @@ namespace RenamerNG.ListOperations
       get{ return "Removes all items that are not selected.";}
     }
 
-    public override int ParameterCount
-    {
-      get{ return 0;}
-    }
-
-    public override Shortcut Key
-    {
-      get{ return Shortcut.None;}
-    }
-
-    public override GUIElement[] Gui
-    {
-      get
-      {
-        return null;
-      }
-    }
-    
     public override bool RequiresWorkModeSelected
     {
       get { return true; }

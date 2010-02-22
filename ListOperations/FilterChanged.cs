@@ -28,24 +28,6 @@ namespace RenamerNG.ListOperations
       get{ return "Removes all items that are not changed.";}
     }
 
-    public override int ParameterCount
-    {
-      get{ return 0;}
-    }
-
-    public override Shortcut Key
-    {
-      get{ return Shortcut.None;}
-    }
-
-    public override GUIElement[] Gui
-    {
-      get
-      {
-        return null;
-      }
-    }
-
     public override void Perform(ListViewItem lvi)
     {
       FileName f = (FileName)lvi.Tag;

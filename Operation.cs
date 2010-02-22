@@ -26,19 +26,24 @@ namespace RenamerNG
 			get;
 		}
 
-		abstract public int ParameterCount
+		public virtual int ParameterCount
 		{
-			get;
+            get { return 0; }
 		}
-
+        /*
 		abstract public Shortcut Key
 		{
 			get;
 		}
+         * */
+        public virtual Shortcut Key
+        {
+            get { return Shortcut.None; }
+        }
 
-		abstract public GUIElement[] Gui
+		public virtual GUIElement[] Gui
 		{
-			get;
+			get { return null; }
 		}
 
 		/// <summary>

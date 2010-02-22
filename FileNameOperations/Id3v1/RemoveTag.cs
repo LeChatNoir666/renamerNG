@@ -30,24 +30,6 @@ namespace RenamerNG.FileNameOperations.Id3v1
 			get{ return "Remove the id3 v1 tag from a mp3 file.";}
 		}
 
-		public override int ParameterCount
-		{
-			get{ return 0;}
-		}
-
-		public override Shortcut Key
-		{
-			get{ return Shortcut.None;}
-		}
-
-		public override GUIElement[] Gui
-		{
-			get
-			{
-                return null;
-            }
-		}
-
 		public override void Perform(ListViewItem lvi)
 		{
             FileName f = (FileName)lvi.Tag;

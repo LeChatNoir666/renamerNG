@@ -30,24 +30,6 @@ namespace RenamerNG.FileNameOperations
 			get{ return "Removes any occurance of spaces at the end.";}
 		}
 
-		public override int ParameterCount
-		{
-			get{ return 0;}
-		}
-
-		public override Shortcut Key
-		{
-			get{ return Shortcut.None;}
-		}
-
-		public override GUIElement[] Gui
-		{
-			get
-			{
-				return null;
-			}
-		}
-
 		public override void Perform(ListViewItem lvi)
 		{
 			FileName f = (FileName)lvi.Tag;

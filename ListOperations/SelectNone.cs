@@ -28,22 +28,9 @@ namespace RenamerNG.ListOperations
       get{ return "Deselects all items in the list.";}
     }
 
-    public override int ParameterCount
-    {
-      get{ return 0;}
-    }
-
     public override Shortcut Key
     {
       get{ return Shortcut.CtrlN;}
-    }
-
-    public override GUIElement[] Gui
-    {
-      get
-      {
-        return null;
-      }
     }
     
     public override bool RequiresWorkModeSelected

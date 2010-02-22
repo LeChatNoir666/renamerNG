@@ -29,22 +29,9 @@ namespace RenamerNG.FileNameOperations
 			get{ return "Change all characters to large characters.";}
 		}
 
-		public override int ParameterCount
-		{
-			get{ return 0;}
-		}
-
 		public override Shortcut Key
 		{
 			get{ return Shortcut.CtrlU;}
-		}
-
-		public override GUIElement[] Gui
-		{
-			get
-			{
-				return null;
-			}
 		}
 
 		public override void Perform(ListViewItem lvi)
