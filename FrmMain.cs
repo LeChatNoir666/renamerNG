@@ -37,8 +37,7 @@ namespace RenamerNG
 		private System.Windows.Forms.ToolTip toolTip;
 		private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog;
 		private System.Windows.Forms.TextBox tbPath;
-		private System.Windows.Forms.Panel panelStatusbar;
-		private System.Windows.Forms.MenuItem miEditMacros;
+        private System.Windows.Forms.Panel panelStatusbar;
 		private System.Windows.Forms.Panel panelPathButtons;
 		private System.Windows.Forms.Panel panelEditButtons;
 		private System.Windows.Forms.Label lblLength;
@@ -71,6 +70,7 @@ namespace RenamerNG
 		private System.Windows.Forms.ListBox listboxCommandHistory;
 		private System.Windows.Forms.TextBox tbCommand;
 		private System.Windows.Forms.MenuItem miViewCommandLine;
+        private MenuItem miMacros;
 		private System.ComponentModel.IContainer components;
 
 		public FrmMain(string dir)
@@ -468,12 +468,12 @@ namespace RenamerNG
             this.menuItem4 = new System.Windows.Forms.MenuItem();
             this.miListOperations = new System.Windows.Forms.MenuItem();
             this.miEditListColumns = new System.Windows.Forms.MenuItem();
-            this.miEditMacros = new System.Windows.Forms.MenuItem();
             this.miEditSettings = new System.Windows.Forms.MenuItem();
             this.miHelp = new System.Windows.Forms.MenuItem();
             this.miHelpAbout = new System.Windows.Forms.MenuItem();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
             this.folderBrowserDialog = new System.Windows.Forms.FolderBrowserDialog();
+            this.miMacros = new System.Windows.Forms.MenuItem();
             this.panelNavigation.SuspendLayout();
             this.panelPath.SuspendLayout();
             this.panelPathButtons.SuspendLayout();
@@ -490,7 +490,7 @@ namespace RenamerNG
             // panelStatusbar
             // 
             this.panelStatusbar.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panelStatusbar.Location = new System.Drawing.Point(8, 424);
+            this.panelStatusbar.Location = new System.Drawing.Point(8, 425);
             this.panelStatusbar.Name = "panelStatusbar";
             this.panelStatusbar.Size = new System.Drawing.Size(596, 0);
             this.panelStatusbar.TabIndex = 0;
@@ -646,7 +646,7 @@ namespace RenamerNG
             this.panelCommandLine.Controls.Add(this.listboxCommandHistory);
             this.panelCommandLine.Controls.Add(this.panelCommandLineEdit);
             this.panelCommandLine.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panelCommandLine.Location = new System.Drawing.Point(8, 312);
+            this.panelCommandLine.Location = new System.Drawing.Point(8, 313);
             this.panelCommandLine.Name = "panelCommandLine";
             this.panelCommandLine.Padding = new System.Windows.Forms.Padding(0, 10, 0, 0);
             this.panelCommandLine.Size = new System.Drawing.Size(596, 112);
@@ -689,7 +689,7 @@ namespace RenamerNG
             this.panelMain.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelMain.Location = new System.Drawing.Point(8, 61);
             this.panelMain.Name = "panelMain";
-            this.panelMain.Size = new System.Drawing.Size(596, 251);
+            this.panelMain.Size = new System.Drawing.Size(596, 252);
             this.panelMain.TabIndex = 3;
             // 
             // panelList
@@ -700,7 +700,7 @@ namespace RenamerNG
             this.panelList.Location = new System.Drawing.Point(0, 0);
             this.panelList.Name = "panelList";
             this.panelList.Padding = new System.Windows.Forms.Padding(0, 0, 0, 2);
-            this.panelList.Size = new System.Drawing.Size(436, 251);
+            this.panelList.Size = new System.Drawing.Size(436, 252);
             this.panelList.TabIndex = 3;
             // 
             // listMain
@@ -712,24 +712,24 @@ namespace RenamerNG
             this.listMain.LabelWrap = false;
             this.listMain.Location = new System.Drawing.Point(0, 0);
             this.listMain.Name = "listMain";
-            this.listMain.Size = new System.Drawing.Size(436, 227);
+            this.listMain.Size = new System.Drawing.Size(436, 228);
             this.listMain.TabIndex = 0;
             this.listMain.UseCompatibleStateImageBehavior = false;
             this.listMain.View = System.Windows.Forms.View.Details;
-            this.listMain.DoubleClick += new System.EventHandler(this.listMain_DoubleClick);
             this.listMain.SelectedIndexChanged += new System.EventHandler(this.listMain_SelectedIndexChanged);
+            this.listMain.DoubleClick += new System.EventHandler(this.listMain_DoubleClick);
             this.listMain.MouseUp += new System.Windows.Forms.MouseEventHandler(this.listMain_MouseDown);
-            this.listMain.KeyDown += new System.Windows.Forms.KeyEventHandler(this.listMain_KeyDown);
+            this.listMain.MouseDown += new System.Windows.Forms.MouseEventHandler(this.listMain_MouseDown);
             this.listMain.ItemSelectionChanged += new System.Windows.Forms.ListViewItemSelectionChangedEventHandler(this.listMain_ItemSelectionChanged);
             this.listMain.KeyUp += new System.Windows.Forms.KeyEventHandler(this.listMain_KeyDown);
-            this.listMain.MouseDown += new System.Windows.Forms.MouseEventHandler(this.listMain_MouseDown);
+            this.listMain.KeyDown += new System.Windows.Forms.KeyEventHandler(this.listMain_KeyDown);
             // 
             // panelEdit
             // 
             this.panelEdit.Controls.Add(this.tbEdit);
             this.panelEdit.Controls.Add(this.panelEditButtons);
             this.panelEdit.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panelEdit.Location = new System.Drawing.Point(0, 227);
+            this.panelEdit.Location = new System.Drawing.Point(0, 228);
             this.panelEdit.Name = "panelEdit";
             this.panelEdit.Padding = new System.Windows.Forms.Padding(0, 2, 0, 0);
             this.panelEdit.Size = new System.Drawing.Size(436, 22);
@@ -742,9 +742,9 @@ namespace RenamerNG
             this.tbEdit.Name = "tbEdit";
             this.tbEdit.Size = new System.Drawing.Size(390, 20);
             this.tbEdit.TabIndex = 0;
-            this.tbEdit.KeyUp += new System.Windows.Forms.KeyEventHandler(this.tbEdit_KeyUp);
             this.tbEdit.TextChanged += new System.EventHandler(this.tbEdit_TextChanged);
             this.tbEdit.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tbEdit_KeyDown);
+            this.tbEdit.KeyUp += new System.Windows.Forms.KeyEventHandler(this.tbEdit_KeyUp);
             // 
             // panelEditButtons
             // 
@@ -773,7 +773,7 @@ namespace RenamerNG
             this.panelMacro.Location = new System.Drawing.Point(436, 0);
             this.panelMacro.Name = "panelMacro";
             this.panelMacro.Padding = new System.Windows.Forms.Padding(8, 0, 0, 2);
-            this.panelMacro.Size = new System.Drawing.Size(160, 251);
+            this.panelMacro.Size = new System.Drawing.Size(160, 252);
             this.panelMacro.TabIndex = 0;
             // 
             // grpMacro
@@ -782,7 +782,7 @@ namespace RenamerNG
             this.grpMacro.Dock = System.Windows.Forms.DockStyle.Fill;
             this.grpMacro.Location = new System.Drawing.Point(8, 0);
             this.grpMacro.Name = "grpMacro";
-            this.grpMacro.Size = new System.Drawing.Size(152, 249);
+            this.grpMacro.Size = new System.Drawing.Size(152, 250);
             this.grpMacro.TabIndex = 0;
             this.grpMacro.TabStop = false;
             this.grpMacro.Text = "Macro";
@@ -793,7 +793,7 @@ namespace RenamerNG
             this.panelMacroInternal.Location = new System.Drawing.Point(3, 16);
             this.panelMacroInternal.Name = "panelMacroInternal";
             this.panelMacroInternal.Padding = new System.Windows.Forms.Padding(4);
-            this.panelMacroInternal.Size = new System.Drawing.Size(146, 230);
+            this.panelMacroInternal.Size = new System.Drawing.Size(146, 231);
             this.panelMacroInternal.TabIndex = 0;
             // 
             // mainMenu
@@ -804,6 +804,7 @@ namespace RenamerNG
             this.miView,
             this.miFileOperations,
             this.miListOperations,
+            this.miMacros,
             this.miHelp});
             // 
             // miFile
@@ -873,7 +874,7 @@ namespace RenamerNG
             // 
             this.miViewMacro.Checked = true;
             this.miViewMacro.Index = 1;
-            this.miViewMacro.Text = "&Macro";
+            this.miViewMacro.Text = "&Macro list";
             this.miViewMacro.Click += new System.EventHandler(this.miViewMacro_Click);
             // 
             // miViewNavigation
@@ -948,7 +949,6 @@ namespace RenamerNG
             this.miListOperations.Index = 4;
             this.miListOperations.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
             this.miEditListColumns,
-            this.miEditMacros,
             this.miEditSettings});
             this.miListOperations.Text = "&Tools";
             // 
@@ -958,20 +958,15 @@ namespace RenamerNG
             this.miEditListColumns.Text = "&List columns";
             this.miEditListColumns.Click += new System.EventHandler(this.miEditListColumns_Click);
             // 
-            // miEditMacros
-            // 
-            this.miEditMacros.Index = 1;
-            this.miEditMacros.Text = "&Macros";
-            // 
             // miEditSettings
             // 
-            this.miEditSettings.Index = 2;
+            this.miEditSettings.Index = 1;
             this.miEditSettings.Text = "&Options";
             this.miEditSettings.Click += new System.EventHandler(this.miEditSettings_Click);
             // 
             // miHelp
             // 
-            this.miHelp.Index = 5;
+            this.miHelp.Index = 6;
             this.miHelp.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
             this.miHelpAbout});
             this.miHelp.Text = "&Help";
@@ -986,10 +981,15 @@ namespace RenamerNG
             // 
             this.folderBrowserDialog.ShowNewFolderButton = false;
             // 
+            // miMacros
+            // 
+            this.miMacros.Index = 5;
+            this.miMacros.Text = "&Macro";
+            // 
             // FrmMain
             // 
             this.AutoScaleBaseSize = new System.Drawing.Size(5, 13);
-            this.ClientSize = new System.Drawing.Size(612, 432);
+            this.ClientSize = new System.Drawing.Size(612, 433);
             this.Controls.Add(this.panelMain);
             this.Controls.Add(this.panelNavigation);
             this.Controls.Add(this.panelCommandLine);
@@ -1001,8 +1001,8 @@ namespace RenamerNG
             this.Name = "FrmMain";
             this.Padding = new System.Windows.Forms.Padding(8);
             this.Text = "Renamer NG by Albert Bertilsson, version ";
-            this.Closing += new System.ComponentModel.CancelEventHandler(this.FrmMain_Closing);
             this.Load += new System.EventHandler(this.FrmMain_Load);
+            this.Closing += new System.ComponentModel.CancelEventHandler(this.FrmMain_Closing);
             this.panelNavigation.ResumeLayout(false);
             this.panelPath.ResumeLayout(false);
             this.panelPath.PerformLayout();
@@ -1432,6 +1432,8 @@ namespace RenamerNG
 
 			if (tbPath.Text != "")
 				Scan();
+
+            BuildMacroMenu();
 		}
 
 		private void miEditListColumns_Click(object sender, System.EventArgs e)
@@ -1614,6 +1616,27 @@ namespace RenamerNG
 			}
 		}
 
+        private void miMacro_Click(object sender, System.EventArgs e)
+        {
+            MenuItem mi = (MenuItem)sender;
+            if (!recordingIndicator1.Enabled)
+                PerformMacro(macroList1.GetMacroFromName(mi.Text));
+            else
+                ErrorMessage("Can't execute macro from menu while recording.");
+        }
+
+        private void BuildMacroMenu()
+        {
+            miMacros.MenuItems.Clear();
+            string[] m = macroList1.Macros();
+            foreach (string s in m)
+            {
+                MenuItem mi = new MenuItem(s,
+                    new System.EventHandler(this.miMacro_Click));
+                miMacros.MenuItems.Add(mi);
+            }
+        }
+
 		private void PerformMacro(Macro macro)
 		{
 			foreach (Operation op in macro)
@@ -1630,6 +1653,7 @@ namespace RenamerNG
 		private void macroList1_RecordingStopped(object sender)
 		{
 			recordingIndicator1.Enabled = false;
+            BuildMacroMenu();
 		}
 		#endregion
 

@@ -79,6 +79,11 @@ namespace RenamerNG.Macros
 
     public new bool Enabled
     {
+        get
+        {
+            return timer.Enabled;
+        }
+
       set 
       {
         timer.Enabled = value;

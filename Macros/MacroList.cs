@@ -252,6 +252,17 @@ namespace RenamerNG.Macros
             if (Execute != null) Execute(this, (Macro)listBox.SelectedItem);
         }
 
+        public string[] Macros()
+        {
+            ArrayList al = new ArrayList();
+            foreach (Macro m in listBox.Items)
+            {
+                al.Add(m.Name);
+            }
+
+            return (string[])al.ToArray(typeof(String));
+        }
+
         private bool ValidMacroName(string name)
         {
             if (name == null) return false;
