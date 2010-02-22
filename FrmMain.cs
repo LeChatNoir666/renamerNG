@@ -1554,20 +1554,15 @@ namespace RenamerNG
 
 		public void Rename()
 		{
-			if (miOperationsWorkOnSelectedItems.Checked)
-			{
-				DialogResult res = YesNoQuestion("Renaming files works on all items, not just the selected ones.\nIf you want to exclude some files from renaming please use\nthe Edit->Filter operations to filter your list.\n\nRename ALL changed files?");
-				if (res != DialogResult.Yes) return;
-			}
-
 			ArrayList list = new ArrayList(listMain.Items.Count);
 
 			//Fill ArrayList with all items to rename.
 			foreach (ListViewItem lvi in listMain.Items)
 			{
 				FileName f = (FileName)lvi.Tag;
-				if (f.Changed) //We only need to process files that have been changed.
-					list.Add(f);
+                if (lvi.Selected || miOperationsWorkOnAllItems.Checked)
+				    if (f.Changed) //We only need to process files that have been changed.
+					    list.Add(f);
 			}
 
 			//Reverse sort on pathname to avoid renaming problems
