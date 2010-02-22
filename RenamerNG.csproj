@@ -211,6 +211,7 @@
     <Compile Include="GUIElement.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="ListOperations\DeleteSelected.cs" />
     <Compile Include="ListOperations\SelectRegExp.cs" />
     <Compile Include="ListOperations\DeselectMatching.cs">
       <SubType>Code</SubType>

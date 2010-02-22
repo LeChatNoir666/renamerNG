@@ -260,7 +260,8 @@ namespace RenamerNG
 			listOperations.Add(new ListOperations.InvertSelection());
 			listOperations.Add(new ListOperations.FilterChanged());
 			listOperations.Add(new ListOperations.FilterSelected());
-		}
+            listOperations.Add(new ListOperations.DeleteSelected());
+        }
 
 		public bool ValidMacroName(string name)
 		{

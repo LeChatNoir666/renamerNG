@@ -51,6 +51,14 @@ namespace RenamerNG
 			get { return defaultColumnWidths; }
 		}
 
+        public void Delete()
+        {
+            if (IsDirectory)
+                Directory.Delete(this.Filename, true);
+            else
+                File.Delete(this.Filename);
+        }
+
 		public string this[ListColumns column]
 		{
 			get 
