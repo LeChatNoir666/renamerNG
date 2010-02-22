@@ -273,6 +273,7 @@
     <Compile Include="Settings\ShellExtension.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="SpecialOperations\RemoveLCS.cs" />
     <Compile Include="SpecialOperations\FreeEdit.cs">
       <SubType>Code</SubType>
     </Compile>

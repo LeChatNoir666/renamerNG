@@ -71,6 +71,7 @@ namespace RenamerNG
 		private System.Windows.Forms.TextBox tbCommand;
 		private System.Windows.Forms.MenuItem miViewCommandLine;
         private MenuItem miMacros;
+        private MenuItem miRemoveLargestCommonSubstring;
 		private System.ComponentModel.IContainer components;
 
 		public FrmMain(string dir)
@@ -470,11 +471,12 @@ namespace RenamerNG
             this.miListOperations = new System.Windows.Forms.MenuItem();
             this.miEditListColumns = new System.Windows.Forms.MenuItem();
             this.miEditSettings = new System.Windows.Forms.MenuItem();
+            this.miMacros = new System.Windows.Forms.MenuItem();
             this.miHelp = new System.Windows.Forms.MenuItem();
             this.miHelpAbout = new System.Windows.Forms.MenuItem();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
             this.folderBrowserDialog = new System.Windows.Forms.FolderBrowserDialog();
-            this.miMacros = new System.Windows.Forms.MenuItem();
+            this.miRemoveLargestCommonSubstring = new System.Windows.Forms.MenuItem();
             this.panelNavigation.SuspendLayout();
             this.panelPath.SuspendLayout();
             this.panelPathButtons.SuspendLayout();
@@ -931,7 +933,8 @@ namespace RenamerNG
             // 
             this.miOperationsSpecial.Index = 3;
             this.miOperationsSpecial.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
-            this.miOperationsFreeEdit});
+            this.miOperationsFreeEdit,
+            this.miRemoveLargestCommonSubstring});
             this.miOperationsSpecial.Text = "Special";
             // 
             // miOperationsFreeEdit
@@ -965,6 +968,11 @@ namespace RenamerNG
             this.miEditSettings.Text = "&Options";
             this.miEditSettings.Click += new System.EventHandler(this.miEditSettings_Click);
             // 
+            // miMacros
+            // 
+            this.miMacros.Index = 5;
+            this.miMacros.Text = "&Macro";
+            // 
             // miHelp
             // 
             this.miHelp.Index = 6;
@@ -982,10 +990,11 @@ namespace RenamerNG
             // 
             this.folderBrowserDialog.ShowNewFolderButton = false;
             // 
-            // miMacros
+            // miRemoveLargestCommonSubstring
             // 
-            this.miMacros.Index = 5;
-            this.miMacros.Text = "&Macro";
+            this.miRemoveLargestCommonSubstring.Index = 1;
+            this.miRemoveLargestCommonSubstring.Text = "Remove largest common substring";
+            this.miRemoveLargestCommonSubstring.Click += new System.EventHandler(this.miRemoveLargestCommonSubstring_Click);
             // 
             // FrmMain
             // 
@@ -1120,7 +1129,7 @@ namespace RenamerNG
 			else if (obj is Macro)
 				PerformMacro((Macro)obj);
 			else
-				throw new ArgumentException("Invalide type, can only perform Operations or Macros.");
+				throw new ArgumentException("Invalid type, can only perform Operations or Macros.");
 		}
 
 		private void PerformOperation(Operation op)
@@ -1720,7 +1729,37 @@ namespace RenamerNG
 			fe.Lines = freeEdit.Lines;
 			PerformOperation(fe);
 		}
-		#endregion
+
+
+        private void miRemoveLargestCommonSubstring_Click(object sender, EventArgs e)
+        {
+            RemoveLCS op = new RemoveLCS();
+
+            ArrayList files = new ArrayList();
+            foreach (ListViewItem lvi in listMain.Items)
+            {
+                if (AffectedFileName(lvi, op))
+                {
+                    FileName f = (FileName)lvi.Tag;
+                    files.Add(f.NewName);
+                }
+            }
+
+            if (files.Count < 2)
+            {
+                ErrorMessage("This operation requires at least two items to work on.");
+                return;
+            }
+
+            op.PreProcess((string)files[0], (string)files[1]);
+            for (int i = 2; i < files.Count; i++)
+            {
+                op.PreProcess((string)files[i]);
+            }
+
+            PerformOperation(op);
+        }
+        #endregion
 
 		private void miFileRepeat_Click(object sender, System.EventArgs e)
 		{
