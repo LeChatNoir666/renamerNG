@@ -81,10 +81,12 @@ namespace RenamerNG
 						data = Name;
 						break;
 					case ListColumns.Size:
+                        data = "";
 						if (IsDirectory)
-							data = "Dir";
-						else
-							data = Size.ToString();
+							data = "D: ";
+						
+						//data += Size.ToString();
+                        data += string.Format("{0:#,0}", Size);
 						break;
 					case ListColumns.Created:
 						data = Created.ToString();
@@ -138,10 +140,46 @@ namespace RenamerNG
 			get { return size; }
 		}
 
+        private static long GetDirectorySize(string file)
+        {
+            long ret = 0;
+            string[] dirs = Directory.GetDirectories(file);
+            foreach (string d in dirs)
+            {
+                try
+                {
+                    ret += GetDirectorySize(d);
+                }
+                catch
+                {
+                }
+            }
+
+            string[] files = Directory.GetFiles(file);
+            foreach (string f in files)
+            {
+                ret += GetSize(f);
+            }
+
+            return ret;
+        }
+
+        private static long GetSize(string file)
+        {
+            try
+            {
+                FileInfo fi = new FileInfo(file);
+                return fi.Length;
+            }
+            catch
+            {
+                return 0;
+            }
+        }
+
         public void GetSize()
         {
-            FileInfo fi = new FileInfo(Filename);
-            size = fi.Length;
+            size = GetSize(this.Filename);
         }
 
 		public bool Changed
@@ -258,7 +296,7 @@ namespace RenamerNG
 				path += '\\';
 
 			if (IsDirectory)
-				size = -1;
+				size = GetDirectorySize(Filename);
 			else
 				size = f.Length;
 
