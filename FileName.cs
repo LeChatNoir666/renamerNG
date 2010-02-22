@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.IO;
+using JPSearch.Mp3Info;
 
 namespace RenamerNG
 {
@@ -31,7 +32,7 @@ namespace RenamerNG
 		bool updated;
 		bool success;
 
-
+        string mp3BitRate;
 
 		DateTime created;
 		DateTime lastAccess;
@@ -103,6 +104,9 @@ namespace RenamerNG
                         break;
                     case ListColumns.RestorePoint:
                         data = restorePoint;
+                        break;
+                    case ListColumns.MP3BitRate:
+                        data = mp3BitRate;
                         break;
 					default:
 						throw new IndexOutOfRangeException();
@@ -196,6 +200,11 @@ namespace RenamerNG
 			}
 		}
 
+        public string Mp3BitRate
+        {
+            get { return mp3BitRate; }
+        }
+
 		public string Ext
 		{
 			get { return ext; }
@@ -259,6 +268,26 @@ namespace RenamerNG
 
 			updated = false;
 			success = true;
+
+            if (f.Extension.ToLower() == ".mp3")
+            {
+                try
+                {
+                    JPSearch.Mp3Info.Info i = Parser.GetInfo(f.FullName);
+                    if (i.BitRate == -1) throw new Exception();
+
+                    mp3BitRate = i.BitRate.ToString();
+                    if (i.VBR) mp3BitRate += " vbr";
+                }
+                catch
+                {
+                    mp3BitRate = "ERR";
+                }
+            }
+            else
+            {
+                mp3BitRate = "-";
+            }
 		}
 
 		public bool ReadOnly

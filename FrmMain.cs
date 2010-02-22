@@ -139,16 +139,16 @@ namespace RenamerNG
 				File.Create(pathBase + @"test.ext").Close();
 				File.Create(pathBase + @"Tyna Turner.txt").Close();
 				File.Create(pathBase + @"tyna turner.nfo").Close();
-				File.Create(pathBase + @"Tyna Turner - Simply the Best.mp3").Close();
-				File.Create(pathBase + @"Tyna Turner - Nutbush city limits.mp3").Close();
-				File.Create(pathBase + @"Metallica - Wherever I may roam.mp3").Close();
-				File.Create(pathBase + @"metallica - enter the sandman.mp3").Close();
-				File.Create(pathBase + @"Metallica - Master of Puppets.mp3").Close();
+                CreateSmallFile(pathBase + @"Tyna Turner - Simply the Best.mp3", 1);
+                CreateSmallFile(pathBase + @"Tyna Turner - Nutbush city limits.mp3", 2);
+                CreateSmallFile(pathBase + @"Metallica - Wherever I may roam.mp3", 3);
+                CreateSmallFile(pathBase + @"metallica - enter the sandman.mp3", 4);
+                CreateSmallFile(pathBase + @"Metallica - Master of Puppets.mp3", 5);
 				Directory.CreateDirectory(pathBase + @"Metallica");
-				Directory.CreateDirectory(pathBase + @"Metallica\Metallica");
+                Directory.CreateDirectory(pathBase + @"Metallica\Metallica");
 				Directory.CreateDirectory(pathBase + @"Metallica\... and Justice for All");
-				File.Create(pathBase + @"Metallica\Metallica - Wherever I may roam.mp3").Close();
-				File.Create(pathBase + @"Metallica\Metallica - Enter the sandman.mp3").Close();
+                CreateSmallFile(pathBase + @"Metallica\Metallica - Wherever I may roam.mp3", 5000);
+                CreateSmallFile(pathBase + @"Metallica\Metallica - Enter the sandman.mp3", 6000);
 				Directory.CreateDirectory(pathBase + @"DateTime");
 				File.Create(pathBase + @"DateTime\Long 060505.doc").Close(); //Long 2005-06-05.doc
 				File.Create(pathBase + @"DateTime\Long 020502.doc").Close(); //Long 2002-02-05.doc
@@ -189,6 +189,17 @@ namespace RenamerNG
             //Change this when new versions are released!
             UpdateCheck.Check(settings.LastCheck, settings.CheckVersion, settings.CheckBetaVersion, "0.0.0.0", Application.ProductVersion);
 		}
+
+        private static void CreateSmallFile(string file, int count)
+        {
+            using (FileStream fs = File.Create(file))
+            {
+                for (int i = 0 ; i < count ; i++)
+                    fs.WriteByte(0);
+
+                fs.Close();
+            }
+        }
 
 		RenamerNG.Macros.RecordingIndicator recordingIndicator1;
 		RenamerNG.Macros.MacroList macroList1;

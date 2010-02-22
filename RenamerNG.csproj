@@ -248,6 +248,9 @@
     <Compile Include="Macros\RecordingIndicator.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="Mp3Info\Header.cs" />
+    <Compile Include="Mp3Info\Info.cs" />
+    <Compile Include="Mp3Info\Parser.cs" />
     <Compile Include="Operation.cs">
       <SubType>Code</SubType>
     </Compile>
