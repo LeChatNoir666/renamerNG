@@ -1,5 +1,6 @@
 using System;
 using System.Windows.Forms;
+using System.Collections.Generic;
 using RenamerNG;
 
 namespace RenamerNG.SpecialOperations
@@ -9,11 +10,15 @@ namespace RenamerNG.SpecialOperations
 	/// </summary>
 	public class RemoveLCS : Operation
 	{
-        string remove;
+        private string remove;
+
+        public string Remove
+        {
+            get { return remove; }
+        }
 
 		public RemoveLCS()
 		{
-            remove = "";
 		}
 
 		public override string Name
@@ -58,20 +63,56 @@ namespace RenamerNG.SpecialOperations
             return lcs;
         }
 
-		public void PreProcess(string s1, string s2)
+		public void PreProcess(string[] sarr)
 		{
-            remove = LCS(s1, s2);
+            List<string> list = new List<string>();
 
-            MessageBox.Show(remove);
+            string s = sarr[0];
+            foreach (string t in sarr)
+            {
+                if (t.Length < s.Length)
+                    s = t;
+            }
+
+            for (int i = 0; i < s.Length; i++)
+            {
+                for (int j = 1 ; j <= s.Length && i+j <= s.Length ; j++)
+                {
+                    string p = s.Substring(i, j);
+                    if (!list.Contains(p))
+                        list.Add(p);
+                }
+            }
+
+            foreach (string t in sarr)
+            {
+                for (int i = 0; i < list.Count; i++ )
+                {
+                    if (!t.Contains(list[i]))
+                    {
+                        list.RemoveAt(i);
+                        i--;
+                    }
+                }
+            }
+
+            if (list.Count <= 0)
+            {
+                remove = "";
+                return;
+            }
+
+            s = list[0];
+            foreach (string t in list)
+            {
+                if (t.Length > s.Length)
+                    s = t;
+            }
+
+            remove = s;
         }
 
-        public void PreProcess(string s1)
-        {
-            remove = LCS(remove, s1);
-            MessageBox.Show(remove);
-        }
-
-		public override void Perform(ListViewItem lvi)
+        public override void Perform(ListViewItem lvi)
 		{
             if (remove == "") return;
 

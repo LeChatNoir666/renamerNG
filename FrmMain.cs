@@ -947,6 +947,7 @@ namespace RenamerNG
             // miRemoveLargestCommonSubstring
             // 
             this.miRemoveLargestCommonSubstring.Index = 1;
+            this.miRemoveLargestCommonSubstring.Shortcut = System.Windows.Forms.Shortcut.CtrlD;
             this.miRemoveLargestCommonSubstring.Text = "Remove largest common substring";
             this.miRemoveLargestCommonSubstring.Click += new System.EventHandler(this.miRemoveLargestCommonSubstring_Click);
             // 
@@ -1747,13 +1748,16 @@ namespace RenamerNG
                 return;
             }
 
-            op.PreProcess((string)files[0], (string)files[1]);
-            for (int i = 2; i < files.Count; i++)
+            op.PreProcess((string[])files.ToArray(typeof(String)));
+            if (op.Remove == "")
             {
-                op.PreProcess((string)files[i]);
+                ErrorMessage("Didn't found any common substring.");
+                return;
             }
 
-            PerformOperation(op);
+            DialogResult r = YesNoQuestion("Do you want to remove string: \"" + op.Remove + "\"");
+            if (r == DialogResult.Yes)
+                PerformOperation(op);
         }
         #endregion
 
